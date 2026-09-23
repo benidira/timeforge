@@ -1,0 +1,79 @@
+import type { ToolSlug } from "@/content/tools";
+import { BatchConverterTool } from "./tools/batch-converter-tool";
+import { BusinessHoursTool } from "./tools/business-hours-tool";
+import { CronGeneratorTool } from "./tools/cron-generator-tool";
+import { CurrentTimestampTool } from "./tools/current-timestamp-tool";
+import { DateDifferenceTool } from "./tools/date-difference-tool";
+import { DateFormatConverterTool } from "./tools/date-format-converter-tool";
+import { DateToTimestampTool } from "./tools/date-to-timestamp-tool";
+import { Iso8601ConverterTool } from "./tools/iso8601-converter-tool";
+import { IsoToUnixTool } from "./tools/iso-to-unix-tool";
+import { Rfc3339Tool } from "./tools/rfc3339-tool";
+import { ShiftTimeTool } from "./tools/shift-time-tool";
+import { TimeDurationTool } from "./tools/time-duration-tool";
+import { TimestampDifferenceTool } from "./tools/timestamp-difference-tool";
+import { TimestampTool } from "./tools/timestamp-tool";
+import { TimezoneConverterTool } from "./tools/timezone-converter-tool";
+import { TimezoneOffsetTool } from "./tools/timezone-offset-tool";
+import { UnixValidatorTool } from "./tools/unix-validator-tool";
+import { UtcConverterTool } from "./tools/utc-converter-tool";
+import { WorldClockTool } from "./tools/world-clock-tool";
+
+/**
+ * Maps a tool slug to its interactive interface. To add a tool: add its content to
+ * src/content/tools.ts (and examples.ts), build its component, and register it here.
+ */
+export function ToolInterface({ slug }: { slug: ToolSlug }) {
+  switch (slug) {
+    case "unix-timestamp-converter":
+      return <TimestampTool variant="unix" />;
+    case "epoch-converter":
+      return <TimestampTool variant="epoch" />;
+    case "timestamp-to-date":
+      return <TimestampTool variant="toDate" />;
+    case "milliseconds-to-date":
+      return <TimestampTool variant="ms" />;
+    case "epoch-milliseconds":
+      return <TimestampTool variant="ms" />;
+    case "unix-to-iso-8601":
+      return <TimestampTool variant="toIso" />;
+    case "date-to-timestamp":
+      return <DateToTimestampTool />;
+    case "current-unix-timestamp":
+      return <CurrentTimestampTool />;
+    case "iso-8601-to-unix":
+      return <IsoToUnixTool />;
+    case "timezone-converter":
+      return <TimezoneConverterTool />;
+    case "timestamp-difference":
+      return <TimestampDifferenceTool />;
+    case "utc-converter":
+      return <UtcConverterTool />;
+    case "date-difference":
+      return <DateDifferenceTool />;
+    case "time-duration-calculator":
+      return <TimeDurationTool />;
+    case "add-time":
+      return <ShiftTimeTool sign={1} />;
+    case "subtract-time":
+      return <ShiftTimeTool sign={-1} />;
+    case "unix-timestamp-validator":
+      return <UnixValidatorTool />;
+    case "unix-timestamp-batch-converter":
+      return <BatchConverterTool />;
+    case "date-format-converter":
+      return <DateFormatConverterTool />;
+    case "iso-8601-converter":
+      return <Iso8601ConverterTool />;
+    case "rfc-3339-converter":
+      return <Rfc3339Tool />;
+    case "timezone-offset":
+      return <TimezoneOffsetTool />;
+    case "world-clock":
+      return <WorldClockTool />;
+    case "business-hours-converter":
+      return <BusinessHoursTool />;
+    case "cron-generator":
+      return <CronGeneratorTool />;
+  }
+}
