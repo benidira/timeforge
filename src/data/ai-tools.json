@@ -1,0 +1,932 @@
+[
+  {
+    "slug": "cursorrules-generator",
+    "name": ".cursorrules Generator",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade .cursorrules Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      ".cursorrules generator",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the .cursorrules Generator",
+      "content": "The .cursorrules Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "claude-system-prompt-builder",
+    "name": "Claude System Prompt Builder",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade Claude System Prompt Builder for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "claude system prompt builder",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Claude System Prompt Builder",
+      "content": "The Claude System Prompt Builder is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "gpt4o-system-prompt-generator",
+    "name": "GPT-4o System Prompt Generator",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade GPT-4o System Prompt Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "gpt-4o system prompt generator",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the GPT-4o System Prompt Generator",
+      "content": "The GPT-4o System Prompt Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "copilot-instructions-generator",
+    "name": "Copilot Instructions Generator",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade Copilot Instructions Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "copilot instructions generator",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Copilot Instructions Generator",
+      "content": "The Copilot Instructions Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "windsurf-rules-generator",
+    "name": "Windsurf Rules Generator",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade Windsurf Rules Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "windsurf rules generator",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Windsurf Rules Generator",
+      "content": "The Windsurf Rules Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "few-shot-prompt-formatter",
+    "name": "Few-Shot Prompt Formatter",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade Few-Shot Prompt Formatter for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "few-shot prompt formatter",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Few-Shot Prompt Formatter",
+      "content": "The Few-Shot Prompt Formatter is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "chain-of-thought-prompt-builder",
+    "name": "Chain of Thought Prompt Builder",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade Chain of Thought Prompt Builder for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "chain of thought prompt builder",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Chain of Thought Prompt Builder",
+      "content": "The Chain of Thought Prompt Builder is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "ai-agent-persona-designer",
+    "name": "AI Agent Persona Designer",
+    "category": "prompts",
+    "description": "Professional, enterprise-grade AI Agent Persona Designer for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "ai agent persona designer",
+      "prompts",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the AI Agent Persona Designer",
+      "content": "The AI Agent Persona Designer is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "ollama-modelfile-builder",
+    "name": "Ollama Modelfile Builder",
+    "category": "local-llm",
+    "description": "Professional, enterprise-grade Ollama Modelfile Builder for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "ollama modelfile builder",
+      "local-llm",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Ollama Modelfile Builder",
+      "content": "The Ollama Modelfile Builder is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "gguf-vram-estimator",
+    "name": "GGUF VRAM Estimator",
+    "category": "local-llm",
+    "description": "Professional, enterprise-grade GGUF VRAM Estimator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "gguf vram estimator",
+      "local-llm",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the GGUF VRAM Estimator",
+      "content": "The GGUF VRAM Estimator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "vllm-config-generator",
+    "name": "vLLM Config Generator",
+    "category": "local-llm",
+    "description": "Professional, enterprise-grade vLLM Config Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "vllm config generator",
+      "local-llm",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the vLLM Config Generator",
+      "content": "The vLLM Config Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "context-window-memory-calculator",
+    "name": "Context Window Memory Calculator",
+    "category": "local-llm",
+    "description": "Professional, enterprise-grade Context Window Memory Calculator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "context window memory calculator",
+      "local-llm",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Context Window Memory Calculator",
+      "content": "The Context Window Memory Calculator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "huggingface-modelcard-generator",
+    "name": "HuggingFace Modelcard Generator",
+    "category": "local-llm",
+    "description": "Professional, enterprise-grade HuggingFace Modelcard Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "huggingface modelcard generator",
+      "local-llm",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the HuggingFace Modelcard Generator",
+      "content": "The HuggingFace Modelcard Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "openwebui-pipeline-configurator",
+    "name": "OpenWebUI Pipeline Configurator",
+    "category": "local-llm",
+    "description": "Professional, enterprise-grade OpenWebUI Pipeline Configurator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "openwebui pipeline configurator",
+      "local-llm",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the OpenWebUI Pipeline Configurator",
+      "content": "The OpenWebUI Pipeline Configurator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "llm-api-cost-calculator",
+    "name": "LLM API Cost Calculator",
+    "category": "calculators",
+    "description": "Professional, enterprise-grade LLM API Cost Calculator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "llm api cost calculator",
+      "calculators",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the LLM API Cost Calculator",
+      "content": "The LLM API Cost Calculator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "repo-token-estimator",
+    "name": "Repo Token Estimator",
+    "category": "calculators",
+    "description": "Professional, enterprise-grade Repo Token Estimator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "repo token estimator",
+      "calculators",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Repo Token Estimator",
+      "content": "The Repo Token Estimator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "embedding-cost-calculator",
+    "name": "Embedding Cost Calculator",
+    "category": "calculators",
+    "description": "Professional, enterprise-grade Embedding Cost Calculator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "embedding cost calculator",
+      "calculators",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Embedding Cost Calculator",
+      "content": "The Embedding Cost Calculator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "fine-tuning-cost-estimator",
+    "name": "Fine-Tuning Cost Estimator",
+    "category": "calculators",
+    "description": "Professional, enterprise-grade Fine-Tuning Cost Estimator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "fine-tuning cost estimator",
+      "calculators",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Fine-Tuning Cost Estimator",
+      "content": "The Fine-Tuning Cost Estimator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "rag-chunk-size-calculator",
+    "name": "RAG Chunk Size Calculator",
+    "category": "calculators",
+    "description": "Professional, enterprise-grade RAG Chunk Size Calculator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "rag chunk size calculator",
+      "calculators",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the RAG Chunk Size Calculator",
+      "content": "The RAG Chunk Size Calculator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "llm-latency-benchmark-calculator",
+    "name": "LLM Latency Benchmark Calculator",
+    "category": "calculators",
+    "description": "Professional, enterprise-grade LLM Latency Benchmark Calculator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "llm latency benchmark calculator",
+      "calculators",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the LLM Latency Benchmark Calculator",
+      "content": "The LLM Latency Benchmark Calculator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "json-schema-tool-calling-generator",
+    "name": "JSON Schema Tool Calling Generator",
+    "category": "schemas",
+    "description": "Professional, enterprise-grade JSON Schema Tool Calling Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "json schema tool calling generator",
+      "schemas",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the JSON Schema Tool Calling Generator",
+      "content": "The JSON Schema Tool Calling Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "pydantic-structured-output-builder",
+    "name": "Pydantic Structured Output Builder",
+    "category": "schemas",
+    "description": "Professional, enterprise-grade Pydantic Structured Output Builder for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "pydantic structured output builder",
+      "schemas",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Pydantic Structured Output Builder",
+      "content": "The Pydantic Structured Output Builder is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "vercel-ai-sdk-code-generator",
+    "name": "Vercel AI SDK Code Generator",
+    "category": "schemas",
+    "description": "Professional, enterprise-grade Vercel AI SDK Code Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "vercel ai sdk code generator",
+      "schemas",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Vercel AI SDK Code Generator",
+      "content": "The Vercel AI SDK Code Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "langchain-boilerplate-builder",
+    "name": "Langchain Boilerplate Builder",
+    "category": "schemas",
+    "description": "Professional, enterprise-grade Langchain Boilerplate Builder for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "langchain boilerplate builder",
+      "schemas",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Langchain Boilerplate Builder",
+      "content": "The Langchain Boilerplate Builder is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "mcp-config-builder",
+    "name": "MCP Config Builder",
+    "category": "schemas",
+    "description": "Professional, enterprise-grade MCP Config Builder for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "mcp config builder",
+      "schemas",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the MCP Config Builder",
+      "content": "The MCP Config Builder is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "rest-api-to-ai-tool-converter",
+    "name": "REST API to AI Tool Converter",
+    "category": "schemas",
+    "description": "Professional, enterprise-grade REST API to AI Tool Converter for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "rest api to ai tool converter",
+      "schemas",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the REST API to AI Tool Converter",
+      "content": "The REST API to AI Tool Converter is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "ai-guardrails-configurator",
+    "name": "AI Guardrails Configurator",
+    "category": "evals",
+    "description": "Professional, enterprise-grade AI Guardrails Configurator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "ai guardrails configurator",
+      "evals",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the AI Guardrails Configurator",
+      "content": "The AI Guardrails Configurator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "prompt-markdown-json-escaper",
+    "name": "Prompt Markdown JSON Escaper",
+    "category": "evals",
+    "description": "Professional, enterprise-grade Prompt Markdown JSON Escaper for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "prompt markdown json escaper",
+      "evals",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the Prompt Markdown JSON Escaper",
+      "content": "The Prompt Markdown JSON Escaper is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "jsonl-dataset-formatter",
+    "name": "JSONL Dataset Formatter",
+    "category": "evals",
+    "description": "Professional, enterprise-grade JSONL Dataset Formatter for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "jsonl dataset formatter",
+      "evals",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the JSONL Dataset Formatter",
+      "content": "The JSONL Dataset Formatter is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  },
+  {
+    "slug": "llm-eval-rubric-generator",
+    "name": "LLM Eval Rubric Generator",
+    "category": "evals",
+    "description": "Professional, enterprise-grade LLM Eval Rubric Generator for AI developers. Generate, configure, and optimize seamlessly.",
+    "keywords": [
+      "llm eval rubric generator",
+      "evals",
+      "ai developer tool",
+      "castov",
+      "timeforge"
+    ],
+    "inputs": [
+      {
+        "name": "framework",
+        "label": "Framework / Model",
+        "type": "text",
+        "placeholder": "e.g., GPT-4o, Claude 3.5 Sonnet"
+      },
+      {
+        "name": "context",
+        "label": "Context & Requirements",
+        "type": "textarea",
+        "placeholder": "Describe your specific requirements here..."
+      }
+    ],
+    "pseoContent": {
+      "h2": "How to use the LLM Eval Rubric Generator",
+      "content": "The LLM Eval Rubric Generator is designed to streamline your AI development workflow. Simply enter your requirements in the form above to generate optimized configurations instantly."
+    }
+  }
+]

@@ -100,3 +100,34 @@ export function websiteJsonLd() {
     inLanguage: "en",
   };
 }
+
+
+export function softwareAppJsonLd(input: { name: string; description: string; url: string; category: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: input.name,
+    url: absoluteUrl(input.url),
+    description: input.description,
+    applicationCategory: input.category,
+    operatingSystem: "Any",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  };
+}
+
+export function howToJsonLd(input: { name: string; description: string; steps: { name: string; text: string }[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: input.name,
+    description: input.description,
+    step: input.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
