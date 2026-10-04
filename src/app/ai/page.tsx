@@ -34,7 +34,6 @@ export default function AiDirectoryPage() {
 
           <button 
             className="w-full max-w-lg mx-auto flex items-center justify-between px-6 py-4 bg-field/60 hover:bg-hover/80 border border-line/60 rounded-2xl shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-accent/50 group"
-            onClick={() => {/* Client-side event trigger handled by a small script below */}}
             id="hero-search-trigger"
           >
             <div className="flex items-center gap-4 text-muted group-hover:text-fg transition-colors">

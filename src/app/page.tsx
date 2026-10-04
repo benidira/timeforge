@@ -63,7 +63,7 @@ export default function HomePage() {
           {/* ── Giant Search Trigger ── */}
           <div className="mt-12 mx-auto max-w-3xl relative z-50 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
             <button 
-              onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+              id="home-search-trigger"
               className="w-full flex items-center justify-between px-6 py-4 bg-field/40 hover:bg-hover/60 border border-line/60 rounded-2xl shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-accent/40 group"
             >
               <div className="flex items-center gap-4 text-muted group-hover:text-fg transition-colors">
@@ -79,6 +79,11 @@ export default function HomePage() {
                 </kbd>
               </div>
             </button>
+            <script dangerouslySetInnerHTML={{__html: `
+              document.getElementById('home-search-trigger')?.addEventListener('click', () => {
+                document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
+              });
+            `}} />
           </div>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
