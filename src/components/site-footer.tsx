@@ -15,7 +15,7 @@ const TOP_TOOLS = [
   "unix-timestamp-converter",
   "world-clock",
   "timezone-converter",
-  "date-calculator",
+  "date-difference",
 ];
 
 export function SiteFooter() {
@@ -82,7 +82,7 @@ export function SiteFooter() {
         </div>
       </div>
       
-      <div className="border-t border-line/30 bg-surface/30">
+      <div className="border-t border-line/30 bg-card/40">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row sm:px-8">
           <p className="text-sm text-muted">&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <div className="flex gap-4 text-sm text-muted">

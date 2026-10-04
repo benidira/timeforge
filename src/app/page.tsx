@@ -34,51 +34,53 @@ export default function HomePage() {
       <JsonLd data={[websiteJsonLd(), faqJsonLd(HOME_FAQ)]} />
 
       {/* ── Hero ── */}
-      <section className="hero-section layout-content py-16 sm:py-24 text-center">
-        <div className="mb-8 flex justify-center animate-fade-in-up" style={{ animationDelay: '0ms' }}>
-          <span className="hero-badge">
-            <span className="hero-badge-dot" aria-hidden="true" />
-            TimeForge Premium Edition
-          </span>
-        </div>
+      <section className="hero-section w-full border-b border-line/40 mb-12">
+        <div className="layout-content py-16 sm:py-24 text-center">
+          <div className="mb-8 flex justify-center animate-fade-in-up" style={{ animationDelay: '0ms' }}>
+            <span className="hero-badge">
+              <span className="hero-badge-dot" aria-hidden="true" />
+              TimeForge Premium Edition
+            </span>
+          </div>
 
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl text-fg animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-          Powerful Time &amp; Date Tools<br />
-          <span className="bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent">
-            for Everyone
-          </span>
-        </h1>
-        
-        <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-muted animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-          Fast, accurate and privacy-friendly tools for timestamps, dates, time zones, durations and developer workflows.
-        </p>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl text-fg animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+            Powerful Time &amp; Date Tools<br />
+            <span className="bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent">
+              for Everyone
+            </span>
+          </h1>
+          
+          <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-muted animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            Fast, accurate and privacy-friendly tools for timestamps, dates, time zones, durations and developer workflows.
+          </p>
 
-        {/* Hidden RTL element required by tests */}
-        <span className="sr-only" dir="rtl">بسرعة ومجانًا</span>
+          {/* Hidden RTL element required by tests */}
+          <span className="sr-only" dir="rtl">بسرعة ومجانًا</span>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-          <Link href="/tools" className="btn btn-primary btn-lg px-8 shadow-xl shadow-accent/20">
-            Explore All Tools
-          </Link>
-          <a href="#popular-tools" className="btn btn-secondary btn-lg px-8">
-            Popular Tools
-          </a>
-        </div>
+          <div className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+            <Link href="/tools" className="btn btn-primary btn-lg px-8 shadow-xl shadow-accent/20">
+              Explore All Tools
+            </Link>
+            <a href="#popular-tools" className="btn btn-secondary btn-lg px-8">
+              Popular Tools
+            </a>
+          </div>
 
-        {/* ── Search ── */}
-        <div className="mt-12 mx-auto max-w-2xl animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-          <h2 className="sr-only">Search Tools</h2>
-          <div className="relative">
-            <HomeSearch tools={TOOLS} />
-            <div className="absolute -top-6 left-0 text-xs font-semibold text-muted uppercase tracking-wider pl-2">
-              What do you need to calculate?
+          {/* ── Search ── */}
+          <div className="mt-12 mx-auto max-w-2xl relative z-50 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+            <h2 className="sr-only">Search Tools</h2>
+            <div className="relative">
+              <HomeSearch tools={TOOLS} />
+              <div className="absolute -top-6 left-0 text-xs font-semibold text-muted uppercase tracking-wider pl-2">
+                What do you need to calculate?
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* ── Live Epoch ── */}
-        <div className="mt-16 flex justify-center animate-fade-in-up" style={{ animationDelay: '500ms' }}>
-          <LiveEpoch />
+          {/* ── Live Epoch ── */}
+          <div className="mt-16 flex justify-center animate-fade-in-up text-left" style={{ animationDelay: '500ms' }}>
+            <LiveEpoch />
+          </div>
         </div>
       </section>
 
@@ -148,7 +150,7 @@ export default function HomePage() {
           <h2 id="why-timeforge" className="section-heading mb-8">Why TimeForge?</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_ITEMS.map((item) => (
-              <div key={item.title} className="card p-6 bg-surface/30 border-line/40 hover:bg-hover/50 transition-colors">
+              <div key={item.title} className="card p-6 bg-card/60 border-line/40 hover:bg-hover/50 transition-colors">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
                   <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

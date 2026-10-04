@@ -5,7 +5,7 @@ import { ArrowRightIcon, CategoryIcon } from "./icons";
 export function ToolCard({ tool, headingLevel = 3 }: { tool: Tool; headingLevel?: 2 | 3 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
-    <article className="tool-card card group relative flex h-full flex-col p-5 transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-xl focus-within:border-accent">
+    <article className="tool-card card group relative flex h-full flex-col p-5">
       <div className="flex items-center justify-between gap-2 mb-3">
         <span className="tool-card-icon flex h-10 w-10 items-center justify-center rounded-xl bg-hover/80 text-accent transition-transform duration-200 group-hover:scale-105">
           <CategoryIcon category={tool.category} />
