@@ -17,6 +17,11 @@
   --tf-link: #a5b4fc;
   --tf-danger: #fca5a5;
   --tf-focus: #a5b4fc;
+  --tf-border: #263247;
+  --tf-primary: #4f46e5;
+  --tf-secondary: #182235;
+  --tf-success: #10b981;
+  --tf-warning: #f59e0b;
 }
 
 :root[data-theme="light"] {
@@ -34,21 +39,33 @@
   --tf-link: #4338ca;
   --tf-danger: #b91c1c;
   --tf-focus: #4338ca;
+  --tf-border: #cbd5e1;
+  --tf-primary: #4f46e5;
+  --tf-secondary: #eef2f7;
+  --tf-success: #059669;
+  --tf-warning: #d97706;
 }
 
 @theme inline {
   --color-bg: var(--tf-bg);
+  --color-background: var(--tf-bg);
   --color-card: var(--tf-card);
   --color-field: var(--tf-field);
   --color-hover: var(--tf-hover);
   --color-line: var(--tf-line);
+  --color-border: var(--tf-line);
   --color-fg: var(--tf-fg);
+  --color-foreground: var(--tf-fg);
   --color-muted: var(--tf-muted);
+  --color-primary: var(--tf-accent);
+  --color-secondary: var(--tf-hover);
   --color-accent: var(--tf-accent);
   --color-link: var(--tf-link);
+  --color-success: var(--tf-success);
+  --color-warning: var(--tf-warning);
   --color-danger: var(--tf-danger);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: var(--font-geist-sans), "Geist Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 html {
@@ -444,4 +461,249 @@ select.input {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+/* ============================================================
+   PROFESSIONAL DESIGN SYSTEM — TimeForge v2
+   ============================================================ */
+
+/* -- Layout utility -- */
+.layout-content {
+  width: 100%;
+  max-width: 72rem; /* 1152px */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) {
+  .layout-content { padding-inline: 1.5rem; }
+}
+
+/* -- Glassmorphism Header -- */
+.header-glass {
+  background: color-mix(in srgb, var(--tf-bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* -- Footer gradient -- */
+.footer-gradient {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--tf-accent) 4%, transparent),
+    transparent 120px
+  );
+}
+
+/* -- Hero Gradient Background -- */
+.hero-section {
+  position: relative;
+  isolation: isolate;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--tf-accent) 15%, transparent), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 20%, color-mix(in srgb, #8b5cf6 8%, transparent), transparent);
+  pointer-events: none;
+}
+
+/* -- Glowing inputs on focus -- */
+.input:focus {
+  outline: none;
+  border-color: var(--tf-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tf-accent) 20%, transparent);
+}
+
+/* -- Enhanced cards -- */
+.card {
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--tf-accent) 40%, var(--tf-line));
+}
+
+/* -- Accent border glow on card focus-within -- */
+.card:focus-within {
+  border-color: var(--tf-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--tf-accent) 30%, transparent);
+}
+
+/* -- Gradient accent button -- */
+.btn-primary {
+  background: var(--tf-accent);
+  background-image: linear-gradient(135deg, var(--tf-accent), #7c3aed);
+  box-shadow: 0 2px 12px -4px color-mix(in srgb, var(--tf-accent) 60%, transparent);
+  transition: opacity 150ms ease, box-shadow 150ms ease;
+}
+.btn-primary:hover {
+  background: var(--tf-accent-hover);
+  background-image: linear-gradient(135deg, var(--tf-accent-hover), #6d28d9);
+  box-shadow: 0 4px 20px -4px color-mix(in srgb, var(--tf-accent) 70%, transparent);
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+/* -- Section heading accent line -- */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.section-heading::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 1.5em;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, var(--tf-accent), #8b5cf6);
+  flex-shrink: 0;
+}
+
+/* -- Hero epoch glow -- */
+.hero-glow {
+  position: relative;
+  isolation: isolate;
+}
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--tf-accent) 20%, transparent),
+    transparent 70%
+  );
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+/* -- Tool card polish -- */
+.tool-card {
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.tool-card:hover,
+.tool-card:focus-within {
+  border-color: var(--tf-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -16px color-mix(in srgb, var(--tf-accent) 30%, rgba(0,0,0,0.5));
+}
+.tool-card-arrow {
+  transition: transform 180ms ease;
+}
+.tool-card:hover .tool-card-arrow,
+.tool-card:focus-within .tool-card-arrow {
+  transform: translateX(4px);
+}
+.tool-card-stretched-link {
+  position: static;
+}
+.tool-card-stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.tool-card-icon {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--tf-accent) 20%, var(--tf-hover)),
+    color-mix(in srgb, #8b5cf6 10%, var(--tf-hover))
+  );
+}
+
+/* -- Guide card -- */
+.guide-card {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.guide-card:hover,
+.guide-card:focus-within {
+  border-color: var(--tf-accent);
+  transform: translateY(-2px);
+}
+
+/* -- CTA band -- */
+.cta-band {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--tf-accent) 8%, var(--tf-card)),
+    color-mix(in srgb, #8b5cf6 5%, var(--tf-card))
+  );
+  border: 1px solid color-mix(in srgb, var(--tf-accent) 30%, var(--tf-line));
+  border-radius: 20px;
+}
+
+/* -- Hero badge -- */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--tf-accent) 30%, var(--tf-line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tf-accent) 8%, var(--tf-card));
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tf-muted);
+}
+.hero-badge-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--tf-accent);
+  box-shadow: 0 0 6px var(--tf-accent);
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* -- Scrollbar -- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--tf-bg); }
+::-webkit-scrollbar-thumb { background: var(--tf-line); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--tf-muted); }
+
+/* ---------- Animations ---------- */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-bg {
+  background: linear-gradient(135deg, var(--tf-accent), #7c3aed);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Hover transitions for interactive elements */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+.transition-colors {
+  transition: color 120ms, background-color 120ms, border-color 120ms;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up, .gradient-bg, .hover\:scale-105, .transition-colors {
+    animation: none !important;
+    transition: none !important;
+  }
 }

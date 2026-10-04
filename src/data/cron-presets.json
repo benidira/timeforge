@@ -1,0 +1,843 @@
+[
+  {
+    "slug": "every-minute",
+    "expression": "* * * * *",
+    "title": "Every Minute",
+    "intent": "cron every minute",
+    "category": "interval",
+    "nextRuns": [
+      "2026-10-03T12:01:00Z",
+      "2026-10-03T12:02:00Z",
+      "2026-10-03T12:03:00Z",
+      "2026-10-03T12:04:00Z",
+      "2026-10-03T12:05:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is a wildcard (*), so every possible minute value 0 through 59 matches.",
+      "Hour field is a wildcard (*), so every hour from 00 to 23 matches without restriction.",
+      "Day-of-month field is (*), firing on every calendar day of every month regardless of the month's length.",
+      "Month field is (*), so all twelve months from January through December trigger the job.",
+      "Day-of-week field is (*), which means every weekday Sunday (0) through Saturday (6) is eligible."
+    ],
+    "gotchas": [
+      {
+        "title": "DST spring-forward may skip a minute or double one",
+        "body": "When a zone jumps from 01:59 standard to 03:00 daylight, minute 02:00 never occurs locally. Conversely the fall-back hour runs the same wall-clock minute twice. Always run fan-out jobs in UTC to avoid this.",
+        "severity": "warn"
+      },
+      {
+        "title": "1440 invocations per day adds up",
+        "body": "A job that runs every minute issues over half a million executions per year. Even a sub-millisecond overhead in logging or metrics becomes measurable; prefer */5 or */15 unless every-minute fidelity is provably required.",
+        "severity": "info"
+      }
+    ],
+    "facts": 14
+  },
+  {
+    "slug": "every-5-minutes",
+    "expression": "*/5 * * * *",
+    "title": "Every 5 Minutes",
+    "intent": "cron every 5 minutes",
+    "category": "interval",
+    "nextRuns": [
+      "2026-10-03T12:05:00Z",
+      "2026-10-03T12:10:00Z",
+      "2026-10-03T12:15:00Z",
+      "2026-10-03T12:20:00Z",
+      "2026-10-03T12:25:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field uses the step notation */5, which expands to the values 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, and 55.",
+      "Hour field is a wildcard (*), matching every hour of the day from 00 through 23.",
+      "Day-of-month field is unrestricted (*) and fires on every day from the 1st through the 31st as applicable.",
+      "Month field matches all 12 months, so the 5-minute cadence continues across January through December.",
+      "Day-of-week is a wildcard, permitting the schedule to run on every calendar day including weekends and holidays."
+    ],
+    "gotchas": [
+      {
+        "title": "*/5 fires on minute 0, not 5 minutes after the job was installed",
+        "body": "Step syntax always walks from the field minimum (0 for minutes), not from an arbitrary start. A job enabled at 12:07 fires next at 12:10, then 12:15, producing a 3-minute first gap and 5-minute gaps thereafter.",
+        "severity": "info"
+      },
+      {
+        "title": "Thundering herd at round minutes",
+        "body": "Global SaaS endpoints see traffic spikes exactly on :00, :15, :30, and :45 because nearly every */5 and */15 job aligns to the same boundaries. Stagger with explicit comma-lists like 3,8,13,... to shed load.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 12
+  },
+  {
+    "slug": "every-15-minutes",
+    "expression": "*/15 * * * *",
+    "title": "Every 15 Minutes",
+    "intent": "cron every 15 minutes",
+    "category": "interval",
+    "nextRuns": [
+      "2026-10-03T12:15:00Z",
+      "2026-10-03T12:30:00Z",
+      "2026-10-03T12:45:00Z",
+      "2026-10-03T13:00:00Z",
+      "2026-10-03T13:15:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field uses */15, resolving to exactly four values per hour: 0, 15, 30, and 45.",
+      "Hour field is (*), which means every single hour of the day triggers on the quarter-hour marks.",
+      "Day-of-month field is (*) and applies independently of the hour and minute fields.",
+      "Month field has no restrictions, preserving the 15-minute cadence across all 12 calendar months.",
+      "Day-of-week field is (*), running on every day including weekends and public holidays without exception."
+    ],
+    "gotchas": [
+      {
+        "title": "Equivalent to 0,15,30,45, not offset quarters",
+        "body": "If you actually want 'quarter past, half past, quarter to, and on the hour' you need 15,30,45,0 explicitly; */15 happens to produce the same set. For offset quarters such as 1,16,31,46 you must list them manually.",
+        "severity": "info"
+      },
+      {
+        "title": "AWS EventBridge and Quartz use a seconds-leading 6-field form",
+        "body": "The popular expression */15 * * * * ? in EventBridge/Quartz looks nearly identical but has a leading seconds column and a ? in day-of-week. Porting the 5-field version without adding seconds creates a syntax error.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 11
+  },
+  {
+    "slug": "every-30-minutes",
+    "expression": "*/30 * * * *",
+    "title": "Every 30 Minutes",
+    "intent": "cron every 30 minutes",
+    "category": "interval",
+    "nextRuns": [
+      "2026-10-03T12:30:00Z",
+      "2026-10-03T13:00:00Z",
+      "2026-10-03T13:30:00Z",
+      "2026-10-03T14:00:00Z",
+      "2026-10-03T14:30:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field */30 expands to exactly two minutes per hour: the top of the hour (0) and the half-hour (30).",
+      "Hour field is a wildcard (*) allowing the half-hour cadence across all 24 hours of the day.",
+      "Day-of-month field matches every calendar day from 1 up to the last day of whichever month is active.",
+      "Month field covers all 12 months with no gap or seasonal exemption.",
+      "Day-of-week is (*), firing consistently through weekends and any localized holiday closures."
+    ],
+    "gotchas": [
+      {
+        "title": "Two executions per hour means the last gap of the day is also 30 minutes",
+        "body": "23:30 to 00:00 the next day is the same 30-minute interval as all the others; the schedule does not 'pause' at midnight, which surprises people who reason the change of day breaks the step.",
+        "severity": "info"
+      },
+      {
+        "title": "Long-running jobs over 30 minutes cause overlap",
+        "body": "A batch that sometimes takes 35 minutes will still be executing when cron launches the next 30-minute slot. Add a lock file, systemd unit with Conflicts=, or a concurrency guard in the application layer to prevent double runs.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "hourly",
+    "expression": "0 * * * *",
+    "title": "Hourly on the Hour",
+    "intent": "cron hourly",
+    "category": "interval",
+    "nextRuns": [
+      "2026-10-03T13:00:00Z",
+      "2026-10-03T14:00:00Z",
+      "2026-10-03T15:00:00Z",
+      "2026-10-03T16:00:00Z",
+      "2026-10-03T17:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field pins to exactly value 0, anchoring every execution to the top of the hour.",
+      "Hour field uses the wildcard (*), running on every hour from 00 through 23 for a total of 24 executions per day.",
+      "Day-of-month field is (*), firing on every calendar day of every month without exclusions.",
+      "Month field matches every month from January through December, maintaining the hourly cadence year-round.",
+      "Day-of-week is a wildcard, triggering 24 times a day on every weekday including Saturday and Sunday."
+    ],
+    "gotchas": [
+      {
+        "title": "Also matches the @hourly macro, but minute 0 is explicit here",
+        "body": "Both @hourly and 0 * * * * produce 24 identical triggers per day. The explicit minute-0 form is preferred over the macro in mixed teams because it does not require the reader to recall what @hourly expands to.",
+        "severity": "info"
+      },
+      {
+        "title": "Top-of-the-hour traffic spikes can overwhelm downstream services",
+        "body": "Nearly every SaaS platform sees elevated request rates precisely at minute :00 because so many teams default to hourly-at-0. Move the minute to 17 or 41 to distribute load away from the herd.",
+        "severity": "warn"
+      },
+      {
+        "title": "DST transitions alter the hourly count on anomaly days",
+        "body": "Spring-forward zones lose one wall-clock hour (23 hourly runs that day) and fall-back zones repeat one (25 runs). Jobs billed per-invocation or rate-limited downstream will deviate from the 24-per-day budget twice yearly.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 13
+  },
+  {
+    "slug": "hourly-at-30",
+    "expression": "30 * * * *",
+    "title": "Hourly at Minute 30",
+    "intent": "cron run every hour at 30 minutes",
+    "category": "interval",
+    "nextRuns": [
+      "2026-10-03T12:30:00Z",
+      "2026-10-03T13:30:00Z",
+      "2026-10-03T14:30:00Z",
+      "2026-10-03T15:30:00Z",
+      "2026-10-03T16:30:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is fixed to the single value 30, firing exactly on the half-hour.",
+      "Hour field is a wildcard (*), applying the half-hour trigger to all 24 hours of the day.",
+      "Day-of-month field is (*) and matches every valid day number for the currently active month.",
+      "Month field is unrestricted, preserving the hourly cadence from January through December.",
+      "Day-of-week is (*), running the job on every single calendar day without weekend or holiday exclusions."
+    ],
+    "gotchas": [
+      {
+        "title": "Only 24 executions per day, not 48",
+        "body": "Hourly-at-30 still fires once per hour; it is not every 30 minutes (that requires */30). A team expecting a twice-per-hour refresh will silently miss the on-the-hour slot.",
+        "severity": "warn"
+      },
+      {
+        "title": "Naturally avoids the top-of-the-hour thundering herd",
+        "body": "Moving an hourly job from minute 0 to minute 30 is the lowest-effort load-shedding action available; webhook endpoints and API quotas often have headroom on the half-hour exactly because so few teams stagger their minute field.",
+        "severity": "info"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "daily-midnight",
+    "expression": "0 0 * * *",
+    "title": "Daily at Midnight",
+    "intent": "cron daily midnight",
+    "category": "daily",
+    "nextRuns": [
+      "2026-10-04T00:00:00Z",
+      "2026-10-05T00:00:00Z",
+      "2026-10-06T00:00:00Z",
+      "2026-10-07T00:00:00Z",
+      "2026-10-08T00:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is fixed at 0, anchoring the trigger to the exact top of the hour.",
+      "Hour field is set to value 0, which is the 00:00 hour commonly called midnight.",
+      "Day-of-month field is (*), triggering on every consecutive calendar day from the 1st onward.",
+      "Month field matches all 12 months, producing one fire per calendar day of the year.",
+      "Day-of-week field is unrestricted (*), so the schedule runs weekends and public holidays identically to workdays."
+    ],
+    "gotchas": [
+      {
+        "title": "Midnight in server-local zone is rarely what a global product wants",
+        "body": "0 0 * * * in a server configured to America/New_York fires at 04:00 or 05:00 UTC depending on DST. To make midnight explicit, run the cron in UTC and translate in the application, or use the crontab CRON_TZ directive where supported.",
+        "severity": "warn"
+      },
+      {
+        "title": "Daylight saving spring-forward can erase midnight entirely",
+        "body": "In zones like America/Sao_Paulo that historically sprang forward at midnight, the hour 00:00 simply never occurred; a 0 0 * * * local-time job skipped that day entirely. Run UTC or choose a safe hour like 04:00 for critical jobs.",
+        "severity": "warn"
+      },
+      {
+        "title": "Midnight is the busiest trigger on the Internet",
+        "body": "More scheduled jobs fire at 00:00 UTC than any other minute by a factor of 20 or more. Email senders, webhook providers, and shared hosting providers rate-limit aggressively at the turnover; move non-urgent cleanup to 03:17 or another offset minute.",
+        "severity": "info"
+      }
+    ],
+    "facts": 15
+  },
+  {
+    "slug": "daily-6am",
+    "expression": "0 6 * * *",
+    "title": "Daily at 06:00",
+    "intent": "cron every day 6am",
+    "category": "daily",
+    "nextRuns": [
+      "2026-10-04T06:00:00Z",
+      "2026-10-05T06:00:00Z",
+      "2026-10-06T06:00:00Z",
+      "2026-10-07T06:00:00Z",
+      "2026-10-08T06:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is locked to value 0, firing precisely on the hour rather than a few seconds in.",
+      "Hour field holds value 6, corresponding to 06:00 on the 24-hour clock or 6:00 AM on the 12-hour clock.",
+      "Day-of-month field is (*) and matches every day number valid for the current month.",
+      "Month field is (*), producing one fire per day in every month from January through December.",
+      "Day-of-week field allows all days, meaning weekend mornings and holiday mornings still trigger the scheduled task."
+    ],
+    "gotchas": [
+      {
+        "title": "06:00 UTC != 06:00 local for any zone outside UTC",
+        "body": "A common expectation for a '6am daily email' is 6am in the recipient's time zone. Running 0 6 * * * server-side delivers the mail at 22:00 the previous day for users in Pacific/Auckland; time-shift inside the sending pipeline instead.",
+        "severity": "warn"
+      },
+      {
+        "title": "Covers most of the European and African working day start",
+        "body": "06:00 UTC maps to morning for London (06:00 GMT / 07:00 BST), Paris (07:00/08:00), Lagos (07:00), and Berlin (07:00/08:00), making it a reasonable single-UTC time to target European working hours without breaking Americas night jobs.",
+        "severity": "info"
+      }
+    ],
+    "facts": 11
+  },
+  {
+    "slug": "daily-9am",
+    "expression": "0 9 * * *",
+    "title": "Daily at 09:00",
+    "intent": "cron 9 am every day",
+    "category": "daily",
+    "nextRuns": [
+      "2026-10-04T09:00:00Z",
+      "2026-10-05T09:00:00Z",
+      "2026-10-06T09:00:00Z",
+      "2026-10-07T09:00:00Z",
+      "2026-10-08T09:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field equals 0, which triggers exactly at the start of the ninth hour of the day.",
+      "Hour field is the integer 9, representing 09:00 UTC in the 24-hour notation cron uses.",
+      "Day-of-month field is a wildcard, matching the 1st through the last day of whichever month is active.",
+      "Month field is (*), firing every single day of the calendar year including leap day 2028-02-29.",
+      "Day-of-week is unrestricted, so the 09:00 trigger lands on Saturday and Sunday mornings as reliably as Monday mornings."
+    ],
+    "gotchas": [
+      {
+        "title": "9am UTC is not the same as 9am in the viewer's zone",
+        "body": "For New York (America/New_York) in daylight saving, 09:00 UTC corresponds to 05:00 EDT; a 9am UTC 'morning digest' arrives in the middle of the night for most North American readers unless you translate the zone in the application.",
+        "severity": "warn"
+      },
+      {
+        "title": "Business intuition says weekdays only; this runs weekends too",
+        "body": "Because day-of-week is (*), Saturday and Sunday still fire. If the intent is '9am on workdays' the correct expression is 0 9 * * 1-5, not this daily form.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 12
+  },
+  {
+    "slug": "daily-noon",
+    "expression": "0 12 * * *",
+    "title": "Daily at Noon",
+    "intent": "cron every day at noon",
+    "category": "daily",
+    "nextRuns": [
+      "2026-10-04T12:00:00Z",
+      "2026-10-05T12:00:00Z",
+      "2026-10-06T12:00:00Z",
+      "2026-10-07T12:00:00Z",
+      "2026-10-08T12:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is 0, anchoring the execution exactly to the start of the twelfth hour.",
+      "Hour field holds value 12, which is noon (12:00 PM) on the 24-hour clock used by cron fields.",
+      "Day-of-month field is unrestricted (*), firing on every calendar day from the 1st through the 31st where applicable.",
+      "Month field matches every month, producing one noon-time run per day across the full year.",
+      "Day-of-week is a wildcard (*), which runs the scheduled task on Saturdays, Sundays, and every holiday the same as any workday."
+    ],
+    "gotchas": [
+      {
+        "title": "12 is noon, not midnight",
+        "body": "Hour field zero (0) is midnight; hour 12 is noon. Mixing these up is the single most common crontab mistake and causes scheduled jobs to fire twelve hours away from the intended moment.",
+        "severity": "warn"
+      },
+      {
+        "title": "Covers 'close of business' for APAC and lunch for EMEA",
+        "body": "12:00 UTC translates to roughly 17:30 IST (Asia/Kolkata), 21:00 CST (Asia/Shanghai), and 22:00 JST (Asia/Tokyo), so it naturally hits APAC end-of-day while aligning with lunchtime in Western Europe.",
+        "severity": "info"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "daily-6pm",
+    "expression": "0 18 * * *",
+    "title": "Daily at 18:00",
+    "intent": "cron everyday 6pm",
+    "category": "daily",
+    "nextRuns": [
+      "2026-10-03T18:00:00Z",
+      "2026-10-04T18:00:00Z",
+      "2026-10-05T18:00:00Z",
+      "2026-10-06T18:00:00Z",
+      "2026-10-07T18:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is 0, firing the job exactly on the hour rather than a variable number of seconds after.",
+      "Hour field equals 18, which is 6:00 PM in the 12-hour format or the eighteenth hour of the day in 24-hour format.",
+      "Day-of-month field is (*), matching every valid day for the current month.",
+      "Month field covers all twelve months, so the 18:00 schedule runs through season changes and holiday months identically.",
+      "Day-of-week is a wildcard, producing an execution every calendar day including the weekend Saturday and Sunday evenings."
+    ],
+    "gotchas": [
+      {
+        "title": "Matches US East Coast end-of-day only during standard time",
+        "body": "18:00 UTC is 14:00 EDT (America/New_York in summer) and 13:00 EST (winter). A daily 6pm Eastern close-of-business summary would need 0 22 * * * during EDT and 0 23 * * * during EST unless you run per-zone scheduling.",
+        "severity": "warn"
+      },
+      {
+        "title": "6:00 PM is a surprisingly busy trigger slot",
+        "body": "End-of-day reports, log rotation scripts, and billing summaries often target 18:00 UTC, creating a secondary spike smaller than midnight but still noticeable; adding an offset minute like 18:07 helps smooth load on shared infrastructure.",
+        "severity": "info"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "daily-11pm",
+    "expression": "0 23 * * *",
+    "title": "Daily at 23:00",
+    "intent": "cron every day at 11pm",
+    "category": "daily",
+    "nextRuns": [
+      "2026-10-03T23:00:00Z",
+      "2026-10-04T23:00:00Z",
+      "2026-10-05T23:00:00Z",
+      "2026-10-06T23:00:00Z",
+      "2026-10-07T23:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is 0, starting the job at exactly the beginning of the twenty-third hour.",
+      "Hour field has value 23, which is 11:00 PM on the 12-hour clock and the last full hour of each calendar day.",
+      "Day-of-month field is (*), firing on the 1st through the last day of whichever month is running.",
+      "Month field is (*), so the 23:00 slot happens every day of every month including leap day.",
+      "Day-of-week is unrestricted, meaning the late-evening slot runs on weekends and every holiday the same as any other day."
+    ],
+    "gotchas": [
+      {
+        "title": "Only one hour before midnight turnover",
+        "body": "Jobs that take longer than 60 minutes will bleed past 00:00 into the next calendar day. Logging or report scripts that stamp output with today's date can appear to produce a day-stale file when they cross midnight.",
+        "severity": "warn"
+      },
+      {
+        "title": "Hour 23, not 12 AM",
+        "body": "23 is 11 PM, not midnight. Midnight is hour 0 on the following day. Teams that write 0 23 * * * expecting a 24-hour wrap-up should verify the job is intentionally using the hour before the date changes.",
+        "severity": "info"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "weekly-monday-morning",
+    "expression": "0 9 * * 1",
+    "title": "Weekly Monday Morning at 09:00",
+    "intent": "cron every monday 9am",
+    "category": "weekly",
+    "nextRuns": [
+      "2026-10-05T09:00:00Z",
+      "2026-10-12T09:00:00Z",
+      "2026-10-19T09:00:00Z",
+      "2026-10-26T09:00:00Z",
+      "2026-11-02T09:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is set to 0, starting the action at exactly the top of the hour.",
+      "Hour field holds 9, corresponding to 09:00 on the 24-hour clock (9 AM).",
+      "Day-of-month field is (*), so the day-of-week restriction is the sole gate for which days fire.",
+      "Month field is (*), allowing the Monday schedule to repeat every week in every calendar month.",
+      "Day-of-week field is the single value 1, which in standard Vixie cron enumeration represents Monday (Sunday is 0)."
+    ],
+    "gotchas": [
+      {
+        "title": "Day 0 and day 7 both mean Sunday; day 1 is Monday in every standard implementation",
+        "body": "Cron permits day-of-week values 0 through 7, where 0 and 7 both represent Sunday. Monday is unambiguously 1 in POSIX, Vixie, Quartz-minus-seconds, and Kubernetes CronJob legacy formats.",
+        "severity": "info"
+      },
+      {
+        "title": "First run after creation may be a week later",
+        "body": "If you enable a Monday-morning job on a Wednesday, the next eligible Monday is five days out; teams expecting an immediate test fire should add a manual trigger or temporarily swap to the current day.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 11
+  },
+  {
+    "slug": "weekly-friday-evening",
+    "expression": "0 18 * * 5",
+    "title": "Weekly Friday Evening at 18:00",
+    "intent": "cron every friday 6pm",
+    "category": "weekly",
+    "nextRuns": [
+      "2026-10-09T18:00:00Z",
+      "2026-10-16T18:00:00Z",
+      "2026-10-23T18:00:00Z",
+      "2026-10-30T18:00:00Z",
+      "2026-11-06T18:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field equals 0, anchoring the run exactly to the start of the eighteenth hour.",
+      "Hour field is 18, mapping to 6:00 PM on the 12-hour clock commonly called evening.",
+      "Day-of-month field is a wildcard (*) and is ignored for scheduling because day-of-week is restricted.",
+      "Month field is unrestricted, so the Friday cadence occurs in every month including December and January holidays.",
+      "Day-of-week is the single value 5, representing Friday in the standard cron 0=Sunday enumeration."
+    ],
+    "gotchas": [
+      {
+        "title": "Vixie cron combines restricted DOW with unrestricted DOM using AND",
+        "body": "Because only day-of-week is non-wildcard, the two fields combine as 'AND both must match', which is effectively a day-of-week-only restriction. The behavior flips to OR if both DOM and DOW are non-starred, which surprises many readers.",
+        "severity": "warn"
+      },
+      {
+        "title": "Friday 18:00 UTC is Saturday morning in APAC zones",
+        "body": "Friday 18:00 UTC translates to Saturday 03:00 in Japan and 02:30 in India. Weekly summaries aimed at Friday end-of-week for APAC employees need to run closer to 10:00 UTC on Friday instead.",
+        "severity": "info"
+      }
+    ],
+    "facts": 11
+  },
+  {
+    "slug": "weekly-sunday-midnight",
+    "expression": "0 0 * * 0",
+    "title": "Weekly Sunday Midnight",
+    "intent": "cron every sunday midnight",
+    "category": "weekly",
+    "nextRuns": [
+      "2026-10-04T00:00:00Z",
+      "2026-10-11T00:00:00Z",
+      "2026-10-18T00:00:00Z",
+      "2026-10-25T00:00:00Z",
+      "2026-11-01T00:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is fixed at 0, firing precisely at the top of the midnight hour.",
+      "Hour field holds value 0, which is the first hour of the calendar day at 00:00.",
+      "Day-of-month field is a wildcard, so the day-of-week constraint is the sole day-level filter.",
+      "Month field is (*), running the Sunday midnight schedule through all 12 months of the year.",
+      "Day-of-week field is the single value 0, the standard enumeration for Sunday; equivalently day 7 also selects Sunday but 0 is the canonical value."
+    ],
+    "gotchas": [
+      {
+        "title": "Is Sunday the start of the week or the end?",
+        "body": "ISO 8601 treats Monday as day 1 of the week; cron and US calendars treat Sunday as day 0. This mismatch is the top cause of weekly-schedule off-by-one bugs when moving between business-calendar libraries and crontab.",
+        "severity": "warn"
+      },
+      {
+        "title": "Midnight Saturday/Sunday boundary fires only once, not twice",
+        "body": "0 0 * * 0 fires exactly at the moment Saturday becomes Sunday, which is correct for both US and ISO calendar conventions. There is no ambiguity about which boundary triggers because Unix time advances through a single instant.",
+        "severity": "info"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "monthly-1st-midnight",
+    "expression": "0 0 1 * *",
+    "title": "Monthly on the 1st at Midnight",
+    "intent": "cron run first day of month midnight",
+    "category": "monthly",
+    "nextRuns": [
+      "2026-11-01T00:00:00Z",
+      "2026-12-01T00:00:00Z",
+      "2027-01-01T00:00:00Z",
+      "2027-02-01T00:00:00Z",
+      "2027-03-01T00:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is 0, placing the trigger exactly at the beginning of the hour.",
+      "Hour field equals 0, the midnight hour that formally opens the calendar day.",
+      "Day-of-month field is the single value 1, restricting execution to the first day of each month only.",
+      "Month field is (*), so the first-day rule applies to all 12 months from January through December.",
+      "Day-of-week field is a wildcard, making the schedule day-agnostic and ensuring the 1st fires regardless of whether it lands on a weekend or a Monday."
+    ],
+    "gotchas": [
+      {
+        "title": "Because only DOM is restricted, DOW and DOM combine with AND",
+        "body": "Vixie logic says if either DOM or DOW is * the two fields AND together. Since DOW is *, the 1st matches every weekday. If someone later adds a DOW like 1 (Monday), the expression becomes OR and fires every Monday PLUS the 1st of every month, which is almost never desired.",
+        "severity": "warn"
+      },
+      {
+        "title": "Month turnover midnight is the #1 billing and invoicing hot spot",
+        "body": "Nearly every subscription platform on the Internet runs invoice generation at month turnover. Expect heavy downstream rate limits and 429 responses from payment gateways for the first 30-60 seconds of the new month; offset to 00:05 or schedule in waves.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 12
+  },
+  {
+    "slug": "monthly-15th-9am",
+    "expression": "0 9 15 * *",
+    "title": "Monthly on the 15th at 09:00",
+    "intent": "cron every 15th of the month",
+    "category": "monthly",
+    "nextRuns": [
+      "2026-10-15T09:00:00Z",
+      "2026-11-15T09:00:00Z",
+      "2026-12-15T09:00:00Z",
+      "2027-01-15T09:00:00Z",
+      "2027-02-15T09:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is 0, anchoring the job to exactly the start of the ninth hour.",
+      "Hour field holds value 9, representing 09:00 on the 24-hour clock.",
+      "Day-of-month field pins to value 15, firing only on the fifteenth calendar day of the month.",
+      "Month field is (*), so the 15th fires in every single month including February with its shorter 28- or 29-day length.",
+      "Day-of-week field is unrestricted (*), firing on weekdays, weekends, and public holidays equally when the 15th arrives."
+    ],
+    "gotchas": [
+      {
+        "title": "February always has at least 28 days so day 15 is always safe",
+        "body": "Day 15 is the most popular mid-month trigger precisely because every month in the Gregorian calendar has at least 28 days; unlike the 31st or the 29th, it will never silently skip a month.",
+        "severity": "info"
+      },
+      {
+        "title": "Bi-monthly pay cycles use 15th + month-end",
+        "body": "This schedule fires exactly one half of a semi-monthly pay run; the other half typically uses 0 9 (28,29,30,31) * * to land on the final day of the month, or equivalently a separate cron for day 28 with year-end handling.",
+        "severity": "info"
+      }
+    ],
+    "facts": 10
+  },
+  {
+    "slug": "yearly-jan1-midnight",
+    "expression": "0 0 1 1 *",
+    "title": "Yearly on January 1st at Midnight",
+    "intent": "cron january 1st every year midnight",
+    "category": "yearly",
+    "nextRuns": [
+      "2027-01-01T00:00:00Z",
+      "2028-01-01T00:00:00Z",
+      "2029-01-01T00:00:00Z",
+      "2030-01-01T00:00:00Z",
+      "2031-01-01T00:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is the value 0, firing exactly at the top of the very first hour.",
+      "Hour field is 0, corresponding to midnight and the formal start of the calendar day.",
+      "Day-of-month field holds value 1, restricting the trigger to only the first day of the month.",
+      "Month field pins to value 1, which represents January, the first month in the Gregorian calendar.",
+      "Day-of-week field is a wildcard, meaning New Year's Day runs whether January 1st falls on a Wednesday or a weekend."
+    ],
+    "gotchas": [
+      {
+        "title": "Matches the @yearly and @annually macros exactly",
+        "body": "Both standard macros expand to the five-field string 0 0 1 1 *. The explicit form is more readable for teams whose crontab dialect may not support the @-syntax, such as very minimal busybox cron implementations.",
+        "severity": "info"
+      },
+      {
+        "title": "World's busiest scheduled minute",
+        "body": "More jobs fire at exactly 2027-01-01T00:00:00Z than any other second of the decade. Certificate renewals, license expirations, counter resets, and global 'happy new year' scripts all contend for the same instant; stagger to 00:02 or later.",
+        "severity": "warn"
+      },
+      {
+        "title": "Leap year does not affect Jan 1",
+        "body": "January 1st is unaffected by leap day; the leap insertion at February 29th shifts only day-of-year offsets for dates after February, never the January turnover.",
+        "severity": "info"
+      }
+    ],
+    "facts": 13
+  },
+  {
+    "slug": "yearly-dec31-2359",
+    "expression": "59 23 31 12 *",
+    "title": "Yearly on December 31st at 23:59",
+    "intent": "cron last day of year 11:59 pm",
+    "category": "yearly",
+    "nextRuns": [
+      "2026-12-31T23:59:00Z",
+      "2027-12-31T23:59:00Z",
+      "2028-12-31T23:59:00Z",
+      "2029-12-31T23:59:00Z",
+      "2030-12-31T23:59:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field holds value 59, firing on the final minute of the last hour of the day.",
+      "Hour field is 23, representing 11 PM and the last full hour of the day in 24-hour notation.",
+      "Day-of-month field pins to 31, and December is the only month selected so there is no risk of months shorter than 31 days skipping the trigger.",
+      "Month field is value 12, the numeric value for December as enumerated by the cron month field (1 = January through 12 = December).",
+      "Day-of-week is (*), so December 31st executes regardless of which day of the week it lands on."
+    ],
+    "gotchas": [
+      {
+        "title": "Runs one minute before Jan 1 midnight turnover",
+        "body": "Use 59 23 31 12 * when you must be sure the action is credited to the old year. Hour 23:59 on Dec 31 is still day 365 (or 366 in leap years); Jan 1 00:00 is day 1. This matters for tax-sensitive and reporting-sensitive processes.",
+        "severity": "warn"
+      },
+      {
+        "title": "No 'last day of month' shorthand in standard 5-field cron",
+        "body": "Unlike Quartz (L syntax) or AWS EventBridge, vanilla cron has no way to say 'last day of month'. Because the month is fixed to December (which always has 31 days), using 31 is unambiguous here. For generic last-day-of-month in standard cron you need three separate jobs covering 28/30/31 plus logic inside the script.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 12
+  },
+  {
+    "slug": "business-weekdays-9am",
+    "expression": "0 9 * * 1-5",
+    "title": "Business Weekdays at 09:00 (Mon-Fri)",
+    "intent": "cron monday to friday 9am",
+    "category": "business",
+    "nextRuns": [
+      "2026-10-05T09:00:00Z",
+      "2026-10-06T09:00:00Z",
+      "2026-10-07T09:00:00Z",
+      "2026-10-08T09:00:00Z",
+      "2026-10-09T09:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field equals 0, anchoring the execution to the exact start of the 09:00 hour.",
+      "Hour field holds value 9, representing 9 AM on the 24-hour clock used by cron.",
+      "Day-of-month field is (*), so the day-of-week filter is the sole active restriction at the day level.",
+      "Month field is (*), preserving the Monday-through-Friday schedule across all 12 months including public-holiday months.",
+      "Day-of-week field is an inclusive range 1-5, expanding to the values Monday (1), Tuesday (2), Wednesday (3), Thursday (4), and Friday (5)."
+    ],
+    "gotchas": [
+      {
+        "title": "Does NOT account for public holidays",
+        "body": "Cron day-of-week only knows the seven weekdays. Christmas Day, Thanksgiving, Eid, Lunar New Year and every other statutory holiday are invisible; to skip holidays you must add a holiday calendar check inside the script itself, not in the cron field.",
+        "severity": "warn"
+      },
+      {
+        "title": "Ranges are inclusive and closed",
+        "body": "1-5 means both endpoints are included (Mon and Fri both fire). A common typo is 0-4, which selects Sunday through Thursday and silently shifts the whole schedule one day earlier.",
+        "severity": "warn"
+      },
+      {
+        "title": "Monday-through-Friday produces exactly 260 runs per non-leap year",
+        "body": "52 weeks times 5 weekdays equals 260 occurrences; in years with 53 Mondays or 53 Fridays the count rises to 261 runs. Billing or quotas keyed to execution count need to handle the 53-week boundary explicitly.",
+        "severity": "info"
+      }
+    ],
+    "facts": 15
+  },
+  {
+    "slug": "business-weekdays-5pm",
+    "expression": "0 17 * * 1-5",
+    "title": "Business Weekdays at 17:00 (Mon-Fri)",
+    "intent": "cron weekday 5pm",
+    "category": "business",
+    "nextRuns": [
+      "2026-10-05T17:00:00Z",
+      "2026-10-06T17:00:00Z",
+      "2026-10-07T17:00:00Z",
+      "2026-10-08T17:00:00Z",
+      "2026-10-09T17:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is value 0, so the job fires at exactly the top of the hour.",
+      "Hour field is the integer 17, which is 5 PM on the 12-hour clock, commonly considered end-of-day in Western offices.",
+      "Day-of-month field is unrestricted (*), so the day-of-week values are the only active day-level gate.",
+      "Month field is (*), running Mon-Fri 17:00 in every month of the year.",
+      "Day-of-week field is the inclusive range 1-5, representing Monday through Friday and excluding Saturday (6) and Sunday (0)."
+    ],
+    "gotchas": [
+      {
+        "title": "17:00 UTC hits the next calendar day for east-of-UTC zones",
+        "body": "Sydney (Australia/Sydney) is UTC+11 in DST, making 17:00 UTC equal 04:00 the following morning. Close-of-business summaries need per-region emit schedules, not a single global cron, to actually land in the evening.",
+        "severity": "warn"
+      },
+      {
+        "title": "Day-of-week 1-5 matches @weekday in cronie, but not all implementations support macros",
+        "body": "Cronie-based systems offer @weekday which expands identically to 0 9 * * 1-5 minus the time fields. Stick with the explicit 1-5 range for portability to Kubernetes CronJobs, GitHub Actions schedules, and minimal Busybox.",
+        "severity": "info"
+      }
+    ],
+    "facts": 12
+  },
+  {
+    "slug": "business-mon-wed-fri-10am",
+    "expression": "0 10 * * 1,3,5",
+    "title": "Monday, Wednesday, Friday at 10:00",
+    "intent": "cron every monday wednesday friday 10am",
+    "category": "business",
+    "nextRuns": [
+      "2026-10-05T10:00:00Z",
+      "2026-10-07T10:00:00Z",
+      "2026-10-09T10:00:00Z",
+      "2026-10-12T10:00:00Z",
+      "2026-10-14T10:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is the fixed integer 0, triggering on the hour exactly.",
+      "Hour field holds value 10, corresponding to 10 AM in 12-hour notation.",
+      "Day-of-month field is (*), so only the comma-separated day-of-week list selects which days fire.",
+      "Month field is unrestricted, running the Monday/Wednesday/Friday pattern in every calendar month.",
+      "Day-of-week field is a comma list 1,3,5 expanding to Monday (1), Wednesday (3), and Friday (5), often called every-other-weekday or the MWF pattern used in US universities."
+    ],
+    "gotchas": [
+      {
+        "title": "Comma lists do not have to be monotonic, but the canonical form is sorted",
+        "body": "5,1,3 is technically valid but surprises readers. Always emit comma values in ascending order (1,3,5) to make manual review match what the parser produces internally.",
+        "severity": "info"
+      },
+      {
+        "title": "Not equivalent to */2 inside 1-5",
+        "body": "A range with a step like 1-5/2 also produces 1,3,5, but many older cron implementations reject the step-on-range syntax. The explicit comma-list 1,3,5 is portable across every Vixie-compatible crond since the 1990s.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 11
+  },
+  {
+    "slug": "reboot-stub-daily-4am",
+    "expression": "0 4 * * *",
+    "title": "Reboot Stub: Daily at 04:00 UTC",
+    "intent": "cron daily 4am maintenance window",
+    "category": "special",
+    "nextRuns": [
+      "2026-10-04T04:00:00Z",
+      "2026-10-05T04:00:00Z",
+      "2026-10-06T04:00:00Z",
+      "2026-10-07T04:00:00Z",
+      "2026-10-08T04:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field is 0, anchoring the reboot stub to exactly the top of the 04:00 hour.",
+      "Hour field holds value 4, the fourth hour of the UTC day traditionally selected for quiet-time maintenance.",
+      "Day-of-month field is (*), running the maintenance job on every calendar day including weekends.",
+      "Month field is unrestricted, preserving the 04:00 slot through all 12 calendar months.",
+      "Day-of-week is a wildcard, applying the schedule every single day of the week without weekend exclusion."
+    ],
+    "gotchas": [
+      {
+        "title": "@reboot is a one-shot at daemon start, not periodic",
+        "body": "The related @reboot macro fires once per cron daemon restart and has no calendar cadence at all. Use a daily 04:00 schedule when you want a reliable, predictable maintenance window that catches missed reboots too.",
+        "severity": "warn"
+      },
+      {
+        "title": "04:00 UTC is the de-facto low-traffic window for a global user base",
+        "body": "At 04:00 UTC, it is roughly 21:00 on the US west coast, midnight on the US east coast, 05:00 in Central Europe, and 13:00 in Tokyo. Every region is off-peak to some degree; no single slot covers the world perfectly but this is the closest.",
+        "severity": "info"
+      },
+      {
+        "title": "Daylight saving shifts the quiet-hour 30 minutes in some zones",
+        "body": "Because DST moves in 1-hour steps everywhere, 04:00 UTC stays within one hour of a zone's local quiet hour. Only half-hour-offset zones (India, Iran, Nepal, parts of Australia) see a half-hour drift between DST transitions.",
+        "severity": "info"
+      }
+    ],
+    "facts": 13
+  },
+  {
+    "slug": "every-second-weekday",
+    "expression": "0 0 */2 * 1-5",
+    "title": "Every 2nd Day-of-Month if it Falls on a Weekday",
+    "intent": "cron every second day weekday only",
+    "category": "special",
+    "nextRuns": [
+      "2026-10-05T00:00:00Z",
+      "2026-10-07T00:00:00Z",
+      "2026-10-09T00:00:00Z",
+      "2026-10-13T00:00:00Z",
+      "2026-10-15T00:00:00Z"
+    ],
+    "fieldBreakdown": [
+      "Minute field holds value 0, firing on the first minute of the midnight hour.",
+      "Hour field is value 0, corresponding to 00:00 midnight at the start of each eligible calendar day.",
+      "Day-of-month field uses */2 step syntax, expanding to every odd day when the month starts at 1 (1, 3, 5, ..., 31) and resetting at the month boundary.",
+      "Month field is (*), preserving the every-other-day pattern across all 12 months.",
+      "Day-of-week is a range 1-5, meaning Monday through Friday; only days that satisfy BOTH the step-in-DOM filter AND the weekday constraint fire."
+    ],
+    "gotchas": [
+      {
+        "title": "Both DOM and DOW are restricted, so Vixie combines them with OR",
+        "body": "The single most surprising Vixie cron rule: when NEITHER day-of-month NOR day-of-week is *, the fields combine with OR (not AND). This expression therefore fires on ANY day that is an odd-numbered calendar day OR a weekday, NOT their intersection. Test before trusting!",
+        "severity": "warn"
+      },
+      {
+        "title": "*/2 on day 1 means 'odd days' not 'every 48 hours'",
+        "body": "On months with an even number of days, the gap between day 30 and day 1 of the following month is only 25 hours (day 31 + day 1) or 49 hours if day 31 is skipped. The cadence is not a strict every-48-hour timer, it is modulo the day-of-month field.",
+        "severity": "warn"
+      }
+    ],
+    "facts": 12
+  }
+]

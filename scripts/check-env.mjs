@@ -8,6 +8,14 @@
  * ALLOW_PLACEHOLDER_ENV=1 downgrades the errors to warnings. Use it ONLY for local QA builds; the
  * build is then NOT production-ready and the SEO audit will say so.
  */
+import { existsSync } from "node:fs";
+try {
+  if (typeof process.loadEnvFile === "function") {
+    if (existsSync(".env.local")) process.loadEnvFile(".env.local");
+    else if (existsSync(".env")) process.loadEnvFile(".env");
+  }
+} catch {}
+
 const env = process.env;
 const allow = env.ALLOW_PLACEHOLDER_ENV === "1" || env.ALLOW_PLACEHOLDER_ENV === "true";
 

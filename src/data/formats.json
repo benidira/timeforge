@@ -1,0 +1,166 @@
+[
+  {
+    "id": "unix-seconds",
+    "slug": "unix-seconds",
+    "name": "Unix Seconds",
+    "description": "A signed integer representing elapsed seconds since the Unix epoch of 1970-01-01T00:00:00Z. The most widely adopted machine-readable timestamp format, used natively by C/POSIX time(), Python time.time(), and database systems like PostgreSQL EXTRACT(EPOCH ...).",
+    "exampleInput": "1760270400",
+    "exampleOutput": "2026-10-03T12:00:00Z",
+    "digitsNow": 10,
+    "pitfalls": [
+      {
+        "title": "Y2038 overflow on 32-bit signed",
+        "body": "Values above 2147483647 (2038-01-19T03:14:07Z) overflow 32-bit signed integers still used in legacy C and embedded systems; prefer 64-bit integers or milliseconds for forward safety.",
+        "severity": "warn"
+      },
+      {
+        "title": "Cannot distinguish seconds vs. milliseconds by length alone",
+        "body": "A 10-digit value near 9999999999 (Nov 2286) and an 11-digit milliseconds value near 10000000000 (Sep 2001) overlap; always confirm the unit with the producer.",
+        "severity": "info"
+      },
+      {
+        "title": "Fractional seconds are NOT standard",
+        "body": "Pure Unix seconds have no fractional component; appending decimals (e.g. 1760270400.5) is a non-standard extension and will break strict POSIX parsers.",
+        "severity": "warn"
+      }
+    ],
+    "convertsTo": ["unix-milliseconds", "iso-8601", "rfc-3339", "utc", "local-date"],
+    "facts": 11
+  },
+  {
+    "id": "unix-milliseconds",
+    "slug": "unix-milliseconds",
+    "name": "Unix Milliseconds",
+    "description": "A signed 64-bit integer representing elapsed milliseconds since 1970-01-01T00:00:00Z. Native format for JavaScript Date.now(), Java System.currentTimeMillis(), and modern JSON APIs. Offers 1ms precision with a comfortable range past the year 10000.",
+    "exampleInput": "1760270400000",
+    "exampleOutput": "2026-10-03T12:00:00Z",
+    "digitsNow": 13,
+    "pitfalls": [
+      {
+        "title": "Accidental multiplication by 1000",
+        "body": "Mixing seconds and milliseconds in arithmetic is the #1 bug source; a 13-digit value accidentally multiplied again becomes 16 digits, landing thousands of years in the future.",
+        "severity": "warn"
+      },
+      {
+        "title": "Not microseconds, not nanoseconds",
+        "body": "Python time.time_ns() returns 9 extra digits and Go UnixNano() returns 19-digit nanoseconds; these are NOT milliseconds and require division by 1000000 or 1000000 respectively.",
+        "severity": "warn"
+      },
+      {
+        "title": "No implicit timezone",
+        "body": "Milliseconds are always UTC-relative; storing them and then interpreting with a local clock offset produces times that drift by the UTC offset amount.",
+        "severity": "info"
+      }
+    ],
+    "convertsTo": ["unix-seconds", "iso-8601", "rfc-3339", "utc", "local-date"],
+    "facts": 9
+  },
+  {
+    "id": "iso-8601",
+    "slug": "iso-8601",
+    "name": "ISO 8601",
+    "description": "International standard date and time notation (ISO 8601:2019) using the pattern YYYY-MM-DDThh:mm:ss with optional fractional seconds and optional timezone offset. Superset of RFC 3339; widely used in XML, JSON, and data interchange. Permits formats without timezone offsets, which are interpreted as local time or unspecified.",
+    "exampleInput": "2026-10-03T12:00:00",
+    "exampleOutput": "1760270400",
+    "pitfalls": [
+      {
+        "title": "Missing offset is ambiguous, not UTC",
+        "body": "Unlike RFC 3339, a bare ISO 8601 string without Z or +/-hh:mm has no defined zone. ISO 8601 section 4.3 calls this 'local time of unspecified offset'; different parsers default to UTC, browser local, or reject the value entirely.",
+        "severity": "warn"
+      },
+      {
+        "title": "Week dates and ordinal dates break most parsers",
+        "body": "ISO 8601 allows 2026-W40-3 (week-based) and 2026-276 (ordinal day). These are valid per the standard but almost all client-side libraries accept only the calendar-date form.",
+        "severity": "info"
+      },
+      {
+        "title": "Space separator T tolerance",
+        "body": "A literal 'T' separator is required; many tolerant parsers accept a space (RFC 3339 profile allows this) but strict ISO 8601 parsers reject the space form outright.",
+        "severity": "warn"
+      }
+    ],
+    "convertsTo": ["unix-seconds", "unix-milliseconds", "rfc-3339", "utc", "local-date"],
+    "facts": 14
+  },
+  {
+    "id": "rfc-3339",
+    "slug": "rfc-3339",
+    "name": "RFC 3339",
+    "description": "Internet Date/Time Format defined by IETF RFC 3339, a strict profile of ISO 8601 designed for machine interchange. Requires the YYYY-MM-DDThh:mm:ss shape, REQUIRES a timezone designator (Z or +/-hh:mm), and permits fractional seconds after the decimal. Format used by HTTP cookies (RFC 6265bis), OAuth, and OpenAPI date-time type.",
+    "exampleInput": "2026-10-03T14:00:00+02:00",
+    "exampleOutput": "1760270400",
+    "pitfalls": [
+      {
+        "title": "Timezone offset is REQUIRED",
+        "body": "RFC 3339 section 5.6 explicitly mandates the offset. A string ending at seconds with no Z or offset is NOT RFC 3339, even if it is valid ISO 8601; append 'Z' for UTC.",
+        "severity": "warn"
+      },
+      {
+        "title": "Leap second notation 60 is prohibited",
+        "body": "A seconds value of :60 represents a UTC leap second. RFC 3339 permits the grammar but section 5.9 requires recipients to treat it as invalid or equal to :59; most implementations reject :60 outright.",
+        "severity": "info"
+      },
+      {
+        "title": "No lowercase 't' or 'z' in strict mode",
+        "body": "The RFC uses ABNF requiring uppercase T and Z. Some parsers accept lowercase, but sending 2026-10-03t12:00:00z will fail validation in strict consumers such as Java DateTimeFormatter.RFC_1123_DATE_TIME.",
+        "severity": "warn"
+      }
+    ],
+    "convertsTo": ["unix-seconds", "unix-milliseconds", "iso-8601", "utc", "local-date"],
+    "facts": 12
+  },
+  {
+    "id": "utc",
+    "slug": "utc",
+    "name": "UTC Wall Clock",
+    "description": "Human-readable wall-clock rendering in Coordinated Universal Time with the Z suffix or explicit +00:00 offset. Common display format in server logs, monitoring dashboards, and AWS CloudWatch / Google Cloud Logging entries. Canonical form: YYYY-MM-DD hh:mm:ss UTC or YYYY-MM-DDThh:mm:ssZ.",
+    "exampleInput": "2026-10-03 12:00:00 UTC",
+    "exampleOutput": "1760270400",
+    "pitfalls": [
+      {
+        "title": "'UTC' literal is not RFC 3339",
+        "body": "Appending the word UTC (as in '2026-10-03 12:00:00 UTC') is common in logs but not a valid RFC 3339 offset; use trailing Z or +00:00 for APIs.",
+        "severity": "info"
+      },
+      {
+        "title": "Confusing UTC offset with local zone abbreviation",
+        "body": "Display labels like 'EST' or 'CEST' are zone abbreviations, not fixed offsets. UTC is the only zone name that always maps to +00:00; others depend on date and location.",
+        "severity": "warn"
+      },
+      {
+        "title": "DST does not exist in UTC",
+        "body": "UTC has no daylight saving transitions. Scheduling a UTC time and then re-interpreting it in a local zone during a DST boundary causes a 1-hour apparent drift.",
+        "severity": "warn"
+      }
+    ],
+    "convertsTo": ["unix-seconds", "unix-milliseconds", "iso-8601", "rfc-3339", "local-date"],
+    "facts": 8
+  },
+  {
+    "id": "local-date",
+    "slug": "local-date",
+    "name": "Local Date",
+    "description": "A calendar date without a time or timezone component, formatted as YYYY-MM-DD. Matches the ISO 8601 calendar-date form and the W3C HTML5 <input type='date'> wire format. Suitable for birthdays, deadlines, holidays, and any event identified by a whole calendar day rather than an instant on the global timeline.",
+    "exampleInput": "2026-10-03",
+    "exampleOutput": "2026-10-03T00:00:00 (local)",
+    "pitfalls": [
+      {
+        "title": "Cannot be converted to a Unix instant without a zone",
+        "body": "A bare date like 2026-10-03 spans about 48 hours of real UTC time depending on where on Earth you stand. Converting to seconds requires choosing a reference timezone (midnight UTC, midnight local, etc.).",
+        "severity": "warn"
+      },
+      {
+        "title": "Month and day zero-pad requirement",
+        "body": "2026-10-3 for October 3 is invalid in strict parsers. Both month and day must be two digits; single-digit months/days need a leading zero.",
+        "severity": "warn"
+      },
+      {
+        "title": "Local Date != Local DateTime at midnight",
+        "body": "Attaching 00:00 to a local date creates ambiguity during DST 'spring forward' transitions, where midnight may not exist for that day in the affected zone.",
+        "severity": "info"
+      }
+    ],
+    "convertsTo": ["unix-seconds", "unix-milliseconds", "iso-8601", "rfc-3339", "utc"],
+    "facts": 7
+  }
+]

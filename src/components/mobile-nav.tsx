@@ -19,7 +19,7 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         className="btn btn-secondary btn-sm"
@@ -32,22 +32,54 @@ export function MobileNav() {
           {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
         </svg>
       </button>
-      <nav
-        id={panelId}
-        aria-label="Mobile"
+      <div
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-line bg-bg px-4 pb-4 pt-2"
+        className="absolute inset-x-0 top-full border-b border-line bg-card/95 backdrop-blur-xl px-4 pb-6 pt-3 shadow-xl transition-all"
       >
-        <ul className="mx-auto max-w-6xl">
-          {NAV_LINKS.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href} className="block py-3 text-lg font-medium text-fg no-underline" onClick={() => setOpen(false)}>
-                {l.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        <nav
+          id={panelId}
+          aria-label="Mobile"
+          className="mx-auto max-w-6xl"
+        >
+          <ul className="space-y-1">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="flex items-center justify-between rounded-lg px-3 py-2.5 text-base font-medium text-fg no-underline hover:bg-hover transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  <span>{l.label}</span>
+                  <span className="text-muted text-sm">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="mx-auto mt-4 max-w-6xl border-t border-line/60 pt-3">
+          <p className="px-3 text-xs font-semibold uppercase tracking-wider text-muted mb-2">
+            Developer &amp; Hubs
+          </p>
+          <ul className="grid grid-cols-2 gap-2">
+            {[
+              { href: "/developer", label: "Developer Hub" },
+              { href: "/timezones", label: "Time Zones Hub" },
+              { href: "/timestamps", label: "Timestamps Hub" },
+              { href: "/resources", label: "Resources Hub" },
+            ].map((hub) => (
+              <li key={hub.href}>
+                <Link
+                  href={hub.href}
+                  className="block rounded-lg bg-hover/40 px-3 py-2 text-sm font-medium text-fg no-underline hover:bg-hover hover:text-accent transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  {hub.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

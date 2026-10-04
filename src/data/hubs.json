@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "new-york-united-states",
+    "name": "New York",
+    "country": "United States",
+    "iana": "America/New_York",
+    "population": 19426449,
+    "notes": ["The Financial District at the southern tip of Manhattan anchors the NYSE, the world's largest stock exchange by market capitalization since the end of World War I."]
+  },
+  {
+    "slug": "london-united-kingdom",
+    "name": "London",
+    "country": "United Kingdom",
+    "iana": "Europe/London",
+    "population": 9425622,
+    "notes": ["Greenwich Mean Time (GMT) derives its name from the Royal Observatory in Greenwich, London, and was adopted as the global prime meridian at the 1884 International Meridian Conference."]
+  },
+  {
+    "slug": "paris-france",
+    "name": "Paris",
+    "country": "France",
+    "iana": "Europe/Paris",
+    "population": 11060000,
+    "notes": ["From 1940 until its liberation in August 1944, occupied Paris operated unofficially on German Central European Time, creating a historic double offset anomaly relative to the rest of France."]
+  },
+  {
+    "slug": "dubai-united-arab-emirates",
+    "name": "Dubai",
+    "country": "United Arab Emirates",
+    "iana": "Asia/Dubai",
+    "population": 3552000,
+    "notes": ["UAE Standard Time (GST, UTC+4) has never observed daylight saving time, providing a year-round stable offset used as a scheduling anchor for the broader Middle East and Gulf region."]
+  },
+  {
+    "slug": "tokyo-japan",
+    "name": "Tokyo",
+    "country": "Japan",
+    "iana": "Asia/Tokyo",
+    "population": 37194000,
+    "notes": ["Japan abandoned daylight saving time in 1952 following the end of the Allied occupation and has used a fixed UTC+9 (JST) continuously since, giving Asia/Tokyo one of the simplest zone rules on Earth."]
+  },
+  {
+    "slug": "singapore-singapore",
+    "name": "Singapore",
+    "country": "Singapore",
+    "iana": "Asia/Singapore",
+    "population": 5971000,
+    "notes": ["Despite sitting entirely within the 105th meridian east (nominally UTC+7), Singapore formally adopted UTC+8 in 1982 for trade alignment with Hong Kong and the broader ASEAN working day."]
+  },
+  {
+    "slug": "sydney-australia",
+    "name": "Sydney",
+    "country": "Australia",
+    "iana": "Australia/Sydney",
+    "population": 5392000,
+    "notes": ["New South Wales begins Australian Eastern Daylight Time (AEDT, UTC+11) on the first Sunday in October and ends it on the first Sunday in April, producing a spring-forward transition that skips the 02:00 hour entirely."]
+  },
+  {
+    "slug": "los-angeles-united-states",
+    "name": "Los Angeles",
+    "country": "United States",
+    "iana": "America/Los_Angeles",
+    "population": 13200998,
+    "notes": ["Pacific Time alternates between PST (UTC-8) and PDT (UTC-7); under the 2022 U.S. Senate-passed Sunshine Protection Act, permanent daylight saving would have fixed America/Los_Angeles to UTC-7 year-round if ratified by the House."]
+  },
+  {
+    "slug": "berlin-germany",
+    "name": "Berlin",
+    "country": "Germany",
+    "iana": "Europe/Berlin",
+    "population": 3769495,
+    "notes": ["Post-reunification Germany inherited a unified CET/CEST rule matching the rest of the EU, harmonizing the former East Berlin (GMT+1 from 1980) and West Berlin time zones under a single Europe/Berlin entry."]
+  },
+  {
+    "slug": "mumbai-india",
+    "name": "Mumbai",
+    "country": "India",
+    "iana": "Asia/Kolkata",
+    "population": 20411274,
+    "notes": ["India Standard Time (IST, UTC+05:30) is one of only a handful of national zones offset by 30 minutes instead of a whole hour, a compromise between the pre-independence Calcutta Time and Bombay Time meridians."]
+  },
+  {
+    "slug": "toronto-canada",
+    "name": "Toronto",
+    "country": "Canada",
+    "iana": "America/Toronto",
+    "population": 6312974,
+    "notes": ["Ontario passed the Time Amendment Act, 2020 to switch to permanent Eastern Daylight Time (UTC-4) contingent on New York state enacting matching legislation, so America/Toronto still mirrors the American DST schedule as of 2026."]
+  },
+  {
+    "slug": "algiers-algeria",
+    "name": "Algiers",
+    "country": "Algeria",
+    "iana": "Africa/Algiers",
+    "population": 3915811,
+    "notes": ["Algeria abolished daylight saving time permanently in 2018, fixing Africa/Algiers to a year-round UTC+1 (CET) and joining Morocco, Tunisia, and West Africa as stable fixed-offset anchors for the African continent."]
+  }
+]
