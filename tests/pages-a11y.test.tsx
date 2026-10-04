@@ -166,7 +166,10 @@ describe("other pages", () => {
       </>,
     );
     const hrefs = screen.getAllByRole("link").map((a) => a.getAttribute("href"));
-    for (const t of TOOLS) expect(hrefs).toContain(`/${t.slug}`);
+    // Top tools are in the footer
+    for (const t of ["unix-timestamp-converter", "world-clock", "timezone-converter", "date-calculator"]) {
+      expect(hrefs).toContain(`/tools/${t}`);
+    }
     for (const p of ["/privacy", "/terms", "/contact", "/about", "/guides", "/tools"]) expect(hrefs).toContain(p);
   });
 });
