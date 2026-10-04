@@ -7,9 +7,9 @@ import { ToolCard } from "@/components/tool-card";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Resources – Time, Timestamp & Developer Resources | TimeForge",
+  title: "Resources – Time, Timestamp & Developer Resources | Castov",
   description:
-    "Curated resources for developers working with time: all TimeForge tools, developer guides, timezone references and timestamp documentation.",
+    "Curated resources for developers working with time: all Castov tools, developer guides, timezone references and timestamp documentation.",
   path: "/resources",
 });
 
@@ -17,7 +17,7 @@ export default function ResourcesPage() {
   return (
     <StaticPage
       title="Resources"
-      intro="All TimeForge resources are gathered here – tools, guides, and reference material for working with time, timestamps and time zones."
+      intro="All Castov resources are gathered here – tools, guides, and reference material for working with time, timestamps and time zones."
       crumbs={[{ name: "Home", href: "/" }, { name: "Resources" }]}
       path="/resources"
     >

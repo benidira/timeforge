@@ -1,0 +1,27 @@
+import { AiSidebar } from "@/components/ai-sidebar";
+import { WorkspaceProvider } from "@/context/WorkspaceContext";
+import { KeyManagerProvider } from "@/context/KeyManagerContext";
+import { KeyVaultModal } from "@/components/KeyVaultModal";
+
+export default function AiLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <KeyManagerProvider>
+      <WorkspaceProvider>
+        <div className="flex min-h-[calc(100vh-4rem)] w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Desktop Sidebar */}
+          <aside className="hidden lg:block w-72 shrink-0 py-8 pr-6 border-r border-line/30">
+            <div className="sticky top-24 h-[calc(100vh-8rem)]">
+              <AiSidebar />
+            </div>
+          </aside>
+
+          {/* Main Content Area */}
+          <div className="flex-1 min-w-0 py-8 lg:pl-10">
+            {children}
+          </div>
+        </div>
+        <KeyVaultModal />
+      </WorkspaceProvider>
+    </KeyManagerProvider>
+  );
+}

@@ -4,23 +4,23 @@ import { StaticPage } from "@/components/static-page";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About TimeForge – Free Time & Timestamp Tools | TimeForge",
+  title: "About Castov – Free Time & Timestamp Tools | Castov",
   description:
-    "TimeForge builds free, fast and private tools for Unix timestamps, epoch time, ISO 8601 and time zones. Learn how the tools work and what we stand for.",
+    "Castov builds free, fast and private tools for Unix timestamps, epoch time, ISO 8601 and time zones. Learn how the tools work and what we stand for.",
   path: "/about",
 });
 
 export default function AboutPage() {
   return (
     <StaticPage
-      title="About TimeForge"
-      intro="TimeForge is a small set of free tools for one job: understanding and converting time."
+      title="About Castov"
+      intro="Castov is a small set of free tools for one job: understanding and converting time."
       crumbs={[{ name: "Home", href: "/" }, { name: "About" }]}
       path="/about"
     >
-      <h2>What TimeForge is</h2>
+      <h2>What Castov is</h2>
       <p>
-        Developers, analysts and support teams constantly meet times written as long numbers or unfamiliar strings. TimeForge
+        Developers, analysts and support teams constantly meet times written as long numbers or unfamiliar strings. Castov
         turns them into something readable, and back again, without a login or a wall of options. Every tool has its own page
         with a short explanation, worked examples and answers to common questions.
       </p>

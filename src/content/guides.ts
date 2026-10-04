@@ -30,7 +30,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "what-is-unix-time",
     name: "What Is Unix Time?",
-    seoTitle: "What Is Unix Time? Epoch Time Explained | TimeForge",
+    seoTitle: "What Is Unix Time? Epoch Time Explained | Castov",
     metaDescription:
       "Learn what Unix time is, how it counts seconds since 1 January 1970 UTC, how it treats leap seconds and negative values, and where you will meet it.",
     summary: "A plain-language explanation of Unix time, the epoch and why programs count time this way.",
@@ -74,7 +74,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "seconds-vs-milliseconds-timestamps",
     name: "Seconds vs Milliseconds Timestamps",
-    seoTitle: "Seconds vs Milliseconds Timestamps: How to Tell Them Apart | TimeForge",
+    seoTitle: "Seconds vs Milliseconds Timestamps: How to Tell Them Apart | Castov",
     metaDescription:
       "Tell Unix timestamps in seconds, milliseconds, microseconds and nanoseconds apart by digit count, and fix the classic bug of dates landing in 1970.",
     summary: "How to recognise the unit of a timestamp, which platforms use which, and how to convert safely.",
@@ -84,7 +84,7 @@ export const GUIDES: Guide[] = [
         heading: "Count the digits",
         paragraphs: [
           "For dates between 2001 and 2286, the number of digits gives away the unit. Ten digits is seconds, thirteen digits is milliseconds, sixteen is microseconds and nineteen is nanoseconds. For example 1790000000 is seconds, 1790000000000 is milliseconds, 1790000000000000 is microseconds and 1790000000000000000 is nanoseconds.",
-          "The TimeForge converters use the same idea in their Auto setting: values with twelve or more digits are read as milliseconds, everything else as seconds. That rule can be wrong only for milliseconds before March 1973 and seconds after the year 5138.",
+          "The Castov converters use the same idea in their Auto setting: values with twelve or more digits are read as milliseconds, everything else as seconds. That rule can be wrong only for milliseconds before March 1973 and seconds after the year 5138.",
         ],
       },
       {
@@ -113,7 +113,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "iso-8601-date-format-guide",
     name: "ISO 8601 Date and Time Format",
-    seoTitle: "ISO 8601 Date and Time Format: A Practical Guide | TimeForge",
+    seoTitle: "ISO 8601 Date and Time Format: A Practical Guide | Castov",
     metaDescription:
       "A practical guide to ISO 8601 date and time strings: the T separator, Z and UTC offsets, fractional seconds and the JavaScript parsing pitfalls to avoid.",
     summary: "How ISO 8601 strings are built, what Z and offsets mean, and the parsing traps that cause off-by-hours bugs.",
@@ -153,7 +153,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "time-zones-and-dst-for-developers",
     name: "Time Zones and DST for Developers",
-    seoTitle: "Time Zones and Daylight Saving Time: Pitfalls for Developers | TimeForge",
+    seoTitle: "Time Zones and Daylight Saving Time: Pitfalls for Developers | Castov",
     metaDescription:
       "Practical rules for handling time zones and daylight saving time in software: store UTC, use IANA names, and avoid the gaps, overlaps and 23-hour days.",
     summary: "The handful of rules that prevent most time zone bugs, with the daylight saving edge cases explained.",
@@ -190,7 +190,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "year-2038-problem",
     name: "The Year 2038 Problem",
-    seoTitle: "The Year 2038 Problem Explained (Y2038) | TimeForge",
+    seoTitle: "The Year 2038 Problem Explained (Y2038) | Castov",
     metaDescription:
       "The Year 2038 problem explained: why signed 32-bit Unix timestamps overflow on 19 January 2038 at 03:14:07 UTC, who is affected and how to fix it.",
     summary: "Why 32-bit Unix timestamps run out in 2038, what breaks, and how to check your own systems.",
@@ -222,7 +222,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "utc-vs-gmt",
     name: "UTC vs GMT: What Is the Difference?",
-    seoTitle: "UTC vs GMT: What Is the Difference? | TimeForge",
+    seoTitle: "UTC vs GMT: What Is the Difference? | Castov",
     metaDescription:
       "UTC and GMT keep the same clock time in practice, but they are defined differently. Learn the technical distinction and why software should use UTC.",
     summary: "Why UTC and GMT usually show the same time, how they differ technically, and which one to use in software.",
@@ -259,7 +259,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "cron-expressions-explained",
     name: "Cron Expressions Explained",
-    seoTitle: "Cron Expressions Explained: Syntax and Examples | TimeForge",
+    seoTitle: "Cron Expressions Explained: Syntax and Examples | Castov",
     metaDescription:
       "How cron expressions work: the five fields, common patterns like */15 and 1-5, the day-of-month/day-of-week rule, and mistakes to avoid.",
     summary: "How the five fields of a standard cron expression work, with common patterns and the rule that trips people up.",

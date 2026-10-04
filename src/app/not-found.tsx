@@ -3,7 +3,7 @@ import Link from "next/link";
 import { RelatedTools } from "@/components/related-tools";
 
 export const metadata: Metadata = {
-  title: { absolute: "404 – Page not found | TimeForge" },
+  title: { absolute: "404 – Page not found | Castov" },
   robots: { index: false, follow: true },
 };
 

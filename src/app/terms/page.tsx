@@ -4,9 +4,9 @@ import { StaticPage } from "@/components/static-page";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Terms of Use | TimeForge",
+  title: "Terms of Use | Castov",
   description:
-    "The terms for using TimeForge: free tools provided as is, guidance on accuracy, acceptable use and how these terms may change over time.",
+    "The terms for using Castov: free tools provided as is, guidance on accuracy, acceptable use and how these terms may change over time.",
   path: "/terms",
 });
 
@@ -18,9 +18,9 @@ export default function TermsPage() {
       crumbs={[{ name: "Home", href: "/" }, { name: "Terms of Use" }]}
       path="/terms"
     >
-      <h2>Using TimeForge</h2>
+      <h2>Using Castov</h2>
       <p>
-        By using TimeForge you agree to these terms. The tools are free for personal and commercial use. If you do not agree,
+        By using Castov you agree to these terms. The tools are free for personal and commercial use. If you do not agree,
         please do not use the site.
       </p>
 
@@ -28,12 +28,12 @@ export default function TermsPage() {
       <p>
         The tools and content are provided &quot;as is&quot; without warranties of any kind. We work to keep results accurate,
         but they depend on your browser&apos;s date and time zone support and on the rules in the IANA time zone database it
-        contains. Do not rely on TimeForge alone for legal, financial, medical or safety-critical decisions.
+        contains. Do not rely on Castov alone for legal, financial, medical or safety-critical decisions.
       </p>
 
       <h2>Limitation of liability</h2>
       <p>
-        To the extent permitted by law, TimeForge and its operators are not liable for any loss or damage arising from your use
+        To the extent permitted by law, Castov and its operators are not liable for any loss or damage arising from your use
         of, or inability to use, the site or its results.
       </p>
 
@@ -45,7 +45,7 @@ export default function TermsPage() {
 
       <h2>Intellectual property</h2>
       <p>
-        The site design, text and code are owned by TimeForge or its licensors. Names of third-party products mentioned on the
+        The site design, text and code are owned by Castov or its licensors. Names of third-party products mentioned on the
         site belong to their respective owners.
       </p>
 

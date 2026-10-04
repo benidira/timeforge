@@ -11,7 +11,7 @@ import { ToolHost } from "@/components/pseo/tool-host";
 import { formatOffset } from "@/lib/time";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Time Zone Converter & World Time Zones | TimeForge",
+  title: "Time Zone Converter & World Time Zones | Castov",
   description:
     "Convert between 400+ IANA time zones. Browse popular city converters, see current offsets for major world cities, and use the free online time zone converter tool.",
   path: "/timezones",
@@ -247,7 +247,7 @@ export default function TimezonesHubPage() {
 
       <section className="mt-12" aria-labelledby="why-section">
         <h2 id="why-section" className="section-heading mb-6">
-          Why Use TimeForge?
+          Why Use Castov?
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_ITEMS.slice(0, 3).map((item) => (

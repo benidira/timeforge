@@ -84,7 +84,7 @@ export const convertResolver: Resolver = {
 
     const fromName = fromFormat.name;
     const toName = toFormat.name;
-    const title = `Convert ${fromName} to ${toName} – exact steps & pitfalls | TimeForge`;
+    const title = `Convert ${fromName} to ${toName} – exact steps & pitfalls | Castov`;
     const description = `${fromName} → ${toName} converter with a working example (${fromFormat.exampleInput} to ${toFormat.exampleOutput}), pitfalls, round-trip verification and step-by-step walk-through.`;
     const h1 = `Convert ${fromName} to ${toName}`;
     const intro = `Turn ${fromName} (${fromFormat.slug}) into ${toName} (${toFormat.slug}). Input example: ${fromFormat.exampleInput}. Expected output: ${toFormat.exampleOutput}. The walk-through below handles edge cases and daylight-saving-aware conversions.`;

@@ -5,9 +5,9 @@ import { buildMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact TimeForge | TimeForge",
+  title: "Contact Castov | Castov",
   description:
-    "Get in touch with TimeForge to report a bug, suggest a new time or timestamp tool, or ask a question about privacy or how the tools work.",
+    "Get in touch with Castov to report a bug, suggest a new time or timestamp tool, or ask a question about privacy or how the tools work.",
   path: "/contact",
 });
 
@@ -39,7 +39,7 @@ export default function ContactPage() {
 
       <h2>Privacy</h2>
       <p>
-        TimeForge has no forms and no accounts, and the tools do not send your input anywhere. See the{" "}
+        Castov has no forms and no accounts, and the tools do not send your input anywhere. See the{" "}
         <Link href="/privacy">Privacy Policy</Link> for details.
       </p>
     </StaticPage>

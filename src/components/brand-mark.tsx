@@ -1,4 +1,4 @@
-/** The TimeForge mark: a clock face whose hand is cut by a forge-spark notch. */
+/** The Castov mark: a clock face whose hand is cut by a forge-spark notch. */
 export function BrandMark({ size = 28 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">

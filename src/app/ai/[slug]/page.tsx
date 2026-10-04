@@ -29,18 +29,31 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   const tool = getAiToolBySlug(slug);
   if (tool) {
-    return buildMetadata({
-      title: `${tool.name} | Castov AI Tools`,
-      description: tool.description,
+    const baseMetadata = buildMetadata({
+      title: `${tool.name} \u2013 Free AI Developer Tool | Castov`,
+      description: `${tool.description} Enhance your AI prompt engineering, developer tools workflow, and code generation with Castov.`,
       path: `/ai/${tool.slug}`,
     });
+    
+    return {
+      ...baseMetadata,
+      keywords: tool.keywords.join(", "),
+      openGraph: {
+        ...baseMetadata.openGraph,
+        title: `${tool.name} \u2013 Free AI Developer Tool | Castov`,
+      },
+      twitter: {
+        ...baseMetadata.twitter,
+        title: `${tool.name} \u2013 Free AI Developer Tool | Castov`,
+      }
+    };
   }
 
   if (AI_CATEGORIES.includes(slug)) {
     const name = slug.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase());
     return buildMetadata({
-      title: `${name} AI Tools | TimeForge`,
-      description: `A collection of enterprise-grade AI developer tools for ${name}.`,
+      title: `${name} AI Tools \u2013 Free Developer Resources | Castov`,
+      description: `A collection of enterprise-grade AI developer tools for ${name}. Optimize your prompt engineering and code generation workflows.`,
       path: `/ai/${slug}`,
     });
   }
@@ -53,34 +66,47 @@ function CategoryPageView({ category }: { category: string }) {
   const name = category.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase());
 
   return (
-    <div className="layout-content py-12 md:py-20">
-      <div className="max-w-3xl mb-12">
-        <div className="mb-4">
-          <Link href="/ai" className="text-sm font-medium text-muted hover:text-fg transition-colors">
-            &larr; Back to AI Directory
-          </Link>
+    <div className="w-full pb-20">
+      {/* Premium Category Hero */}
+      <div className="mb-12 relative overflow-hidden rounded-3xl border border-line/20 bg-gradient-to-br from-card/80 to-black/60 p-8 md:p-12 shadow-xl">
+        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[120%] bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="relative z-10 max-w-3xl">
+          <div className="mb-6">
+            <Link href="/ai" className="inline-flex items-center text-sm font-medium text-muted hover:text-accent transition-colors bg-field/50 px-3 py-1.5 rounded-full border border-line/40 backdrop-blur-md">
+              &larr; Back to Directory
+            </Link>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-fg mb-4 drop-shadow-sm">
+            {name} <span className="text-muted font-light">Tools</span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted/90 max-w-2xl leading-relaxed">
+            Browse our curated collection of specialized {name.toLowerCase()} utilities designed for modern AI developers.
+          </p>
         </div>
-        <h1 className="text-4xl font-extrabold tracking-tight text-fg mb-4">
-          {name} AI Tools
-        </h1>
-        <p className="text-lg text-muted">
-          Browse our collection of specialized {name.toLowerCase()} utilities for developers.
-        </p>
       </div>
 
+      {/* Grid Layout */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (
           <Link
             key={tool.slug}
             href={`/ai/${tool.slug}`}
-            className="card p-5 group flex flex-col transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg focus-within:border-accent bg-card/60"
+            className="group relative flex flex-col p-6 rounded-2xl border border-line/40 bg-card/40 hover:bg-hover/40 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl overflow-hidden"
           >
-            <h3 className="text-base font-semibold text-fg group-hover:text-accent transition-colors">
-              {tool.name}
-            </h3>
-            <p className="mt-2 text-sm text-muted line-clamp-2">
-              {tool.description}
-            </p>
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <h3 className="text-lg font-bold text-fg group-hover:text-accent transition-colors mb-2">
+                {tool.name}
+              </h3>
+              <p className="text-sm text-muted leading-relaxed">
+                {tool.description}
+              </p>
+            </div>
+            <div className="relative z-10 mt-6 pt-4 border-t border-line/30 text-xs font-semibold text-accent flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 duration-300">
+              Launch tool <span aria-hidden="true">&rarr;</span>
+            </div>
           </Link>
         ))}
       </div>
@@ -109,7 +135,7 @@ function ToolPageView({ tool }: { tool: AiTool }) {
   return (
     <>
       <JsonLd data={[appLd, howToLd]} />
-      <div className="layout-content py-10 md:py-16">
+      <div className="w-full">
         <div className="mb-6">
           <nav className="flex items-center text-sm font-medium text-muted space-x-2">
             <Link href="/ai" className="hover:text-fg transition-colors">AI Directory</Link>

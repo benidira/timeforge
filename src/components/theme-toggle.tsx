@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 
-export const THEME_STORAGE_KEY = "timeforge-theme";
+export const THEME_STORAGE_KEY = "castov-theme";
 
 // Possible themes: "light", "dark", "system"
 const THEMES = ["light", "dark", "system"] as const;

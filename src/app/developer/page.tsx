@@ -7,7 +7,7 @@ import { ToolCard } from "@/components/tool-card";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Developer Hub – Timestamp & Time Tools for Developers | TimeForge",
+  title: "Developer Hub – Timestamp & Time Tools for Developers | Castov",
   description:
     "Free developer resources for working with Unix timestamps, ISO 8601, RFC 3339, cron expressions and time zones in JavaScript, Python, Go and more.",
   path: "/developer",

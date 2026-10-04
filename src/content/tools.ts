@@ -59,7 +59,7 @@ export const TOOLS: Tool[] = [
     slug: "unix-timestamp-converter",
     category: "Timestamp",
     name: "Unix Timestamp Converter",
-    seoTitle: "Unix Timestamp Converter – Convert Unix Time to Date | TimeForge",
+    seoTitle: "Unix Timestamp Converter – Convert Unix Time to Date | Castov",
     metaDescription:
       "Convert a Unix timestamp in seconds or milliseconds to a readable date in UTC, local time and ISO 8601. Free, fast and runs entirely in your browser.",
     intro:
@@ -111,7 +111,7 @@ export const TOOLS: Tool[] = [
     slug: "epoch-converter",
     category: "Timestamp",
     name: "Epoch Converter",
-    seoTitle: "Epoch Converter – Convert Epoch Time to Date | TimeForge",
+    seoTitle: "Epoch Converter – Convert Epoch Time to Date | Castov",
     metaDescription:
       "Free epoch converter: turn epoch seconds or milliseconds into UTC, local time and ISO 8601 and see both epoch units side by side. No sign-up needed.",
     intro:
@@ -162,7 +162,7 @@ export const TOOLS: Tool[] = [
     slug: "timestamp-to-date",
     category: "Timestamp",
     name: "Timestamp to Date",
-    seoTitle: "Timestamp to Date Converter – Convert Unix Timestamp | TimeForge",
+    seoTitle: "Timestamp to Date Converter – Convert Unix Timestamp | Castov",
     metaDescription:
       "Convert a Unix timestamp to a human-readable date with weekday, day of year and ISO week. Supports seconds and milliseconds, UTC and local time.",
     intro:
@@ -213,7 +213,7 @@ export const TOOLS: Tool[] = [
     slug: "date-to-timestamp",
     category: "Timestamp",
     name: "Date to Timestamp",
-    seoTitle: "Date to Unix Timestamp Converter | TimeForge",
+    seoTitle: "Date to Unix Timestamp Converter | Castov",
     metaDescription:
       "Convert a date and time in any time zone to a Unix timestamp in seconds and milliseconds, plus ISO 8601. Daylight saving time is handled correctly.",
     intro:
@@ -264,7 +264,7 @@ export const TOOLS: Tool[] = [
     slug: "current-unix-timestamp",
     category: "Timestamp",
     name: "Current Unix Timestamp",
-    seoTitle: "Current Unix Timestamp – Live Epoch Time Now | TimeForge",
+    seoTitle: "Current Unix Timestamp – Live Epoch Time Now | Castov",
     metaDescription:
       "See the current Unix timestamp live in seconds and milliseconds, with UTC and local time. Copy the value with one click and pause the clock when needed.",
     intro:
@@ -315,7 +315,7 @@ export const TOOLS: Tool[] = [
     slug: "milliseconds-to-date",
     category: "Timestamp",
     name: "Milliseconds to Date",
-    seoTitle: "Milliseconds to Date Converter – Unix Milliseconds | TimeForge",
+    seoTitle: "Milliseconds to Date Converter – Unix Milliseconds | Castov",
     metaDescription:
       "Convert Unix milliseconds, like values from JavaScript Date.now(), into a readable date with milliseconds in UTC, local time and ISO 8601.",
     intro:
@@ -366,7 +366,7 @@ export const TOOLS: Tool[] = [
     slug: "iso-8601-to-unix",
     category: "Developer",
     name: "ISO 8601 to Unix",
-    seoTitle: "ISO 8601 to Unix Timestamp Converter | TimeForge",
+    seoTitle: "ISO 8601 to Unix Timestamp Converter | Castov",
     metaDescription:
       "Convert an ISO 8601 date and time, such as 2026-09-20T12:30:00Z, to a Unix timestamp in seconds and milliseconds. Understands Z and UTC offsets.",
     intro:
@@ -417,7 +417,7 @@ export const TOOLS: Tool[] = [
     slug: "unix-to-iso-8601",
     category: "Developer",
     name: "Unix to ISO 8601",
-    seoTitle: "Unix Timestamp to ISO 8601 Converter | TimeForge",
+    seoTitle: "Unix Timestamp to ISO 8601 Converter | Castov",
     metaDescription:
       "Convert a Unix timestamp in seconds or milliseconds to an ISO 8601 string in UTC or with your local UTC offset, ready to copy into code or an API.",
     intro:
@@ -468,7 +468,7 @@ export const TOOLS: Tool[] = [
     slug: "timezone-converter",
     category: "Time Zones",
     name: "Timezone Converter",
-    seoTitle: "Timezone Converter – Convert Time Between Time Zones | TimeForge",
+    seoTitle: "Timezone Converter – Convert Time Between Time Zones | Castov",
     metaDescription:
       "Convert a date and time between IANA time zones and compare the same moment across cities, with correct daylight saving time handling.",
     intro:
@@ -525,7 +525,7 @@ export const TOOLS: Tool[] = [
     slug: "timestamp-difference",
     category: "Date & Duration",
     name: "Timestamp Difference",
-    seoTitle: "Timestamp Difference Calculator – Calculate Time Difference | TimeForge",
+    seoTitle: "Timestamp Difference Calculator – Calculate Time Difference | Castov",
     metaDescription:
       "Calculate the difference between two Unix timestamps in milliseconds, seconds, minutes, hours and days, plus a human-readable duration.",
     intro:
@@ -576,7 +576,7 @@ export const TOOLS: Tool[] = [
     slug: "utc-converter",
     category: "Time Zones",
     name: "UTC Converter",
-    seoTitle: "UTC Converter \u2013 Convert Local Time to UTC and Back | TimeForge",
+    seoTitle: "UTC Converter \u2013 Convert Local Time to UTC and Back | Castov",
     metaDescription:
       "Convert local time to UTC or UTC to local time in any IANA time zone. See the UTC offset and ISO 8601 output, with daylight saving time handled correctly.",
     intro: "Convert a local date and time to UTC, or a UTC time to any local time zone, with the offset shown.",
@@ -627,7 +627,7 @@ export const TOOLS: Tool[] = [
     slug: "date-difference",
     category: "Date & Duration",
     name: "Date Difference Calculator",
-    seoTitle: "Date Difference Calculator \u2013 Days Between Two Dates | TimeForge",
+    seoTitle: "Date Difference Calculator \u2013 Days Between Two Dates | Castov",
     metaDescription:
       "Calculate the difference between two dates in years, months, weeks and days, plus total days, hours, minutes and seconds. Leap years are handled correctly.",
     intro: "Enter a start and end date to get the difference in years, months, weeks and days, plus the totals in each unit.",
@@ -678,7 +678,7 @@ export const TOOLS: Tool[] = [
     slug: "time-duration-calculator",
     category: "Date & Duration",
     name: "Time Duration Calculator",
-    seoTitle: "Time Duration Calculator \u2013 Elapsed Time Between Two Clock Times | TimeForge",
+    seoTitle: "Time Duration Calculator \u2013 Elapsed Time Between Two Clock Times | Castov",
     metaDescription:
       "Calculate the elapsed time between two clock times, including shifts that cross midnight, in seconds, minutes, hours and days.",
     intro: "Enter a start time and an end time to get the elapsed duration, including shifts that cross midnight.",
@@ -728,7 +728,7 @@ export const TOOLS: Tool[] = [
     slug: "add-time",
     category: "Date & Duration",
     name: "Add Time Calculator",
-    seoTitle: "Add Time Calculator \u2013 Add Days, Hours, Minutes | TimeForge",
+    seoTitle: "Add Time Calculator \u2013 Add Days, Hours, Minutes | Castov",
     metaDescription:
       "Add a duration in seconds, minutes, hours, days or weeks to a date and time and get the resulting date, with daylight saving time and time zones handled.",
     intro: "Enter a starting date and time, choose a duration to add, and get the resulting date and time.",
@@ -778,7 +778,7 @@ export const TOOLS: Tool[] = [
     slug: "subtract-time",
     category: "Date & Duration",
     name: "Subtract Time Calculator",
-    seoTitle: "Subtract Time Calculator \u2013 Subtract Days, Hours, Minutes | TimeForge",
+    seoTitle: "Subtract Time Calculator \u2013 Subtract Days, Hours, Minutes | Castov",
     metaDescription:
       "Subtract a duration in seconds, minutes, hours, days or weeks from a date and time and get the resulting date, with daylight saving time handled correctly.",
     intro: "Enter a date and time, choose a duration to subtract, and get the resulting date and time.",
@@ -828,7 +828,7 @@ export const TOOLS: Tool[] = [
     slug: "unix-timestamp-validator",
     category: "Developer",
     name: "Unix Timestamp Validator",
-    seoTitle: "Unix Timestamp Validator \u2013 Check a Timestamp Is Valid | TimeForge",
+    seoTitle: "Unix Timestamp Validator \u2013 Check a Timestamp Is Valid | Castov",
     metaDescription:
       "Check whether a value is a valid Unix timestamp, see whether it is in seconds or milliseconds, and get a clear, specific reason when it is not valid.",
     intro: "Check whether a value is a valid Unix timestamp and see exactly why, if it is not.",
@@ -864,11 +864,11 @@ export const TOOLS: Tool[] = [
       },
       {
         q: "How does the validator choose seconds or milliseconds?",
-        a: "On Auto, values with 12 or more digits are treated as milliseconds and shorter values as seconds, the same rule the other TimeForge converters use. You can force a specific unit instead.",
+        a: "On Auto, values with 12 or more digits are treated as milliseconds and shorter values as seconds, the same rule the other Castov converters use. You can force a specific unit instead.",
       },
       {
         q: "Does this check leap seconds?",
-        a: "No. Unix time does not count leap seconds, so this validator (like the rest of TimeForge) treats every day as exactly 86,400 seconds.",
+        a: "No. Unix time does not count leap seconds, so this validator (like the rest of Castov) treats every day as exactly 86,400 seconds.",
       },
     ],
     related: ["unix-timestamp-converter", "unix-timestamp-batch-converter", "epoch-converter", "milliseconds-to-date"],
@@ -878,7 +878,7 @@ export const TOOLS: Tool[] = [
     slug: "epoch-milliseconds",
     category: "Timestamp",
     name: "Epoch Milliseconds Converter",
-    seoTitle: "Epoch Milliseconds Converter \u2013 Convert Milliseconds to Date | TimeForge",
+    seoTitle: "Epoch Milliseconds Converter \u2013 Convert Milliseconds to Date | Castov",
     metaDescription:
       "Convert epoch milliseconds to a date in UTC, local time and ISO 8601, or find the current epoch time in milliseconds. Fast, free and browser-based.",
     intro: "Convert a value in epoch milliseconds to a readable date in UTC, local time and ISO 8601.",
@@ -928,7 +928,7 @@ export const TOOLS: Tool[] = [
     slug: "unix-timestamp-batch-converter",
     category: "Developer",
     name: "Unix Timestamp Batch Converter",
-    seoTitle: "Unix Timestamp Batch Converter \u2013 Convert Many at Once | TimeForge",
+    seoTitle: "Unix Timestamp Batch Converter \u2013 Convert Many at Once | Castov",
     metaDescription:
       "Paste a list of Unix timestamps, one per line, and convert all of them at once to UTC, local time and ISO 8601. Copy the results or download them as CSV.",
     intro: "Paste a list of Unix timestamps, one per line, and convert all of them at once.",
@@ -978,7 +978,7 @@ export const TOOLS: Tool[] = [
     slug: "date-format-converter",
     category: "Developer",
     name: "Date Format Converter",
-    seoTitle: "Date Format Converter \u2013 Convert Between Date and Time Formats | TimeForge",
+    seoTitle: "Date Format Converter \u2013 Convert Between Date and Time Formats | Castov",
     metaDescription:
       "Convert a date between ISO 8601, RFC 2822, RFC 3339, UTC, local time, Unix seconds and Unix milliseconds. Paste any common format and get every other one.",
     intro: "Paste a date in almost any common format and get it converted to every other format at once.",
@@ -1028,7 +1028,7 @@ export const TOOLS: Tool[] = [
     slug: "iso-8601-converter",
     category: "Developer",
     name: "ISO 8601 Converter",
-    seoTitle: "ISO 8601 Converter \u2013 Convert ISO 8601 to Unix Time and Back | TimeForge",
+    seoTitle: "ISO 8601 Converter \u2013 Convert ISO 8601 to Unix Time and Back | Castov",
     metaDescription:
       "A complete ISO 8601 converter: turn an ISO 8601 string into Unix seconds, milliseconds, UTC and a readable date, or turn a Unix timestamp into ISO 8601.",
     intro: "Convert an ISO 8601 date to Unix time and a readable date, or convert a Unix timestamp to ISO 8601, in one place.",
@@ -1078,7 +1078,7 @@ export const TOOLS: Tool[] = [
     slug: "rfc-3339-converter",
     category: "Developer",
     name: "RFC 3339 Converter",
-    seoTitle: "RFC 3339 Converter \u2013 Convert RFC 3339 Timestamps to Unix Time | TimeForge",
+    seoTitle: "RFC 3339 Converter \u2013 Convert RFC 3339 Timestamps to Unix Time | Castov",
     metaDescription:
       "Convert an RFC 3339 timestamp to Unix time, or Unix time to RFC 3339, with the UTC offset shown. RFC 3339 is the strict internet date-time profile of ISO 8601.",
     intro: "Convert an RFC 3339 timestamp to Unix time, or a Unix timestamp to RFC 3339.",
@@ -1128,7 +1128,7 @@ export const TOOLS: Tool[] = [
     slug: "timezone-offset",
     category: "Time Zones",
     name: "Time Zone Offset Calculator",
-    seoTitle: "Time Zone Offset Calculator \u2013 Compare UTC Offsets Between Zones | TimeForge",
+    seoTitle: "Time Zone Offset Calculator \u2013 Compare UTC Offsets Between Zones | Castov",
     metaDescription:
       "Compare the UTC offset of two time zones on a given date and see the exact difference between them, with daylight saving time applied automatically.",
     intro: "Pick two time zones and a date to see each one's UTC offset and the exact difference between them.",
@@ -1178,7 +1178,7 @@ export const TOOLS: Tool[] = [
     slug: "world-clock",
     category: "Time Zones",
     name: "World Clock",
-    seoTitle: "World Clock \u2013 Current Time in Cities Around the World | TimeForge",
+    seoTitle: "World Clock \u2013 Current Time in Cities Around the World | Castov",
     metaDescription:
       "See the current time in New York, London, Paris, Algiers, Dubai and Tokyo at once, updated live, with each city's UTC offset. Add or remove cities.",
     intro: "The current time in cities around the world, updated live, with each city's UTC offset.",
@@ -1228,7 +1228,7 @@ export const TOOLS: Tool[] = [
     slug: "business-hours-converter",
     category: "Time Zones",
     name: "Business Hours Converter",
-    seoTitle: "Business Hours Converter \u2013 Compare Working Hours | TimeForge",
+    seoTitle: "Business Hours Converter \u2013 Compare Working Hours | Castov",
     metaDescription:
       "Compare working hours between two or more time zones and find the overlap when it exists, so you can schedule a meeting that works for every team.",
     intro: "Compare working hours between two or more time zones and find the overlap, if there is one.",
@@ -1278,7 +1278,7 @@ export const TOOLS: Tool[] = [
     slug: "cron-generator",
     category: "Developer",
     name: "Cron Expression Generator",
-    seoTitle: "Cron Expression Generator \u2013 Build and Explain Cron Schedules | TimeForge",
+    seoTitle: "Cron Expression Generator \u2013 Build and Explain Cron Schedules | Castov",
     metaDescription:
       "Build a cron expression from simple options or write one directly, see a plain-English explanation and the next run times, and check it for mistakes.",
     intro: "Build a cron expression from simple options, or write one directly, with a plain-English explanation.",

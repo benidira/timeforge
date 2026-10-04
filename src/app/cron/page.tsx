@@ -11,7 +11,7 @@ import { ToolHost } from "@/components/pseo/tool-host";
 import { parseCron, describeCron, nextRuns, formatCompact } from "@/lib/time";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Cron Expression Generator – Cheatsheet, Examples, Next Runs | TimeForge",
+  title: "Cron Expression Generator – Cheatsheet, Examples, Next Runs | Castov",
   description:
     "Build and explain cron expressions with the free online generator. Browse the field reference, 12 popular presets, see the next five run times, and read the cheatsheet.",
   path: "/cron",
@@ -322,7 +322,7 @@ export default function CronHubPage() {
 
       <section className="mt-12" aria-labelledby="why-section">
         <h2 id="why-section" className="section-heading mb-6">
-          Why Use TimeForge?
+          Why Use Castov?
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_ITEMS.slice(0, 3).map((item) => (

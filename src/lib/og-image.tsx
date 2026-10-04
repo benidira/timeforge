@@ -35,7 +35,7 @@ export function renderOgImage() {
           >
             T
           </div>
-          <div style={{ marginLeft: 24, fontSize: 44, fontWeight: 700 }}>TimeForge</div>
+          <div style={{ marginLeft: 24, fontSize: 44, fontWeight: 700 }}>Castov</div>
         </div>
         <div style={{ marginTop: 48, fontSize: 76, fontWeight: 700, lineHeight: 1.1 }}>Free Time &amp; Timestamp Tools</div>
         <div style={{ marginTop: 28, fontSize: 34, color: "#A1A9B8" }}>

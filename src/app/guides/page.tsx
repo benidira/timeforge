@@ -4,7 +4,7 @@ import { GUIDES } from "@/content/guides";
 import { StaticPage } from "@/components/static-page";
 import { buildMetadata } from "@/lib/seo";
 
-const TITLE = "Guides to Unix Time, ISO 8601 and Time Zones | TimeForge";
+const TITLE = "Guides to Unix Time, ISO 8601 and Time Zones | Castov";
 const DESCRIPTION =
   "Short, practical guides to Unix time, seconds versus milliseconds, ISO 8601, time zones and daylight saving time, and the Year 2038 problem.";
 

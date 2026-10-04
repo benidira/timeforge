@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { DownloadIcon, CopyIcon, CheckIcon, PlusIcon, TrashIcon } from "lucide-react";
+import { CodeEditor } from "@/components/ui/code-editor";
+import { EditorToolbar } from "@/components/ui/editor-toolbar";
 
 interface EnvVar {
   id: string;
@@ -219,25 +221,21 @@ export function McpConfigBuilder() {
       </div>
 
       {/* Preview */}
-      <div className="lg:col-span-7 card bg-hover/30 border-line/30 flex flex-col h-[600px] sticky top-24">
-        <div className="flex items-center justify-between px-4 py-3 border-b border-line/40 bg-card/40">
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-accent/80"></span>
-            <span className="ml-2 text-xs font-mono text-muted">claude_desktop_config.json</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <button onClick={handleCopy} className="btn btn-secondary py-1 px-2.5 text-xs h-auto min-h-0 flex items-center gap-1.5" title="Copy to clipboard">
-              {copied ? <CheckIcon className="w-3.5 h-3.5 text-success" /> : <CopyIcon className="w-3.5 h-3.5" />}
-              {copied ? "Copied!" : "Copy"}
-            </button>
-            <button onClick={handleDownload} className="btn btn-primary py-1 px-2.5 text-xs h-auto min-h-0 flex items-center gap-1.5" title="Download config">
-              <DownloadIcon className="w-3.5 h-3.5" />
-              Download
-            </button>
-          </div>
-        </div>
-        <div className="flex-1 overflow-auto p-4 bg-black/40 text-sm font-mono text-fg/90 whitespace-pre-wrap">
-          {outputContent}
+      <div className="lg:col-span-7 card bg-hover/30 border-line/30 flex flex-col h-[600px] sticky top-24 overflow-hidden">
+        <EditorToolbar 
+          title="MCP Config"
+          content={outputContent}
+          toolSlug="mcp-config-builder"
+          language="json"
+          filename="claude_desktop_config.json"
+        />
+        <div className="flex-1 bg-black/40 relative">
+          <CodeEditor 
+            value={outputContent}
+            language="json"
+            readOnly={true}
+            height="100%"
+          />
         </div>
       </div>
     </div>

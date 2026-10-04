@@ -82,7 +82,7 @@ export const codeResolver: Resolver = {
       snippet.code,
     ]);
 
-    const title = task.title.replace("{lang}", lang.name) + " with example | TimeForge";
+    const title = task.title.replace("{lang}", lang.name) + " with example | Castov";
     const description =
       task.question.replace("{lang}", lang.name) +
       ` ${lang.name} ${lang.runner} code with tested output, pitfalls and related tools.`;

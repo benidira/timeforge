@@ -1,6 +1,6 @@
 import type { FaqItem } from "@/lib/seo";
 
-export const HOME_TITLE = "TimeForge – Free Time & Timestamp Tools";
+export const HOME_TITLE = "Castov – Free Time & Timestamp Tools";
 export const HOME_DESCRIPTION =
   "Free Unix timestamp converter, epoch converter, ISO 8601 and time zone tools. Fast, private and no sign-up: everything runs in your browser.";
 
@@ -21,7 +21,7 @@ export const DEV_SNIPPETS = [
 
 export const HOME_FAQ: FaqItem[] = [
   {
-    q: "Is TimeForge really free?",
+    q: "Is Castov really free?",
     a: "Yes. All tools are free, with no account and no usage limits. The site may show ads in the future to cover running costs.",
   },
   {

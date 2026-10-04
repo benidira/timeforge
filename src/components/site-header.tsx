@@ -68,29 +68,36 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link
-            href="/tools"
-            className="btn btn-secondary btn-sm lg:hidden inline-flex p-2"
-            aria-label="Search tools"
+          {/* Global Search Trigger */}
+          <button
+            onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+            className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-field hover:bg-hover border border-line rounded-lg text-sm text-muted transition-colors"
+            aria-label="Open command palette"
           >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8" />
               <path d="m21 21-4.3-4.3" />
             </svg>
-          </Link>
+            <span className="w-32 text-left">Search...</span>
+            <kbd className="hidden sm:inline-flex items-center gap-1 h-5 px-1.5 text-[10px] font-medium bg-card text-muted rounded border border-line/40 font-mono">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </button>
 
-          <Link href="/tools" className="btn btn-primary btn-sm hidden sm:inline-flex shadow-xs">
-            Explore Tools
+          {/* Mobile Search Icon */}
+          <button
+            onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+            className="btn btn-secondary btn-sm lg:hidden inline-flex p-2"
+            aria-label="Search tools"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
+
+          <Link href="/ai" className="btn btn-primary btn-sm hidden sm:inline-flex shadow-xs ml-1">
+            AI Tools
           </Link>
           <ThemeToggle />
         </div>

@@ -59,7 +59,7 @@ export const cronResolver: Resolver = {
       preset.facts,
     ]);
 
-    const title = `${preset.title} – ${preset.expression} | TimeForge`;
+    const title = `${preset.title} – ${preset.expression} | Castov`;
     const description = `${preset.intent}. Expression ${preset.expression}. Next 5 runs listed, plus common mistakes and dialect variants.`;
     const h1 = preset.title;
     const intro = `${preset.intent}. The five-field standard expression is \`${preset.expression}\`. Category: ${preset.category}. Facts score: ${preset.facts}. Use the cron tool below to tweak the pattern and preview future runs.`;

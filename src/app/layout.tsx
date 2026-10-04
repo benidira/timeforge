@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import { AdSenseScript } from "@/components/adsense-script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { CommandPalette } from "@/components/CommandPalette";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -23,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 /** Runs before first paint: supports dark, light, and system preference without flicker. */
-const THEME_SCRIPT = `try{var t=localStorage.getItem("timeforge-theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.dataset.theme="light"}else{document.documentElement.dataset.theme="dark"}}catch(e){document.documentElement.dataset.theme="dark"}`;
+const THEME_SCRIPT = `try{var t=localStorage.getItem("castov-theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.dataset.theme="light"}else{document.documentElement.dataset.theme="dark"}}catch(e){document.documentElement.dataset.theme="dark"}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        <CommandPalette />
         <AdSenseScript />
       </body>
     </html>

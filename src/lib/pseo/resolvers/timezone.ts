@@ -161,7 +161,7 @@ function resolveZonePage(slug: string): PageModel | null {
   const displayName = info
     ? `${info.name}, ${info.country}`
     : iana.replace(/\//g, " ");
-  const title = `Time Zone ${displayName} – IANA ${iana} rules, offset & DST | TimeForge`;
+  const title = `Time Zone ${displayName} – IANA ${iana} rules, offset & DST | Castov`;
   const description = `IANA time zone ${iana} reference page: ${info ? `${info.name} ${info.country}` : ""} current UTC offset, daylight saving schedule, historical rule changes and the safe way to use this zone in code.`;
   const h1 = `Time Zone: ${displayName}`;
   const intro = `Everything you need to work with the IANA time zone ${iana}. Reference city: ${info ? info.name : "—"}. Population ${info && "population" in info ? info.population.toLocaleString() : "—"}. Use the timezone converter below to translate times between this zone and any other.`;
@@ -285,7 +285,7 @@ function resolveConverterPage(slug: string): PageModel | null {
 
   const fromDisplay = fromIana.replace(/\//g, " ");
   const toDisplay = toIana.replace(/\//g, " ");
-  const title = `Convert ${fromDisplay} to ${toDisplay} Time – exact offset now | TimeForge`;
+  const title = `Convert ${fromDisplay} to ${toDisplay} Time – exact offset now | Castov`;
   const description =
     (dstInfo
       ? `${dstInfo} `

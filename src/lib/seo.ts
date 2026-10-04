@@ -105,12 +105,13 @@ export function websiteJsonLd() {
 export function softwareAppJsonLd(input: { name: string; description: string; url: string; category: string }) {
   return {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": ["SoftwareApplication", "WebApplication"],
     name: input.name,
     url: absoluteUrl(input.url),
     description: input.description,
     applicationCategory: input.category,
     operatingSystem: "Any",
+    browserRequirements: "Requires JavaScript",
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },

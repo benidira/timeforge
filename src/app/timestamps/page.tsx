@@ -6,7 +6,7 @@ import { ToolCard } from "@/components/tool-card";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Timestamps Hub – Unix Timestamp, Epoch & ISO Tools | TimeForge",
+  title: "Timestamps Hub – Unix Timestamp, Epoch & ISO Tools | Castov",
   description:
     "Everything about Unix timestamps and epoch time: converters, validators, batch tools, milliseconds, ISO 8601 and RFC 3339 in one place.",
   path: "/timestamps",

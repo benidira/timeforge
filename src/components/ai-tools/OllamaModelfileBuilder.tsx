@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { DownloadIcon, CopyIcon, CheckIcon, PlusIcon, XIcon } from "lucide-react";
+import { CodeEditor } from "@/components/ui/code-editor";
+import { EditorToolbar } from "@/components/ui/editor-toolbar";
 
 const MODELS = ["llama3.1", "mistral", "qwen2.5", "phi3", "gemma2", "deepseek-coder", "llava"];
 const CONTEXT_WINDOWS = [2048, 4096, 8192, 16384, 32768, 131072];
@@ -159,25 +161,21 @@ export function OllamaModelfileBuilder() {
       </div>
 
       {/* Preview */}
-      <div className="card bg-hover/30 border-line/30 flex flex-col h-[600px] sticky top-24">
-        <div className="flex items-center justify-between px-4 py-3 border-b border-line/40 bg-card/40">
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-accent/80"></span>
-            <span className="ml-2 text-xs font-mono text-muted">Modelfile</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <button onClick={handleCopy} className="btn btn-secondary py-1 px-2.5 text-xs h-auto min-h-0 flex items-center gap-1.5" title="Copy to clipboard">
-              {copied ? <CheckIcon className="w-3.5 h-3.5 text-success" /> : <CopyIcon className="w-3.5 h-3.5" />}
-              {copied ? "Copied!" : "Copy"}
-            </button>
-            <button onClick={handleDownload} className="btn btn-primary py-1 px-2.5 text-xs h-auto min-h-0 flex items-center gap-1.5" title="Download Modelfile">
-              <DownloadIcon className="w-3.5 h-3.5" />
-              Download
-            </button>
-          </div>
-        </div>
-        <div className="flex-1 overflow-auto p-4 bg-black/40 text-sm font-mono text-fg/90 whitespace-pre-wrap">
-          {outputContent}
+      <div className="card bg-hover/30 border-line/30 flex flex-col h-[600px] sticky top-24 overflow-hidden">
+        <EditorToolbar 
+          title="Ollama Modelfile"
+          content={outputContent}
+          toolSlug="ollama-modelfile-builder"
+          language="dockerfile"
+          filename="Modelfile"
+        />
+        <div className="flex-1 bg-black/40 relative">
+          <CodeEditor 
+            value={outputContent}
+            language="dockerfile"
+            readOnly={true}
+            height="100%"
+          />
         </div>
       </div>
     </div>

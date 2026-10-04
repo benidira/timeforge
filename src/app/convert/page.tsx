@@ -9,7 +9,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { AdSlot } from "@/components/ad-slot";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Convert Between Time Formats – Unix, ISO, RFC, UTC | TimeForge",
+  title: "Convert Between Time Formats – Unix, ISO, RFC, UTC | Castov",
   description:
     "Convert between Unix timestamps, ISO 8601, RFC 3339, RFC 2822, UTC and local date formats. Browse the most popular conversions and use the free online tools.",
   path: "/convert",
@@ -213,7 +213,7 @@ export default function ConvertHubPage() {
 
       <section className="mt-12" aria-labelledby="why-section">
         <h2 id="why-section" className="section-heading mb-6">
-          Why Use TimeForge?
+          Why Use Castov?
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_ITEMS.slice(0, 3).map((item) => (

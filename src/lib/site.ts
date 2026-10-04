@@ -15,7 +15,7 @@ function resolveSiteUrl(): string {
 }
 
 export const SITE = {
-  name: "TimeForge",
+  name: "Castov",
   tagline: "Free Time & Timestamp Tools",
   description:
     "Free online Unix timestamp, epoch, ISO 8601 and time zone tools. Everything runs in your browser: fast, private and no sign-up.",

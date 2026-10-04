@@ -43,7 +43,7 @@ export function BatchConverterTool() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "timeforge-batch-timestamps.csv";
+    a.download = "castov-batch-timestamps.csv";
     document.body.appendChild(a);
     a.click();
     a.remove();

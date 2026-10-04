@@ -11,7 +11,7 @@ import { CopyButton } from "@/components/ui/copy-button";
 import { TASKS, TASK_IDS } from "@/data/tasks";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Unix Timestamp & Time Code Examples by Language | TimeForge",
+  title: "Unix Timestamp & Time Code Examples by Language | Castov",
   description:
     "Working code snippets for Unix timestamps, ISO 8601 and dates in 14 programming languages. Browse the quick reference grid for the top 10 languages and dive into full developer guides.",
   path: "/code",
@@ -288,7 +288,7 @@ export default function CodeHubPage() {
 
       <section className="mt-12" aria-labelledby="why-section">
         <h2 id="why-section" className="section-heading mb-6">
-          Why Use TimeForge?
+          Why Use Castov?
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_ITEMS.slice(0, 3).map((item) => (

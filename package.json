@@ -1,8 +1,8 @@
 {
-  "name": "timeforge",
+  "name": "castov",
   "version": "1.0.0",
   "private": true,
-  "description": "TimeForge - Free Time & Timestamp Tools",
+  "description": "Castov - Free Time & Timestamp Tools",
   "scripts": {
     "dev": "next dev",
     "prebuild": "node scripts/check-env.mjs",
@@ -19,6 +19,13 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.71",
+    "@ai-sdk/openai": "^4.0.83",
+    "@ai-sdk/react": "^4.0.130",
+    "@monaco-editor/react": "^4.7.0",
+    "@supabase/supabase-js": "^2.117.2",
+    "ai": "^7.0.127",
+    "cmdk": "^1.1.1",
     "geist": "^1.7.2",
     "lucide-react": "^1.51.0",
     "next": "^16.3.5",
