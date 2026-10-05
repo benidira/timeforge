@@ -32,203 +32,144 @@ export default function HomePage() {
     <>
       <JsonLd data={[websiteJsonLd(), faqJsonLd(HOME_FAQ)]} />
 
-      {/* ── 1. Hero Section ── */}
-      <section className="relative w-full border-b border-line overflow-hidden bg-bg pt-24 pb-20 sm:pt-32 sm:pb-28">
+      {/* ── 1. High-Impact Hero ── */}
+      <section className="relative w-full overflow-hidden bg-[#050505] pt-32 pb-20 sm:pt-40 sm:pb-32 min-h-[90vh] flex flex-col justify-center">
         {/* Ambient radial glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] ambient-glow-indigo pointer-events-none" />
         
         <div className="layout-content relative z-10 flex flex-col items-center text-center">
-          <div className="mb-6 animate-fade-in-up flex items-center justify-center gap-2" style={{ animationDelay: '0ms' }}>
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20 backdrop-blur-md">
-              Developer utilities for everyday work
+          <div className="mb-6 flex items-center justify-center gap-2">
+            <span className="glass-pill">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse" />
+              Castov v2.0 Engine is Live
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-fg to-muted animate-fade-in-up max-w-4xl leading-tight" style={{ animationDelay: '100ms' }}>
-            Enterprise-grade developer tools that just work.
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-fg max-w-5xl leading-[1.1]">
+            The Ultimate <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 via-zinc-500 to-zinc-700">Developer Sandbox</span>
           </h1>
           
-          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted animate-fade-in-up leading-relaxed" style={{ animationDelay: '200ms' }}>
-            Convert timestamps, compare time zones, format dates, and generate developer-ready values instantly. Build faster with our sleek suite of tools.
+          <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted leading-relaxed font-medium">
+            Ultra-fast, fully local, zero-config tools. From mapping out Kubernetes clusters to scanning leaked secrets, do it all in your browser.
           </p>
 
-          <span className="sr-only" dir="rtl">بسرعة ومجانًا</span>
-
-          <div className="mt-10 flex flex-wrap justify-center items-center gap-4 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-            <Link href="/tools" className="btn btn-primary h-12 px-8 text-base shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all">
-              Get Started Free
-            </Link>
-            <Link href="/tools" className="btn btn-secondary h-12 px-8 text-base bg-card hover:bg-hover backdrop-blur-md">
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+            <Link href="/tools" className="btn btn-primary h-12 px-8 text-base shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all bg-white text-black hover:bg-zinc-200 font-bold border-none">
               Explore Tools
             </Link>
+            <button onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))} className="btn bg-white/5 border border-white/10 hover:bg-white/10 text-fg h-12 px-8 text-base">
+              Press ⌘K to Search
+            </button>
           </div>
+        </div>
+      </section>
+
+      {/* ── 2. Bento Grid Features ── */}
+      <section className="layout-content py-20 relative z-20 -mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
           
-          <div className="mt-6 text-sm text-muted animate-fade-in-up flex items-center gap-2" style={{ animationDelay: '400ms' }}>
-            Press <kbd className="px-2 py-1 bg-card border border-line rounded-md text-xs font-mono font-medium shadow-sm">Ctrl</kbd> + <kbd className="px-2 py-1 bg-card border border-line rounded-md text-xs font-mono font-medium shadow-sm">K</kbd> to open command menu
-          </div>
-
-          <div className="mt-16 animate-fade-in-up w-full max-w-sm mx-auto" style={{ animationDelay: '400ms' }}>
-            <div className="card p-4 flex flex-col items-center gap-2">
-              <span className="text-xs font-semibold text-muted uppercase">Live Unix Timestamp</span>
-              <div className="text-2xl font-mono font-medium text-fg tracking-tight">
-                <LiveEpoch />
+          {/* Card 1: Canvas (Spans 2 cols) */}
+          <div className="bento-card md:col-span-2 group">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent pointer-events-none" />
+            <div className="p-8 h-full flex flex-col relative z-10">
+              <div className="flex-1">
+                <span className="glass-pill mb-4 text-indigo-400 border-indigo-500/30">Workflows</span>
+                <h3 className="text-3xl font-bold text-fg mb-2 tracking-tight">Agentic Canvas</h3>
+                <p className="text-muted max-w-md">Chain together Developer Tools visually. Zapier for raw developer data with zero server processing.</p>
+              </div>
+              <div className="mt-auto">
+                <Link href="/canvas" className="text-fg font-medium flex items-center gap-2 group-hover:text-indigo-400 transition-colors">
+                  Open Canvas &rarr;
+                </Link>
               </div>
             </div>
+          </div>
+
+          {/* Card 2: Env Vault */}
+          <div className="bento-card group">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent pointer-events-none" />
+            <div className="p-8 h-full flex flex-col relative z-10">
+              <div className="flex-1">
+                <span className="glass-pill mb-4 text-emerald-400 border-emerald-500/30">Security</span>
+                <h3 className="text-2xl font-bold text-fg mb-2 tracking-tight">Zero-Knowledge .env Vault</h3>
+                <p className="text-muted">Military-grade AES-GCM encryption in your browser. Share secrets safely.</p>
+              </div>
+              <div className="mt-auto">
+                <Link href="/tools/env-vault" className="text-fg font-medium flex items-center gap-2 group-hover:text-emerald-400 transition-colors">
+                  Encrypt .env &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: SQLite */}
+          <div className="bento-card group">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none" />
+            <div className="p-8 h-full flex flex-col relative z-10">
+              <div className="flex-1">
+                <span className="glass-pill mb-4 text-amber-400 border-amber-500/30">Database</span>
+                <h3 className="text-2xl font-bold text-fg mb-2 tracking-tight">In-Browser SQLite</h3>
+                <p className="text-muted">Run full SQL queries entirely offline using WebAssembly.</p>
+              </div>
+              <div className="mt-auto">
+                <Link href="/tools/sqlite-fiddle" className="text-fg font-medium flex items-center gap-2 group-hover:text-amber-400 transition-colors">
+                  Open Fiddle &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4: Docker Visualizer (Spans 2 cols) */}
+          <div className="bento-card md:col-span-2 group">
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-transparent pointer-events-none" />
+            <div className="p-8 h-full flex flex-col relative z-10">
+              <div className="flex-1">
+                <span className="glass-pill mb-4 text-violet-400 border-violet-500/30">Architecture</span>
+                <h3 className="text-3xl font-bold text-fg mb-2 tracking-tight">Docker Architecture Map</h3>
+                <p className="text-muted max-w-md">Paste docker-compose.yml, get an instant, interactive React Flow diagram of your containers and ports.</p>
+              </div>
+              <div className="mt-auto">
+                <Link href="/tools/docker-visualizer" className="text-fg font-medium flex items-center gap-2 group-hover:text-violet-400 transition-colors">
+                  Visualize Architecture &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      
+      {/* ── 3. CLI Banner ── */}
+      <section className="border-t border-line bg-[#0a0a0a] py-24 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] ambient-glow-emerald pointer-events-none" />
+        <div className="layout-content relative z-10 text-center flex flex-col items-center">
+          <h2 className="text-3xl md:text-5xl font-black text-fg tracking-tight mb-6">Also Available in your Terminal</h2>
+          <p className="text-muted mb-8 max-w-xl mx-auto">Access the core engine of Castov directly from your command line without ever opening a browser tab.</p>
+          <div className="inline-flex items-center gap-4 bg-[#050505] border border-white/10 px-6 py-4 rounded-2xl font-mono text-fg shadow-2xl">
+            <span className="text-emerald-500 font-bold">$</span> npx castov
+            <CopyButton value="npx castov" label="copy command" />
           </div>
         </div>
       </section>
 
-      {/* ── 2. Global Search Trigger ── */}
-      <section className="py-12 border-b border-line bg-bg">
-        <div className="layout-content max-w-4xl">
-          <button 
-            id="home-search-trigger"
-            className="w-full flex items-center justify-between px-6 py-4 bg-field hover:bg-hover border border-line rounded-lg shadow-sm transition-colors text-left"
-          >
-            <div className="flex items-center gap-4 text-muted">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-              <span className="text-base font-medium">Search tools, timestamps, time zones, and guides...</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-2">
-              <kbd className="h-7 px-2 flex items-center justify-center text-xs font-medium bg-card text-muted rounded border border-line font-mono shadow-sm">
-                ⌘ K
-              </kbd>
-            </div>
-          </button>
-          <script dangerouslySetInnerHTML={{__html: `
-            document.getElementById('home-search-trigger')?.addEventListener('click', () => {
-              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
-            });
-          `}} />
+      {/* ── 4. Standard Tool Categories ── */}
+      <section className="layout-content py-20 border-t border-line">
+        <div className="text-center mb-16">
+          <h2 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Explore by Category</h2>
+          <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
+            Find exactly what you need to format, convert, or calculate.
+          </p>
+        </div>
+        <div className="flex flex-col gap-12">
+          {["Timestamp", "Date & Time", "Timezone"].map(cat => (
+             <CategorySection key={cat} category={cat} title={`${cat} Tools`} />
+          ))}
         </div>
       </section>
 
-      <div className="layout-content space-y-24 py-16 pb-32">
-
-        {/* ── 3. Popular Tools ── */}
-        <section aria-labelledby="popular-tools">
-          <div className="mb-8">
-            <h2 id="popular-tools" className="text-2xl font-semibold text-fg tracking-tight">Popular Tools</h2>
-            <p className="text-muted mt-1 text-base">The most frequently used utilities.</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {popularTools.map((t) => (
-              <ToolCard key={t.slug} tool={t} headingLevel={3} />
-            ))}
-          </div>
-        </section>
-
-        {/* ── 4. Tool Categories ── */}
-        <section aria-labelledby="categories">
-          <div className="mb-8">
-            <h2 id="categories" className="text-2xl font-semibold text-fg tracking-tight">Browse by Category</h2>
-            <p className="text-muted mt-1 text-base">Find specific tools for your current task.</p>
-          </div>
-          <CategorySection headingLevel={3} />
-        </section>
-
-        {/* ── 5. Built for Developers ── */}
-        <section aria-labelledby="why-castov">
-          <div className="mb-8">
-            <h2 id="why-castov" className="text-2xl font-semibold text-fg tracking-tight">Built for developers</h2>
-            <p className="text-muted mt-1 text-base">Privacy-first tools designed for productivity.</p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY_ITEMS.map((item) => (
-              <div key={item.title} className="card p-6">
-                <div className="mb-4 text-primary">
-                  <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <h3 className="font-semibold text-lg text-fg">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── 6. Developer Snippets ── */}
-        <section aria-labelledby="developer-tools">
-          <div className="mb-8 max-w-3xl">
-            <h2 id="developer-tools" className="text-2xl font-semibold text-fg tracking-tight">Developer Snippets</h2>
-            <p className="text-muted mt-1 text-base">Quick copy-ready snippets for common time operations.</p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {DEV_SNIPPETS.map((item) => (
-              <div key={item.label} className="card p-5 flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-sm font-semibold text-fg">{item.label}</h3>
-                  <CopyButton value={item.code} label={item.label} />
-                </div>
-                <div className="code-block mt-0 p-3 bg-field text-sm">
-                  <code>{item.code}</code>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── 7. Time Zones Section ── */}
-        <section aria-labelledby="time-zones">
-          <div className="card p-10 bg-field border-line flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-2xl">
-              <h2 id="time-zones" className="text-2xl font-semibold text-fg tracking-tight mb-3">Time Zones & World Clock</h2>
-              <p className="text-base text-muted mb-6">Compare cities, understand offsets, and calculate business hours instantly across global borders.</p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="/timezones" className="btn btn-primary">Time Zones Hub</Link>
-                <Link href="/tools/timezone-converter" className="btn btn-secondary">Timezone Converter</Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 8. Guides ── */}
-        <section aria-labelledby="guides">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 id="guides" className="text-2xl font-semibold text-fg tracking-tight">Guides & Articles</h2>
-              <p className="text-muted mt-1 text-base">Learn about timestamps, dates, and developer standards.</p>
-            </div>
-            <Link href="/guides" className="text-sm font-medium text-link hover:underline hidden sm:block">View all guides</Link>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {GUIDES.slice(0, 4).map((g) => (
-              <Link
-                key={g.slug}
-                href={`/guides/${g.slug}`}
-                className="guide-card block flex-1"
-              >
-                <span className="block text-base font-semibold text-fg mb-2">{g.name}</span>
-                <span className="block text-sm text-muted mb-4 line-clamp-2">{g.summary}</span>
-                <span className="flex items-center text-xs font-medium text-muted">
-                  {g.readingMinutes} min read
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* ── 9. FAQ ── */}
-        <FaqSection items={HOME_FAQ} headingId="faq" />
-
-        {/* ── 10. Final CTA ── */}
-        <section className="py-16 text-center border-t border-line mt-16" aria-labelledby="cta-heading">
-          <h2 id="cta-heading" className="text-3xl font-bold tracking-tight text-fg mb-4">
-            Find the right tool for your workflow.
-          </h2>
-          <div className="mt-8 flex justify-center gap-4">
-            <Link href="/tools" className="btn btn-primary">
-              Explore all tools
-            </Link>
-          </div>
-        </section>
-
-      </div>
+      {/* ── 5. FAQ Section ── */}
+      <FaqSection items={HOME_FAQ} headingId="faq" />
     </>
   );
 }
