@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: '/timezones/UTC', destination: '/utc-converter', permanent: true },
       { source: '/timezones/:tz', destination: '/timezones', permanent: true },
       {
         source: '/tools/:tool',

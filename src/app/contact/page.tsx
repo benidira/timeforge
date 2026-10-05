@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { StaticPage } from "@/components/static-page";
 import { buildMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Castov | Castov",
-  description:
-    "Get in touch with Castov to report a bug, suggest a new time or timestamp tool, or ask a question about privacy or how the tools work.",
+  description: "Get in touch with Castov to report a bug, suggest a new tool, or ask a question.",
   path: "/contact",
 });
 
@@ -19,6 +17,10 @@ export default function ContactPage() {
       crumbs={[{ name: "Home", href: "/" }, { name: "Contact" }]}
       path="/contact"
     >
+      <p>
+        Castov is actively maintained by <strong>Abdelouahab Benidira</strong> and the Castov Engineering team. We are always open to feedback, feature requests, or bug reports.
+      </p>
+
       <h2>Email</h2>
       {SITE.contactEmail ? (
         <p>
@@ -30,18 +32,17 @@ export default function ContactPage() {
         </p>
       )}
 
+      <h2>Social & Source</h2>
+      <ul>
+        <li><strong>GitHub:</strong> <a href="https://github.com/benidira">github.com/benidira</a></li>
+      </ul>
+
       <h2>What helps most</h2>
       <ul>
         <li>For a bug: the tool name, the exact value you entered, the result you expected and the result you saw.</li>
-        <li>Please include your browser and device, because date and time zone support varies slightly between browsers.</li>
+        <li>Please include your browser and device.</li>
         <li>For a new tool: what you are trying to do and what you searched for.</li>
       </ul>
-
-      <h2>Privacy</h2>
-      <p>
-        Castov has no forms and no accounts, and the tools do not send your input anywhere. See the{" "}
-        <Link href="/privacy">Privacy Policy</Link> for details.
-      </p>
     </StaticPage>
   );
 }
