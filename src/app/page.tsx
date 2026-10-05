@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { HOME_FAQ } from "@/content/home";
 import { buildMetadata, websiteJsonLd, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
@@ -57,28 +58,18 @@ export default function HomePage() {
                 <LockIcon size={12} /> castov.com/workspace
               </div>
             </div>
-            <div className="p-8 bg-gray-50 flex flex-col md:flex-row gap-8 items-center justify-center min-h-[300px]">
-               {/* Abstract Canvas Graphic */}
-               <div className="flex-1 flex flex-col gap-4 w-full">
-                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex items-center gap-3 w-3/4">
-                   <div className="p-2 bg-blue-100 text-blue-600 rounded-md"><DatabaseIcon size={16} /></div>
-                   <div className="h-2 bg-gray-100 rounded w-1/2"></div>
-                 </div>
-                 <div className="w-px h-8 bg-blue-200 ml-12"></div>
-                 <div className="bg-white p-4 rounded-lg shadow-sm border border-blue-200 border-l-4 border-l-blue-500 flex items-center gap-3 w-full ml-8">
-                   <div className="p-2 bg-indigo-100 text-indigo-600 rounded-md"><WorkflowIcon size={16} /></div>
-                   <div className="h-2 bg-gray-100 rounded w-3/4"></div>
-                   <span className="ml-auto text-[10px] font-bold text-emerald-500 bg-emerald-100 px-2 py-1 rounded">200 OK</span>
-                 </div>
-               </div>
-               <div className="flex-1 w-full bg-gray-900 rounded-xl p-6 shadow-inner text-green-400 font-mono text-sm leading-relaxed">
-                 <p className="text-gray-500 mb-2">// Castov Engine Output</p>
-                 <p>$ encrypt_payload --algo AES-GCM</p>
-                 <p className="text-gray-300">Generating secure salt...</p>
-                 <p className="text-gray-300">Deriving PBKDF2 keys...</p>
-                 <p className="text-white mt-2 font-bold">SUCCESS: Payload secured.</p>
-               </div>
+            
+            <div className="bg-gray-100 flex flex-col items-center justify-center min-h-[300px] overflow-hidden relative">
+               <Image 
+                  src="/hero-dashboard.jpg" 
+                  alt="Castov SaaS Developer Dashboard" 
+                  width={1200} 
+                  height={800} 
+                  className="object-cover w-full h-auto scale-[1.02] hover:scale-105 transition-transform duration-700" 
+                  priority
+               />
             </div>
+
           </div>
         </div>
       </section>
@@ -93,8 +84,8 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/canvas" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
-              <div className="w-14 h-14 bg-blue-50 group-hover:bg-blue-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
-                <WorkflowIcon className="text-blue-600 group-hover:text-white transition-colors" size={28} />
+              <div className="mb-6 rounded-xl overflow-hidden shadow-sm border border-gray-100 h-40 relative">
+                <Image src="/canvas-workflow.jpg" alt="Workflow Canvas" fill className="object-cover" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Agentic Canvas</h3>
               <p className="text-gray-600 leading-relaxed">
