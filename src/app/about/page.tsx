@@ -32,6 +32,16 @@ export default function AboutPage() {
         date you enter. Nothing you type is sent to a server.
       </p>
 
+
+      <h2>Who builds Castov?</h2>
+      <p>
+        Castov is maintained by <strong>Abdelouahab Benidira</strong> and the Castov Engineering team. We are passionate about creating privacy-first, blazing fast developer tools.
+      </p>
+      <p>
+        If you have feedback, feature requests, or need support, reach out to us directly at: 
+        <a href="mailto:support@castov.com" className="font-semibold text-link ml-1 hover:underline">support@castov.com</a>
+      </p>
+
       <h2>What we focus on</h2>
       <ul>
         <li>Correct results, including negative timestamps, leap years and daylight saving gaps.</li>

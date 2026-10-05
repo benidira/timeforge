@@ -23,7 +23,7 @@ export default function AiDirectoryPage() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-fg mb-4">
-            Build with AI. Zero Friction.
+            AI Developer Tools
           </h1>
           
           <p className="text-lg text-muted mb-10 leading-relaxed">

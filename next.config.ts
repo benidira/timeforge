@@ -23,8 +23,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: '/timezones/:tz', destination: '/timezones', permanent: true },
       {
-        source: '/tools/:tool(unix-timestamp-converter|epoch-converter|timestamp-to-date|date-to-timestamp|current-unix-timestamp|milliseconds-to-date|iso-8601-to-unix|unix-to-iso-8601|timezone-converter|timestamp-difference|utc-converter|date-difference|time-duration-calculator|add-time|subtract-time|unix-timestamp-validator|epoch-milliseconds|unix-timestamp-batch-converter|date-format-converter|iso-8601-converter|rfc-3339-converter|timezone-offset|world-clock|business-hours-converter|cron-generator)',
+        source: '/tools/:tool',
         destination: '/:tool',
         permanent: true,
       }

@@ -12,7 +12,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { AuthModal } from "./auth-modal";
 
 const DESKTOP_NAV = [
-  { href: "/tools", label: "Tools" },
+  { href: "/tools", label: "Dev Tools" },
   { href: "/guides", label: "Guides" },
   { href: "/developer", label: "Developer" },
   { href: "/timezones", label: "Time Zones" },
@@ -119,7 +119,7 @@ export function SiteHeader() {
             Workflows
           </Link>
           <Link href="/ai" className="btn btn-primary btn-sm hidden sm:inline-flex shadow-xs ml-1">
-            AI Tools
+            AI Hub
           </Link>
           {user ? (
             <div className="hidden sm:flex items-center gap-3 ml-2 border-l border-line pl-3">

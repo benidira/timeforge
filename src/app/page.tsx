@@ -30,7 +30,7 @@ export default function HomePage() {
             Castov Engine v2.0 is Live
           </div>
           <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-8">
-            The Ultimate <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Developer Toolkit</span>
+            A Growing Collection of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Free Developer Tools</span>
           </h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
             Stop searching for scattered tools. Castov provides a unified, secure, and lightning-fast workspace for your daily engineering tasks—from secure environment vaults to Docker visualizers.
@@ -103,7 +103,7 @@ export default function HomePage() {
               </p>
             </Link>
 
-            <Link href="/tools/sqlite-fiddle" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+            <Link href="/sqlite-fiddle" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
               <div className="w-14 h-14 bg-purple-50 group-hover:bg-purple-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
                 <DatabaseIcon className="text-purple-600 group-hover:text-white transition-colors" size={28} />
               </div>
@@ -113,7 +113,7 @@ export default function HomePage() {
               </p>
             </Link>
 
-            <Link href="/tools/docker-visualizer" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+            <Link href="/docker-visualizer" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
               <div className="w-14 h-14 bg-orange-50 group-hover:bg-orange-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
                 <ComponentIcon className="text-orange-600 group-hover:text-white transition-colors" size={28} />
               </div>
@@ -123,7 +123,7 @@ export default function HomePage() {
               </p>
             </Link>
 
-            <Link href="/tools/secret-scanner" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+            <Link href="/secret-scanner" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
               <div className="w-14 h-14 bg-pink-50 group-hover:bg-pink-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
                 <TerminalIcon className="text-pink-600 group-hover:text-white transition-colors" size={28} />
               </div>
