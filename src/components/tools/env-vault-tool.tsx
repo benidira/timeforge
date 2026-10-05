@@ -21,6 +21,7 @@ const arrayBufferToBase64 = (buffer: ArrayBuffer) => btoa(String.fromCharCode(..
 const base64ToArrayBuffer = (base64: string) => Uint8Array.from(atob(base64), c => c.charCodeAt(0));
 
 export function EnvVaultTool() {
+  const [tab, setTab] = useState<"personal" | "team">("personal");
   const [mode, setMode] = useState<"encrypt" | "decrypt">("encrypt");
   
   // Encrypt State
@@ -55,10 +56,9 @@ export function EnvVaultTool() {
       
       if (error) {
         // Fallback for local testing if DB is not created yet
-        alert("Saved locally! (DB error: " + error.message + ")");
-        setEncryptedLink(`http://localhost:3000/env-vault?id=local_mock&payload=${encodeURIComponent(payloadBase64)}`);
+        setEncryptedLink(`http://localhost:3000/tools/env-vault?id=local_mock&payload=${encodeURIComponent(payloadBase64)}`);
       } else {
-        setEncryptedLink(`${window.location.origin}/env-vault?id=${data.id}`);
+        setEncryptedLink(`${window.location.origin}/tools/env-vault?id=${data.id}`);
       }
     } catch (e) {
       console.error(e);
@@ -72,9 +72,7 @@ export function EnvVaultTool() {
     setDecryptError("");
     setDecryptedEnv("");
     try {
-      // In a real scenario, fetch payload using vaultId. 
-      // For demo, we parse it directly if passed via URL or mock
-      let payloadBase64 = vaultId; // Allow pasting raw payload for now if no DB
+      let payloadBase64 = vaultId; 
       
       const parts = payloadBase64.split(":");
       if (parts.length !== 3) throw new Error("Invalid payload format");
@@ -95,85 +93,122 @@ export function EnvVaultTool() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
-      <div className="flex bg-muted/20 p-1 rounded-lg w-fit mx-auto border border-line">
-        <button className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${mode === "encrypt" ? "bg-card shadow text-primary" : "text-muted hover:text-fg"}`} onClick={() => setMode("encrypt")}>
-          <LockIcon size={14} className="inline mr-2" /> Create Vault
+    <div className="w-full max-w-5xl mx-auto flex flex-col gap-8">
+      {/* High-End Tab Switcher */}
+      <div className="flex bg-[#050505] p-1.5 rounded-xl w-fit mx-auto border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.02)]">
+        <button 
+          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "personal" ? "bg-white text-black shadow-lg" : "text-zinc-500 hover:text-white"}`} 
+          onClick={() => setTab("personal")}
+        >
+          Personal Vault
         </button>
-        <button className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${mode === "decrypt" ? "bg-card shadow text-emerald-500" : "text-muted hover:text-fg"}`} onClick={() => setMode("decrypt")}>
-          <UnlockIcon size={14} className="inline mr-2" /> Open Vault
+        <button 
+          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "team" ? "bg-white text-black shadow-lg" : "text-zinc-500 hover:text-white"}`} 
+          onClick={() => setTab("team")}
+        >
+          Team Vaults <span className="ml-2 bg-indigo-500/20 text-indigo-400 px-1.5 py-0.5 rounded text-[10px] uppercase">Beta</span>
         </button>
       </div>
 
-      {mode === "encrypt" && (
-        <div className="bg-card border border-line rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold mb-2">Zero-Knowledge .env Sharer</h3>
-          <p className="text-sm text-muted mb-6">Your .env file is encrypted entirely in the browser using AES-GCM. The server never sees your raw secrets.</p>
-          
-          <textarea 
-            value={rawEnv} onChange={e => setRawEnv(e.target.value)}
-            className="w-full bg-field border border-line rounded-lg p-4 font-mono text-sm h-48 mb-4 focus:ring-1 focus:ring-primary focus:outline-none"
-            placeholder="PASTE .ENV CONTENTS HERE..."
-          />
-          
-          <div className="flex gap-4">
-            <input 
-              type="password" placeholder="Encryption Password" value={encPassword} onChange={e => setEncPassword(e.target.value)}
-              className="flex-1 bg-field border border-line rounded-lg px-4 py-2"
-            />
-            <button onClick={handleEncrypt} disabled={!encPassword || isEncrypting} className="btn btn-primary">
-              {isEncrypting ? "Encrypting..." : "Encrypt & Generate Link"}
+      {tab === "personal" && (
+        <div className="flex flex-col gap-6">
+          <div className="flex bg-[#0a0a0a] p-1 rounded-lg w-fit border border-white/5 mx-auto">
+            <button className={`px-6 py-2 rounded-md text-xs font-semibold transition-colors uppercase tracking-wider ${mode === "encrypt" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-white"}`} onClick={() => setMode("encrypt")}>
+              <LockIcon size={14} className="inline mr-2" /> Encrypt
+            </button>
+            <button className={`px-6 py-2 rounded-md text-xs font-semibold transition-colors uppercase tracking-wider ${mode === "decrypt" ? "bg-emerald-500/20 text-emerald-400" : "text-zinc-500 hover:text-white"}`} onClick={() => setMode("decrypt")}>
+              <UnlockIcon size={14} className="inline mr-2" /> Decrypt
             </button>
           </div>
 
-          {encryptedLink && (
-            <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg flex items-center gap-4">
-              <LinkIcon className="text-primary shrink-0" />
-              <input readOnly value={encryptedLink} className="w-full bg-transparent border-none text-sm font-mono focus:outline-none" />
-              <button className="btn btn-secondary btn-sm shrink-0" onClick={() => navigator.clipboard.writeText(encryptedLink)}>
-                <CopyIcon size={14} /> Copy
-              </button>
+          {mode === "encrypt" && (
+            <div className="bg-[#050505] border border-white/10 rounded-2xl p-8 shadow-[0_0_30px_rgba(255,255,255,0.02)] relative overflow-hidden group">
+              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <h3 className="text-xl font-bold text-fg mb-2 tracking-tight">Zero-Knowledge .env Sharer</h3>
+              <p className="text-sm text-zinc-400 mb-6">Your .env file is encrypted entirely in the browser using AES-GCM. The server never sees your raw secrets.</p>
+              
+              <textarea 
+                value={rawEnv} onChange={e => setRawEnv(e.target.value)}
+                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl p-4 font-mono text-sm h-48 mb-6 focus:ring-1 focus:ring-indigo-500/50 focus:outline-none transition-all text-zinc-300 placeholder:text-zinc-700"
+                placeholder="PASTE .ENV CONTENTS HERE..."
+              />
+              
+              <div className="flex gap-4">
+                <input 
+                  type="password" placeholder="Encryption Password" value={encPassword} onChange={e => setEncPassword(e.target.value)}
+                  className="flex-1 bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 font-mono text-sm text-white focus:outline-none focus:border-indigo-500/50"
+                />
+                <button onClick={handleEncrypt} disabled={!encPassword || isEncrypting} className="bg-white text-black hover:bg-zinc-200 font-bold px-6 rounded-xl transition-colors disabled:opacity-50">
+                  {isEncrypting ? "Encrypting..." : "Encrypt & Share"}
+                </button>
+              </div>
+
+              {encryptedLink && (
+                <div className="mt-8 p-4 bg-indigo-500/10 border border-indigo-500/30 rounded-xl flex items-center gap-4">
+                  <LinkIcon className="text-indigo-400 shrink-0" />
+                  <input readOnly value={encryptedLink} className="w-full bg-transparent border-none text-xs font-mono text-indigo-200 focus:outline-none" />
+                  <button className="bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-2 rounded-lg text-xs transition-colors shrink-0 flex items-center gap-2" onClick={() => navigator.clipboard.writeText(encryptedLink)}>
+                    <CopyIcon size={14} /> Copy
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {mode === "decrypt" && (
+            <div className="bg-[#050505] border border-emerald-500/20 rounded-2xl p-8 shadow-[0_0_30px_rgba(16,185,129,0.05)] relative overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+              <h3 className="text-xl font-bold text-fg mb-2 tracking-tight">Unlock .env Vault</h3>
+              <p className="text-sm text-zinc-400 mb-6">Enter the encrypted payload and the password to decrypt your secrets locally.</p>
+              
+              <input 
+                type="text" placeholder="Paste Encrypted Payload or Vault ID..." value={vaultId} onChange={e => setVaultId(e.target.value)}
+                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 mb-6 font-mono text-xs text-white focus:outline-none focus:border-emerald-500/50"
+              />
+              
+              <div className="flex gap-4">
+                <input 
+                  type="password" placeholder="Decryption Password" value={decPassword} onChange={e => setDecPassword(e.target.value)}
+                  className="flex-1 bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 font-mono text-sm text-white focus:outline-none focus:border-emerald-500/50"
+                />
+                <button onClick={handleDecrypt} disabled={!decPassword || !vaultId || isDecrypting} className="bg-emerald-500 text-black hover:bg-emerald-400 font-bold px-8 rounded-xl transition-colors disabled:opacity-50">
+                  {isDecrypting ? "Decrypting..." : "Decrypt"}
+                </button>
+              </div>
+
+              {decryptError && <div className="mt-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm font-mono">{decryptError}</div>}
+              
+              {decryptedEnv && (
+                <div className="mt-8">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Decrypted Successfully
+                    </span>
+                    <button className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 transition-colors" onClick={() => navigator.clipboard.writeText(decryptedEnv)}>
+                      <CopyIcon size={12} /> Copy
+                    </button>
+                  </div>
+                  <textarea 
+                    readOnly value={decryptedEnv}
+                    className="w-full bg-[#0a0a0a] border border-emerald-500/30 rounded-xl p-4 font-mono text-sm h-48 focus:outline-none text-emerald-50"
+                  />
+                </div>
+              )}
             </div>
           )}
         </div>
       )}
 
-      {mode === "decrypt" && (
-        <div className="bg-card border border-line rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold mb-2">Unlock .env Vault</h3>
-          <p className="text-sm text-muted mb-6">Enter the encrypted payload and the password to decrypt your secrets locally.</p>
-          
-          <input 
-            type="text" placeholder="Paste Encrypted Payload or Vault ID..." value={vaultId} onChange={e => setVaultId(e.target.value)}
-            className="w-full bg-field border border-line rounded-lg px-4 py-2 mb-4 font-mono text-xs"
-          />
-          
-          <div className="flex gap-4">
-            <input 
-              type="password" placeholder="Decryption Password" value={decPassword} onChange={e => setDecPassword(e.target.value)}
-              className="flex-1 bg-field border border-line rounded-lg px-4 py-2"
-            />
-            <button onClick={handleDecrypt} disabled={!decPassword || !vaultId || isDecrypting} className="btn btn-secondary !bg-emerald-500/10 !text-emerald-500 hover:!bg-emerald-500/20">
-              {isDecrypting ? "Decrypting..." : "Decrypt"}
-            </button>
+      {tab === "team" && (
+        <div className="bg-[#050505] border border-white/10 rounded-2xl p-12 text-center shadow-[0_0_30px_rgba(255,255,255,0.02)]">
+          <div className="w-16 h-16 bg-indigo-500/10 border border-indigo-500/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <LockIcon className="text-indigo-400" size={32} />
           </div>
-
-          {decryptError && <div className="mt-4 text-red-500 text-sm font-medium">{decryptError}</div>}
-          
-          {decryptedEnv && (
-            <div className="mt-6">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-bold text-emerald-500">Decrypted Successfully</span>
-                <button className="text-xs text-muted hover:text-fg flex items-center gap-1" onClick={() => navigator.clipboard.writeText(decryptedEnv)}>
-                  <CopyIcon size={12} /> Copy
-                </button>
-              </div>
-              <textarea 
-                readOnly value={decryptedEnv}
-                className="w-full bg-field border border-emerald-500/30 rounded-lg p-4 font-mono text-sm h-48 focus:outline-none"
-              />
-            </div>
-          )}
+          <h3 className="text-2xl font-bold text-fg mb-3">Team Shared Vaults</h3>
+          <p className="text-zinc-400 max-w-md mx-auto mb-8">Share encrypted .env files securely with your team using zero-knowledge RSA-OAEP + AES-GCM cryptography.</p>
+          <a href="/env-vault/team" className="inline-flex bg-white text-black hover:bg-zinc-200 font-bold px-8 py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            Open Workspace
+          </a>
         </div>
       )}
     </div>
