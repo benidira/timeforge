@@ -6,8 +6,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { AI_CATEGORIES, AI_TOOLS } from "@/lib/ai-tools";
 import { LayoutDashboardIcon, FolderIcon, WrenchIcon, ArrowRightIcon, ChevronDownIcon, PlusIcon, ArchiveIcon, TrashIcon, KeyIcon, LogOutIcon } from "lucide-react";
-import { useWorkspace } from "@/context/WorkspaceContext";
-import { useKeyManager } from "@/context/KeyManagerContext";
+import { useWorkspace } from "@/context/workspace-context";
+import { useKeyManager } from "@/context/key-manager-context";
 
 export function AiSidebar() {
   const pathname = usePathname();

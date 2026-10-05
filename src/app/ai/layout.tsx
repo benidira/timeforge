@@ -1,7 +1,7 @@
 import { AiSidebar } from "@/components/ai-sidebar";
-import { WorkspaceProvider } from "@/context/WorkspaceContext";
-import { KeyManagerProvider } from "@/context/KeyManagerContext";
-import { KeyVaultModal } from "@/components/KeyVaultModal";
+import { WorkspaceProvider } from "@/context/workspace-context";
+import { KeyManagerProvider } from "@/context/key-manager-context";
+import { KeyVaultModal } from "@/components/key-vault-modal";
 
 export default function AiLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -4,7 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import { AdSenseScript } from "@/components/adsense-script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { CommandPalette } from "@/components/CommandPalette";
+import { CommandPalette } from "@/components/command-palette";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 

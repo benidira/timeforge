@@ -5,7 +5,7 @@ import { useState } from "react";
 import { CopyIcon, CheckIcon, DownloadIcon } from "lucide-react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
-import { useKeyManager } from "@/context/KeyManagerContext";
+import { useKeyManager } from "@/context/key-manager-context";
 
 type Provider = "OpenAI" | "Anthropic" | "Google Gemini" | "Ollama";
 type Mode = "Stream UI (useChat)" | "Text Generation" | "Object Generation";

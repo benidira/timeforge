@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
-import { useKeyManager } from "@/context/KeyManagerContext";
+import { useKeyManager } from "@/context/key-manager-context";
 import { PlusIcon, TrashIcon } from "lucide-react";
 
 interface FewShotExample {

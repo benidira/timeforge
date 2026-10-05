@@ -8,13 +8,13 @@ import { JsonLd } from "@/components/json-ld";
 import { ToolForm } from "@/components/ai-tools/ToolForm";
 import { CursorRulesGenerator } from "@/components/ai-tools/CursorRulesGenerator";
 import { OllamaModelfileBuilder } from "@/components/ai-tools/OllamaModelfileBuilder";
-import { VercelAiSdkGenerator } from "@/components/ai-tools/VercelAiSdkGenerator";
+import { VercelAiSdkGenerator } from "@/components/ai-tools/vercel-ai-sdk-generator";
 import { JsonSchemaToolBuilder } from "@/components/ai-tools/JsonSchemaToolBuilder";
 import { LlmCostCalculator } from "@/components/ai-tools/LlmCostCalculator";
 import { McpConfigBuilder } from "@/components/ai-tools/McpConfigBuilder";
 import { GgufVramEstimator } from "@/components/ai-tools/GgufVramEstimator";
 import { JsonlDatasetFormatter } from "@/components/ai-tools/JsonlDatasetFormatter";
-import { ClaudeSystemPromptBuilder } from "@/components/ai-tools/ClaudeSystemPromptBuilder";
+import { ClaudeSystemPromptBuilder } from "@/components/ai-tools/claude-system-prompt-builder";
 import { RagChunkSizeCalculator } from "@/components/ai-tools/RagChunkSizeCalculator";
 
 export function generateStaticParams() {

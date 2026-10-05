@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useKeyManager } from "@/context/KeyManagerContext";
+import { useKeyManager } from "@/context/key-manager-context";
 import { KeyIcon, XIcon, CheckIcon, ShieldAlertIcon } from "lucide-react";
 import { useState } from "react";
 

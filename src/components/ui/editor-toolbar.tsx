@@ -2,7 +2,7 @@
 
 import { DownloadIcon, CopyIcon, CheckIcon, SaveIcon } from "lucide-react";
 import { useState } from "react";
-import { useWorkspace } from "@/context/WorkspaceContext";
+import { useWorkspace } from "@/context/workspace-context";
 
 interface EditorToolbarProps {
   title: string;
