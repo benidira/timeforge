@@ -17,26 +17,26 @@ export function CategorySection({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) 
       {TOOL_CATEGORIES.map((category) => {
         const tools = TOOLS.filter((t) => t.category === category);
         return (
-          <div key={category} className="card p-5">
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-hover text-accent">
+          <div key={category} className="bg-[#0a0a0a] border border-white/5 hover:border-white/20 rounded-2xl p-6 transition-all duration-300">
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-fg">
                 <CategoryIcon category={category} />
               </span>
               <div className="min-w-0">
-                <Heading className="text-lg font-semibold">{category}</Heading>
-                <p className="text-sm text-muted">{tools.length} tools</p>
+                <Heading className="text-xl font-bold text-fg tracking-tight">{category}</Heading>
+                <p className="text-sm font-semibold text-zinc-500">{tools.length} tools</p>
               </div>
             </div>
-            <p className="mt-3 text-sm text-muted">{CATEGORY_DESCRIPTIONS[category]}</p>
-            <ul className="mt-4 space-y-1 border-t border-line pt-3">
+            <p className="mt-4 text-sm text-zinc-400 leading-relaxed">{CATEGORY_DESCRIPTIONS[category]}</p>
+            <ul className="mt-6 space-y-1 border-t border-white/10 pt-4">
               {tools.map((t) => (
                 <li key={t.slug}>
                   <Link
                     href={toolPath(t.slug)}
-                    className="group flex items-center justify-between gap-2 rounded-lg px-2 py-2 text-sm text-fg no-underline hover:bg-hover"
+                    className="group flex items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-300 no-underline hover:bg-white/5 hover:text-white transition-colors"
                   >
                     <span className="truncate">{t.name}</span>
-                    <ArrowRightIcon className="tool-card-arrow shrink-0 text-muted group-hover:text-accent" />
+                    <ArrowRightIcon className="w-4 h-4 shrink-0 opacity-50 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
               ))}

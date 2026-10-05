@@ -161,10 +161,8 @@ export default function HomePage() {
             Find exactly what you need to format, convert, or calculate.
           </p>
         </div>
-        <div className="flex flex-col gap-12">
-          {["Timestamp", "Date & Time", "Timezone"].map(cat => (
-             <CategorySection key={cat} category={cat} title={`${cat} Tools`} />
-          ))}
+        <div className="mt-8">
+          <CategorySection headingLevel={3} />
         </div>
       </section>
 

@@ -122,22 +122,45 @@ export function SiteHeader() {
             AI Tools
           </Link>
           {user ? (
-            <div className="hidden sm:flex items-center gap-2 ml-1">
-              <span className="text-xs text-muted font-medium truncate max-w-[100px]">{user.email}</span>
-              <button 
-                onClick={async () => {
-                  const supabase = createClient();
-                  await supabase.auth.signOut();
-                }}
-                className="btn btn-secondary btn-sm shadow-xs"
-              >
-                Sign Out
-              </button>
+            <div className="hidden sm:flex items-center gap-3 ml-2 border-l border-white/10 pl-3">
+              <div className="flex items-center gap-2 group cursor-pointer relative">
+                <div className="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center overflow-hidden relative">
+                  <span className="text-xs font-bold text-indigo-400">
+                    {user.email?.charAt(0).toUpperCase() || "U"}
+                  </span>
+                  <div className="absolute inset-0 bg-indigo-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                {/* Minimal dropdown on hover */}
+                <div className="absolute top-10 right-0 w-48 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden z-50">
+                  <div className="px-4 py-3 border-b border-white/5">
+                    <p className="text-xs text-muted font-medium truncate">{user.email}</p>
+                  </div>
+                  <div className="p-1">
+                    <Link href="/tools/env-vault" className="block px-3 py-2 text-sm text-fg hover:bg-white/5 rounded-lg transition-colors">
+                      My Vaults
+                    </Link>
+                    <Link href="/canvas" className="block px-3 py-2 text-sm text-fg hover:bg-white/5 rounded-lg transition-colors">
+                      Workflows
+                    </Link>
+                  </div>
+                  <div className="p-1 border-t border-white/5">
+                    <button 
+                      onClick={async () => {
+                        const supabase = createClient();
+                        await supabase.auth.signOut();
+                      }}
+                      className="w-full text-left px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           ) : (
             <button 
               onClick={() => setIsAuthOpen(true)}
-              className="btn btn-secondary btn-sm hidden sm:inline-flex shadow-xs ml-1"
+              className="hidden sm:inline-flex items-center justify-center h-8 px-4 ml-2 rounded-lg bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-colors"
             >
               Sign In
             </button>
