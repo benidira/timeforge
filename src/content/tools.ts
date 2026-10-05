@@ -33,7 +33,8 @@ export type ToolSlug =
   | "secret-scanner"
   | "api-load-tester"
   | "docker-visualizer"
-  | "sqlite-fiddle";
+  | "sqlite-fiddle"
+  | "regex-explainer";
 
 export interface ContentSection {
   heading: string;
