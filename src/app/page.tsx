@@ -58,10 +58,15 @@ export default function HomePage() {
             <Link href="/tools" className="btn btn-primary h-12 px-8 text-base shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all bg-white text-black hover:bg-zinc-200 font-bold border-none">
               Explore Tools
             </Link>
-            <button onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))} className="btn bg-white/5 border border-white/10 hover:bg-white/10 text-fg h-12 px-8 text-base">
+            <button id="hero-search-trigger" className="btn bg-white/5 border border-white/10 hover:bg-white/10 text-fg h-12 px-8 text-base">
               Press ⌘K to Search
             </button>
           </div>
+          <script dangerouslySetInnerHTML={{__html: `
+            document.getElementById('hero-search-trigger')?.addEventListener('click', () => {
+              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
+            });
+          `}} />
         </div>
       </section>
 
