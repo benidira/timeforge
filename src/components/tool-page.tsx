@@ -2,8 +2,7 @@ import Link from "next/link";
 import { getExamples } from "@/content/examples";
 import { getGuide } from "@/content/guides";
 import { toolPath, type Tool } from "@/content/tools";
-import { faqJsonLd, webApplicationJsonLd } from "@/lib/seo";
-import { AdSlot } from "./ad-slot";
+import { faqJsonLd, webApplicationJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { Breadcrumb } from "./breadcrumb";
 import { ExamplesSection } from "./examples-section";
 import { FaqSection } from "./faq-section";
@@ -18,60 +17,66 @@ export function ToolPage({ tool }: { tool: Tool }) {
   const examples = getExamples(tool.slug);
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:py-10">
-      <JsonLd data={webApplicationJsonLd({ name: tool.name, description: tool.metaDescription, path })} />
+    <div className="layout-content max-w-5xl py-8 sm:py-12">
+      <JsonLd data={[
+        webApplicationJsonLd({ name: tool.name, description: tool.metaDescription, path }),
+        breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Tools", href: "/tools" }, { name: tool.name }], path)
+      ]} />
       <Breadcrumb
         path={path}
         crumbs={[{ name: "Home", href: "/" }, { name: "Tools", href: "/tools" }, { name: tool.name }]}
       />
 
-      <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{tool.name}</h1>
-      <p className="mt-3 max-w-2xl text-lg text-muted">{tool.intro}</p>
+      <div className="mt-6 mb-8">
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-xs font-semibold text-accent mb-4">
+          {tool.category.replace("-", " ").toUpperCase()}
+        </span>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-fg">{tool.name}</h1>
+        <p className="mt-3 max-w-2xl text-lg text-muted">{tool.intro}</p>
+      </div>
 
-      <AdSlot placement="tool-top" />
-
-      <section aria-label={`${tool.name} tool`} className="card mt-8 p-4 sm:p-6">
+      <section aria-label={`${tool.name} tool`} className="card p-5 sm:p-8 mb-12 border-line/60 shadow-sm">
         <ToolInterface slug={tool.slug} />
       </section>
 
-      <article className="prose-tf mt-4">
-        {tool.sections.map((s) => (
-          <section key={s.heading}>
-            <h2>{s.heading}</h2>
-            {s.paragraphs.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
+      <div className="grid gap-12 lg:grid-cols-[1fr_300px] items-start">
+        <div className="prose-tf max-w-none">
+          {tool.sections.map((s) => (
+            <section key={s.heading}>
+              <h2>{s.heading}</h2>
+              {s.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </section>
+          ))}
+          {guide ? (
+            <p className="mt-6 p-4 bg-hover rounded-lg border border-line text-sm">
+              <strong className="font-semibold text-fg">Want the background?</strong> Read our comprehensive guide: <Link href={`/guides/${guide.slug}`} className="font-medium text-accent hover:underline">{guide.name}</Link>.
+            </p>
+          ) : null}
+
+          <section aria-labelledby="how-to-use" className="mt-10">
+            <h2 id="how-to-use">How to use this tool</h2>
+            <ol className="space-y-2 mt-4 ml-4">
+              {tool.howTo.map((step) => (
+                <li key={step} className="text-muted pl-2">{step}</li>
+              ))}
+            </ol>
           </section>
-        ))}
-        {guide ? (
-          <p className="mt-4">
-            Want the background? Read <Link href={`/guides/${guide.slug}`}>{guide.name}</Link>.
-          </p>
-        ) : null}
 
-        <section aria-labelledby="how-to-use">
-          <h2 id="how-to-use">How to use this tool</h2>
-          <ol>
-            {tool.howTo.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-        </section>
-      </article>
+          <div className="mt-12">
+            <ExamplesSection examples={examples} />
+          </div>
 
-      <AdSlot placement="content-middle" />
+          <div className="mt-12">
+            <FaqSection items={tool.faq} />
+          </div>
+        </div>
 
-      <div className="mt-10">
-        <ExamplesSection examples={examples} />
+        <aside className="sticky top-24">
+          <RelatedTools slugs={tool.related} />
+        </aside>
       </div>
-
-      <div className="mt-10">
-        <FaqSection items={tool.faq} />
-      </div>
-
-      <AdSlot placement="content-bottom" />
-
-      <RelatedTools slugs={tool.related} />
 
       <JsonLd data={faqJsonLd(tool.faq)} />
     </div>

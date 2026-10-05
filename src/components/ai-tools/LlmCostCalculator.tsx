@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { CopyIcon, CheckIcon, DownloadIcon, CalculatorIcon } from "lucide-react";
+import { CopyIcon, CheckIcon, DownloadIcon } from "lucide-react";
 
 interface ModelPricing {
   id: string;

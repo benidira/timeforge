@@ -1,7 +1,7 @@
+
 "use client";
 
 import { useState, useMemo } from "react";
-import { DownloadIcon, CopyIcon, CheckIcon, RefreshCwIcon } from "lucide-react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
 
@@ -17,13 +17,12 @@ interface ParsedLine {
 export function JsonlDatasetFormatter() {
   const [formatMode, setFormatMode] = useState<FormatMode>("chat");
   const [inputRaw, setInputRaw] = useState("[\n  {\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helper\"},\n      {\"role\": \"user\", \"content\": \"Hi\"},\n      {\"role\": \"assistant\", \"content\": \"Hello!\"}\n    ]\n  }\n]");
-  const [copied, setCopied] = useState(false);
 
   const { parsedLines, validCount, errorCount, estimatedTokens } = useMemo(() => {
-    let textToParse = inputRaw.trim();
+    const textToParse = inputRaw.trim();
     if (!textToParse) return { parsedLines: [], validCount: 0, errorCount: 0, estimatedTokens: 0 };
 
-    let items: any[] = [];
+    let items: unknown[] = [];
     let linesMode = false;
 
     // First try to see if it's a JSON array
@@ -46,36 +45,40 @@ export function JsonlDatasetFormatter() {
     let charCount = 0;
 
     items.forEach((item, index) => {
-      let obj: any;
+      let obj: Record<string, unknown> | null = null;
       let error = "";
       let valid = false;
 
       try {
-        obj = linesMode ? JSON.parse(item) : item;
+        const parsed = linesMode && typeof item === 'string' ? JSON.parse(item) : item;
+        obj = parsed as Record<string, unknown>;
         
         if (formatMode === "chat") {
-          if (!obj.messages || !Array.isArray(obj.messages)) {
+          if (!obj?.messages || !Array.isArray(obj.messages)) {
             error = "Missing 'messages' array.";
           } else {
-            const hasRoles = obj.messages.every((m: any) => m.role && m.content);
+            const hasRoles = obj.messages.every((m: unknown) => {
+              const msg = m as Record<string, unknown>;
+              return typeof msg?.role === 'string' && typeof msg?.content === 'string';
+            });
             if (!hasRoles) error = "Messages must have 'role' and 'content' keys.";
             else valid = true;
           }
         } else {
-          if (typeof obj.prompt !== "string" || typeof obj.completion !== "string") {
+          if (typeof obj?.prompt !== "string" || typeof obj?.completion !== "string") {
             error = "Missing 'prompt' or 'completion' string keys.";
           } else {
             valid = true;
           }
         }
-      } catch (e: any) {
-        error = `Invalid JSON syntax: ${e.message}`;
+      } catch (e: unknown) {
+        error = `Invalid JSON syntax: ${(e as Error).message}`;
       }
 
       if (valid) validCount++;
       else errorCount++;
 
-      const content = obj ? JSON.stringify(obj) : item;
+      const content = obj ? JSON.stringify(obj) : (typeof item === 'string' ? item : JSON.stringify(item));
       charCount += content.length;
 
       lines.push({
@@ -96,23 +99,6 @@ export function JsonlDatasetFormatter() {
 
   const outputContent = parsedLines.map(l => l.content).join("\n");
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(outputContent);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    const blob = new Blob([outputContent], { type: "application/jsonl" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "dataset.jsonl";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
 
   const insertExample = () => {
     if (formatMode === "chat") {

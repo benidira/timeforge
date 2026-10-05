@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+
 
 // Dynamically import Monaco Editor to avoid SSR issues
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), { 
@@ -22,20 +22,6 @@ interface CodeEditorProps {
 }
 
 export function CodeEditor({ value, language, onChange, readOnly = false, height = "400px" }: CodeEditorProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div style={{ height }} className="w-full flex items-center justify-center bg-card border border-line rounded-lg">
-        <span className="text-sm font-mono text-muted">Initializing...</span>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full rounded-lg overflow-hidden border border-line/60 shadow-inner" style={{ height }}>
       <MonacoEditor

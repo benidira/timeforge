@@ -18,6 +18,13 @@ import { TimezoneOffsetTool } from "./tools/timezone-offset-tool";
 import { UnixValidatorTool } from "./tools/unix-validator-tool";
 import { UtcConverterTool } from "./tools/utc-converter-tool";
 import { WorldClockTool } from "./tools/world-clock-tool";
+import { TimezoneSimulatorTool } from "./tools/timezone-simulator-tool";
+import { UniversalConfigTool } from "./tools/universal-config-tool";
+import { EnvVaultTool } from "./tools/env-vault-tool";
+import { SecretScannerTool } from "./tools/secret-scanner-tool";
+import { ApiLoadTesterTool } from "./tools/api-load-tester-tool";
+import { DockerVisualizerTool } from "./tools/docker-visualizer-tool";
+import { SqliteFiddleTool } from "./tools/sqlite-fiddle-tool";
 
 /**
  * Maps a tool slug to its interactive interface. To add a tool: add its content to
@@ -75,5 +82,19 @@ export function ToolInterface({ slug }: { slug: ToolSlug }) {
       return <BusinessHoursTool />;
     case "cron-generator":
       return <CronGeneratorTool />;
+    case "timezone-simulator":
+      return <TimezoneSimulatorTool />;
+    case "universal-config-sync":
+      return <UniversalConfigTool />;
+    case "env-vault":
+      return <EnvVaultTool />;
+    case "secret-scanner":
+      return <SecretScannerTool />;
+    case "api-load-tester":
+      return <ApiLoadTesterTool />;
+    case "docker-visualizer":
+      return <DockerVisualizerTool />;
+    case "sqlite-fiddle":
+      return <SqliteFiddleTool />;
   }
 }

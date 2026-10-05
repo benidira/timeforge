@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useKeyManager } from "@/context/KeyManagerContext";
@@ -39,7 +40,7 @@ export function KeyVaultModal() {
 
         <div className="mb-6 p-3 rounded-lg bg-warning/10 border border-warning/20 flex gap-3 text-warning/90 text-sm">
           <ShieldAlertIcon className="w-5 h-5 shrink-0" />
-          <p>Your keys are stored locally in your browser and are never sent to Castov's servers. They are only sent directly to the respective AI providers via our secure edge functions.</p>
+          <p>Your keys are stored locally in your browser and are never sent to Castov&apos;s servers. They are only sent directly to the respective AI providers via our secure edge functions.</p>
         </div>
 
         <div className="space-y-4">

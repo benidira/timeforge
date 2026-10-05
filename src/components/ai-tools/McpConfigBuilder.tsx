@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DownloadIcon, CopyIcon, CheckIcon, PlusIcon, TrashIcon } from "lucide-react";
+import { PlusIcon, TrashIcon } from "lucide-react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
 
@@ -51,7 +51,6 @@ export function McpConfigBuilder() {
   const [args, setArgs] = useState<string[]>(["-y", "@modelcontextprotocol/server-filesystem", "/"]);
   const [env, setEnv] = useState<EnvVar[]>([]);
   const [newArg, setNewArg] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const applyPreset = (presetKey: string) => {
     const preset = PRESETS[presetKey];
@@ -106,23 +105,6 @@ export function McpConfigBuilder() {
 
   const outputContent = generateJson();
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(outputContent);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    const blob = new Blob([outputContent], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "claude_desktop_config.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="grid lg:grid-cols-12 gap-8 items-start w-full">

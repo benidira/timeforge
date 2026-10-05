@@ -26,7 +26,14 @@ export type ToolSlug =
   | "timezone-offset"
   | "world-clock"
   | "business-hours-converter"
-  | "cron-generator";
+  | "cron-generator"
+  | "timezone-simulator"
+  | "universal-config-sync"
+  | "env-vault"
+  | "secret-scanner"
+  | "api-load-tester"
+  | "docker-visualizer"
+  | "sqlite-fiddle";
 
 export interface ContentSection {
   heading: string;
@@ -1324,6 +1331,162 @@ export const TOOLS: Tool[] = [
     related: ["current-unix-timestamp", "timezone-converter", "world-clock", "unix-timestamp-validator"],
     guide: "cron-expressions-explained",
   },
+  {
+    slug: "timezone-simulator",
+    category: "Time Zones",
+    name: "Timezone Travel Simulator",
+    seoTitle: "Timezone Simulator: Visually Test Events Across Regions",
+    metaDescription: "Test and debug how your cron jobs, deployments, or global events align across different timezones using a visual timeline simulator.",
+    intro: "Slide through time to visually verify how a single point in time resolves across multiple global cities simultaneously.",
+    cardDescription: "Visual timeline for debugging global events across regions.",
+    sections: [
+      {
+        heading: "Why a Simulator?",
+        paragraphs: ["Building distributed systems means dealing with events happening globally. A standard converter shows you static times, but a simulator lets you drag a slider and instantly see how day and night shift across regions. It's the ultimate tool for debugging cron jobs, deployment windows, and global push notifications."]
+      }
+    ],
+    howTo: [
+      "Add the timezones you want to track (e.g., Tokyo, UTC, PST).",
+      "Drag the slider along the 24-hour axis.",
+      "Watch the local times update synchronously to verify overlap hours."
+    ],
+    faq: [],
+    related: ["timezone-converter", "world-clock", "cron-generator"],
+  },
+  {
+    slug: "universal-config-sync",
+    category: "Developer",
+    name: "Universal Config Sync",
+    seoTitle: "Universal Config Sync: YAML, JSON, TOML Converter",
+    metaDescription: "Convert and synchronize JSON, YAML, and TOML configuration files in real-time.",
+    intro: "Edit your configuration in any format, and watch the others synchronize instantly with real-time syntax validation.",
+    cardDescription: "Real-time sync between JSON, YAML, and TOML.",
+    sections: [
+      {
+        heading: "Why a Universal Sync?",
+        paragraphs: ["Configuration formats are a mess. DevOps engineers constantly translate between JSON (for APIs), YAML (for Kubernetes/CI), and TOML (for Rust/Python). This tool translates them locally in your browser in real-time."]
+      }
+    ],
+    howTo: [
+      "Paste your configuration in the format you have.",
+      "Edit the file.",
+      "Copy the converted configuration from the other panels."
+    ],
+    faq: [],
+    related: ["timezone-simulator", "env-vault"],
+  },
+  {
+    slug: "env-vault",
+    category: "Developer",
+    name: "Zero-Knowledge .env Vault",
+    seoTitle: "Secure .env Vault: Share Environment Variables Safely",
+    metaDescription: "Share your .env files securely. Encrypted in your browser using AES-GCM before transmission.",
+    intro: "Share sensitive .env files with your team using military-grade encryption in your browser. The server never sees your raw secrets.",
+    cardDescription: "End-to-End encrypted .env sharing.",
+    sections: [
+      {
+        heading: "How it works",
+        paragraphs: ["When you paste your .env file and enter a password, your browser generates a secure key using PBKDF2 and encrypts the file using AES-GCM. Only the encrypted blob is sent to our servers. When your teammate opens the link, the reverse happens on their machine. We literally cannot read your secrets."]
+      }
+    ],
+    howTo: [
+      "Paste your .env file into the Encrypt tab.",
+      "Enter a strong password.",
+      "Send the generated payload or link to your teammate.",
+      "They use the Decrypt tab and the password to read the secrets."
+    ],
+    faq: [],
+    related: ["universal-config-sync"],
+  },
+  {
+    slug: "secret-scanner",
+    category: "Developer",
+    name: "Universal Secret Scanner",
+    seoTitle: "Secret Scanner: Check Code for Leaked API Keys",
+    metaDescription: "Scan your source code and .env files locally for over 200 known secret patterns, including AWS, Stripe, and GitHub keys.",
+    intro: "Never commit a secret again. Paste your code to scan for exposed API keys and sensitive tokens completely offline.",
+    cardDescription: "Find leaked secrets in code before committing.",
+    sections: [
+      {
+        heading: "Secure Your Code",
+        paragraphs: ["Accidentally committing an AWS key or Stripe token can cost thousands of dollars. This tool runs 100% locally in your browser, using advanced regex patterns to identify over 200 types of credentials across multiple cloud providers."]
+      }
+    ],
+    howTo: [
+      "Paste your source code or configuration file.",
+      "The tool immediately highlights any detected secrets.",
+      "Remove or rotate the compromised secrets before pushing your code."
+    ],
+    faq: [],
+    related: ["env-vault"],
+  },
+  {
+    slug: "api-load-tester",
+    category: "Developer",
+    name: "Shadow API Load Tester",
+    seoTitle: "API Load Tester: Test Endpoint Performance Locally",
+    metaDescription: "Test the rate limits, latency, and performance of your API endpoints directly from your browser.",
+    intro: "Stress test your APIs instantly. Configure RPS and duration, and watch a real-time latency chart populate as your browser hammers the endpoint.",
+    cardDescription: "Real-time API stress testing and latency charts.",
+    sections: [
+      {
+        heading: "Browser-Based Stress Testing",
+        paragraphs: ["Most load testing tools require complex CLI setup or paid subscriptions. Shadow API Load Tester uses your browser's fetch engine to send high-concurrency requests to your API, giving you instant visual feedback on latency spikes and rate limiting (429s)."]
+      }
+    ],
+    howTo: [
+      "Enter your API endpoint URL.",
+      "Select the HTTP method.",
+      "Configure the Requests per Second (RPS) and test duration.",
+      "Click Start and monitor the real-time latency charts."
+    ],
+    faq: [],
+    related: ["universal-config-sync"],
+  },
+  {
+    slug: "docker-visualizer",
+    category: "Developer",
+    name: "Docker Architecture Visualizer",
+    seoTitle: "Docker & Kubernetes Architecture Visualizer",
+    metaDescription: "Paste your docker-compose.yml and instantly generate an interactive architecture diagram of your microservices.",
+    intro: "Visualize complex microservice architectures instantly. Paste your docker-compose file to see a visual map of how your containers communicate, expose ports, and share volumes.",
+    cardDescription: "Generate diagrams from docker-compose.yml.",
+    sections: [
+      {
+        heading: "Instant Architecture Maps",
+        paragraphs: ["Understanding a 500-line docker-compose file is tough. This tool parses the YAML directly in your browser and uses React Flow to draw an interactive map of your stack, showing dependencies, ports, and volumes at a glance."]
+      }
+    ],
+    howTo: [
+      "Paste your docker-compose.yml file into the editor.",
+      "The canvas automatically renders nodes for each service.",
+      "Arrows represent \"depends_on\" or \"links\" relationships between containers."
+    ],
+    faq: [],
+    related: ["universal-config-sync"],
+  },
+  {
+    slug: "sqlite-fiddle",
+    category: "Developer",
+    name: "In-Browser SQLite Fiddle",
+    seoTitle: "Online SQLite Fiddle & Database Playground",
+    metaDescription: "Write and execute SQL queries in a fully local SQLite database running entirely in your browser via WebAssembly.",
+    intro: "Test SQL queries, create tables, and manipulate data instantly without installing anything. Powered by WebAssembly SQLite, everything runs offline in your browser.",
+    cardDescription: "Run SQLite entirely in your browser via WASM.",
+    sections: [
+      {
+        heading: "A Full Database in Your Browser",
+        paragraphs: ["Sometimes you just need to test a complex JOIN or window function. Instead of spinning up a Docker container, this tool boots a real SQLite engine (sql.js) locally via WebAssembly. Your data never leaves your machine."]
+      }
+    ],
+    howTo: [
+      "Click 'Load Demo Data' to populate the database with a sample table.",
+      "Write standard SQLite queries in the editor.",
+      "Click 'Run Query' to view the results in the table below."
+    ],
+    faq: [],
+    related: ["universal-config-sync"],
+  }
 ];
 
 export const TOOL_SLUGS = TOOLS.map((t) => t.slug);

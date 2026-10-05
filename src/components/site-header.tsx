@@ -2,10 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { createClient } from "@/utils/supabase/client";
+import { User } from "@supabase/supabase-js";
 import { SITE } from "@/lib/site";
 import { BrandMark } from "./brand-mark";
 import { MobileNav } from "./mobile-nav";
 import { ThemeToggle } from "./theme-toggle";
+import { AuthModal } from "./auth-modal";
 
 const DESKTOP_NAV = [
   { href: "/tools", label: "Tools" },
@@ -17,6 +21,21 @@ const DESKTOP_NAV = [
 
 export function SiteHeader() {
   const pathname = usePathname() || "";
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+    
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const isActive = (href: string) => {
     if (href === "/tools") return pathname === "/tools" || pathname.startsWith("/tools/");
@@ -38,7 +57,7 @@ export function SiteHeader() {
             aria-label={`${SITE.name} home`}
           >
             <BrandMark />
-            <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-fg via-fg to-muted bg-clip-text">
+            <span className="text-lg font-bold tracking-tight text-fg">
               {SITE.name}
             </span>
           </Link>
@@ -96,12 +115,37 @@ export function SiteHeader() {
             </svg>
           </button>
 
+          <Link href="/canvas" className="btn btn-secondary btn-sm hidden sm:inline-flex shadow-xs ml-1">
+            Workflows
+          </Link>
           <Link href="/ai" className="btn btn-primary btn-sm hidden sm:inline-flex shadow-xs ml-1">
             AI Tools
           </Link>
+          {user ? (
+            <div className="hidden sm:flex items-center gap-2 ml-1">
+              <span className="text-xs text-muted font-medium truncate max-w-[100px]">{user.email}</span>
+              <button 
+                onClick={async () => {
+                  const supabase = createClient();
+                  await supabase.auth.signOut();
+                }}
+                className="btn btn-secondary btn-sm shadow-xs"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={() => setIsAuthOpen(true)}
+              className="btn btn-secondary btn-sm hidden sm:inline-flex shadow-xs ml-1"
+            >
+              Sign In
+            </button>
+          )}
           <ThemeToggle />
         </div>
       </div>
+      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </header>
   );
 }

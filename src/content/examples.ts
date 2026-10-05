@@ -743,5 +743,15 @@ export function getExamples(slug: ToolSlug): ToolExamples {
         ],
       };
     }
+    case "timezone-simulator":
+    case "universal-config-sync":
+    case "env-vault":
+    case "secret-scanner":
+    case "api-load-tester":
+    case "docker-visualizer":
+    case "sqlite-fiddle":
+      return { kind: "io", intro: "", items: [] };
+    default:
+      return { kind: "io", intro: "", items: [] };
   }
 }

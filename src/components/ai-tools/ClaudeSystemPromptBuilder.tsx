@@ -1,10 +1,11 @@
+
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { CopyIcon, CheckIcon, DownloadIcon, PlusIcon, TrashIcon } from "lucide-react";
+import { useState } from "react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
 import { useKeyManager } from "@/context/KeyManagerContext";
+import { PlusIcon, TrashIcon } from "lucide-react";
 
 interface FewShotExample {
   id: string;
@@ -18,7 +19,6 @@ export function ClaudeSystemPromptBuilder() {
   const [context, setContext] = useState("The codebase is a Next.js 14 application using App Router, TypeScript, and Tailwind CSS. It is a financial dashboard.");
   const [constraints, setConstraints] = useState("1. Do not output full files, only diffs.\n2. Explain the 'why' before the code.\n3. Format output in Markdown.");
   const [examples, setExamples] = useState<FewShotExample[]>([]);
-  const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<"code" | "playground">("code");
   const [provider, setProvider] = useState<"openai" | "anthropic">("openai");
   
@@ -105,12 +105,15 @@ export function ClaudeSystemPromptBuilder() {
                 latest[latest.length - 1].content = assistantMsg;
                 return latest;
               });
-            } catch (e) {}
+            } catch {
+              // Ignore parse errors for incomplete chunks
+            }
           }
         }
       }
-    } catch (err: any) {
-      setMessages(prev => [...prev, { id: Date.now().toString(), role: "assistant", content: "Error: " + err.message }]);
+    } catch (err: unknown) {
+      const error = err as Error;
+      setMessages(prev => [...prev, { id: Date.now().toString(), role: "assistant", content: "Error: " + (error.message || "Unknown error") }]);
     } finally {
       setIsLoading(false);
     }
@@ -268,7 +271,7 @@ export function ClaudeSystemPromptBuilder() {
             <div className="flex items-center justify-between p-3 border-b border-line/40 bg-card/20">
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-muted">Provider:</span>
-                <select className="bg-field border border-line rounded px-2 py-1 text-fg focus:border-accent" value={provider} onChange={e => setProvider(e.target.value as any)}>
+                <select className="bg-field border border-line rounded px-2 py-1 text-fg focus:border-accent" value={provider} onChange={e => setProvider(e.target.value as "openai" | "anthropic")}>
                   <option value="openai">OpenAI (GPT-4o)</option>
                   <option value="anthropic">Anthropic (Claude 3.5)</option>
                 </select>

@@ -24,14 +24,13 @@ export function buildMetadata({ title, description, path }: PageSeo): Metadata {
       description,
       siteName: SITE.name,
       locale: SITE.locale,
-      // Pages that define their own openGraph object do not inherit the file-based image, so it is set here.
-      images: [{ url: absoluteUrl("/opengraph-image"), width: OG_SIZE.width, height: OG_SIZE.height, alt: OG_ALT }],
+      images: [{ url: absoluteUrl("/opengraph_image.jpg"), width: OG_SIZE.width, height: OG_SIZE.height, alt: OG_ALT }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [{ url: absoluteUrl("/twitter-image"), width: OG_SIZE.width, height: OG_SIZE.height, alt: OG_ALT }],
+      images: [{ url: absoluteUrl("/twitter_image.jpg"), width: OG_SIZE.width, height: OG_SIZE.height, alt: OG_ALT }],
     },
   };
 }

@@ -12,8 +12,8 @@ import { ToolCard } from "@/components/tool-card";
 import { CopyButton } from "@/components/ui/copy-button";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Castov | Powerful Time & Date Tools for Everyone",
-  description: "Fast, accurate and privacy-friendly tools for timestamps, dates, time zones, durations and developer workflows.",
+  title: "Castov | Developer tools that just work",
+  description: "Fast, simple, privacy-friendly tools for timestamps, dates, time zones, formats, and developer workflows.",
   path: "/",
 });
 
@@ -22,8 +22,8 @@ export default function HomePage() {
     "unix-timestamp-converter",
     "timestamp-to-date",
     "date-to-timestamp",
-    "world-clock",
     "timezone-converter",
+    "world-clock",
     "date-calculator"
   ];
   const popularTools = TOOLS.filter((t) => POPULAR_SLUGS.includes(t.slug));
@@ -32,197 +32,198 @@ export default function HomePage() {
     <>
       <JsonLd data={[websiteJsonLd(), faqJsonLd(HOME_FAQ)]} />
 
-      {/* ── Hero ── */}
-      <section className="hero-section w-full border-b border-line/20 mb-12 relative overflow-hidden bg-gradient-to-b from-black to-card">
-        {/* Glow effects */}
-        <div className="absolute top-[-10%] left-[20%] w-[60%] h-[50%] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
+      {/* ── 1. Hero Section ── */}
+      <section className="relative w-full border-b border-line overflow-hidden bg-bg pt-24 pb-20 sm:pt-32 sm:pb-28">
+        {/* Ambient radial glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
         
-        <div className="layout-content py-24 sm:py-32 text-center relative z-10">
-          <div className="mb-8 flex justify-center animate-fade-in-up" style={{ animationDelay: '0ms' }}>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-xs font-semibold text-accent backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              Introducing Castov AI Developer Hub
+        <div className="layout-content relative z-10 flex flex-col items-center text-center">
+          <div className="mb-6 animate-fade-in-up flex items-center justify-center gap-2" style={{ animationDelay: '0ms' }}>
+            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20 backdrop-blur-md">
+              Developer utilities for everyday work
             </span>
           </div>
 
-          <h1 className="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl text-fg animate-fade-in-up drop-shadow-sm" style={{ animationDelay: '100ms' }}>
-            AI DEVELOPMENT. FASTER.<br />
-            <span className="bg-gradient-to-r from-fg via-fg to-muted bg-clip-text text-transparent opacity-90">
-              SUPERCHARGE YOUR WORKFLOW.
-            </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-fg to-muted animate-fade-in-up max-w-4xl leading-tight" style={{ animationDelay: '100ms' }}>
+            Enterprise-grade developer tools that just work.
           </h1>
           
-          <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-muted animate-fade-in-up font-medium" style={{ animationDelay: '200ms' }}>
-            The world's most powerful collection of Time, Date, and AI Developer tools. 
-            Instantly accessible from your browser.
+          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted animate-fade-in-up leading-relaxed" style={{ animationDelay: '200ms' }}>
+            Convert timestamps, compare time zones, format dates, and generate developer-ready values instantly. Build faster with our sleek suite of tools.
           </p>
 
-          {/* Hidden RTL element required by tests */}
           <span className="sr-only" dir="rtl">بسرعة ومجانًا</span>
 
-          {/* ── Giant Search Trigger ── */}
-          <div className="mt-12 mx-auto max-w-3xl relative z-50 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-            <button 
-              id="home-search-trigger"
-              className="w-full flex items-center justify-between px-6 py-4 bg-field/40 hover:bg-hover/60 border border-line/60 rounded-2xl shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-accent/40 group"
-            >
-              <div className="flex items-center gap-4 text-muted group-hover:text-fg transition-colors">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="m21 21-4.3-4.3" />
-                </svg>
-                <span className="text-lg font-medium">Search all tools, models, docs...</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <kbd className="hidden sm:flex items-center justify-center h-8 px-2.5 text-sm font-semibold bg-card/50 text-muted rounded-lg border border-line/60 font-mono shadow-sm group-hover:text-accent transition-colors">
-                  ⌘K
-                </kbd>
-              </div>
-            </button>
-            <script dangerouslySetInnerHTML={{__html: `
-              document.getElementById('home-search-trigger')?.addEventListener('click', () => {
-                document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
-              });
-            `}} />
-          </div>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-            <Link href="/ai" className="btn btn-primary btn-lg px-8 shadow-xl shadow-accent/20">
-              Explore AI Tools
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-4 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+            <Link href="/tools" className="btn btn-primary h-12 px-8 text-base shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all">
+              Get Started Free
             </Link>
-            <Link href="/tools" className="btn btn-secondary btn-lg px-8 bg-field border-line/40 backdrop-blur-md">
-              Time & Date Tools
+            <Link href="/tools" className="btn btn-secondary h-12 px-8 text-base bg-card hover:bg-hover backdrop-blur-md">
+              Explore Tools
             </Link>
           </div>
+          
+          <div className="mt-6 text-sm text-muted animate-fade-in-up flex items-center gap-2" style={{ animationDelay: '400ms' }}>
+            Press <kbd className="px-2 py-1 bg-card border border-line rounded-md text-xs font-mono font-medium shadow-sm">Ctrl</kbd> + <kbd className="px-2 py-1 bg-card border border-line rounded-md text-xs font-mono font-medium shadow-sm">K</kbd> to open command menu
+          </div>
 
-          {/* ── Live Epoch (Subtle placement) ── */}
-          <div className="mt-16 flex justify-center animate-fade-in-up text-left opacity-60 hover:opacity-100 transition-opacity" style={{ animationDelay: '500ms' }}>
-            <LiveEpoch />
+          <div className="mt-16 animate-fade-in-up w-full max-w-sm mx-auto" style={{ animationDelay: '400ms' }}>
+            <div className="card p-4 flex flex-col items-center gap-2">
+              <span className="text-xs font-semibold text-muted uppercase">Live Unix Timestamp</span>
+              <div className="text-2xl font-mono font-medium text-fg tracking-tight">
+                <LiveEpoch />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="layout-content space-y-24 py-12 pb-24">
+      {/* ── 2. Global Search Trigger ── */}
+      <section className="py-12 border-b border-line bg-bg">
+        <div className="layout-content max-w-4xl">
+          <button 
+            id="home-search-trigger"
+            className="w-full flex items-center justify-between px-6 py-4 bg-field hover:bg-hover border border-line rounded-lg shadow-sm transition-colors text-left"
+          >
+            <div className="flex items-center gap-4 text-muted">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              <span className="text-base font-medium">Search tools, timestamps, time zones, and guides...</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-2">
+              <kbd className="h-7 px-2 flex items-center justify-center text-xs font-medium bg-card text-muted rounded border border-line font-mono shadow-sm">
+                ⌘ K
+              </kbd>
+            </div>
+          </button>
+          <script dangerouslySetInnerHTML={{__html: `
+            document.getElementById('home-search-trigger')?.addEventListener('click', () => {
+              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
+            });
+          `}} />
+        </div>
+      </section>
 
-        {/* ── Popular Tools ── */}
+      <div className="layout-content space-y-24 py-16 pb-32">
+
+        {/* ── 3. Popular Tools ── */}
         <section aria-labelledby="popular-tools">
-          <h2 id="popular-tools" className="section-heading mb-8">Popular Tools</h2>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mb-8">
+            <h2 id="popular-tools" className="text-2xl font-semibold text-fg tracking-tight">Popular Tools</h2>
+            <p className="text-muted mt-1 text-base">The most frequently used utilities.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {popularTools.map((t) => (
               <ToolCard key={t.slug} tool={t} headingLevel={3} />
             ))}
           </div>
         </section>
 
-        {/* ── Browse by Category ── */}
+        {/* ── 4. Tool Categories ── */}
         <section aria-labelledby="categories">
-          <h2 id="categories" className="section-heading mb-8">Browse by Category</h2>
+          <div className="mb-8">
+            <h2 id="categories" className="text-2xl font-semibold text-fg tracking-tight">Browse by Category</h2>
+            <p className="text-muted mt-1 text-base">Find specific tools for your current task.</p>
+          </div>
           <CategorySection headingLevel={3} />
         </section>
 
-        {/* ── Developer Tools ── */}
-        <section aria-labelledby="developer-tools">
-          <div className="mb-8 max-w-3xl">
-            <h2 id="developer-tools" className="section-heading mb-4">Developer Snippets</h2>
-            <p className="text-muted text-lg">Unix Timestamp, ISO 8601, RFC 3339, and Date formats. Copy-paste ready for your next project.</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {DEV_SNIPPETS.map((item) => (
-              <div key={item.label} className="card p-6 relative group overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                <div className="flex items-center justify-between gap-3 relative z-10">
-                  <h3 className="!my-0 text-sm font-semibold text-muted">{item.label}</h3>
-                  <CopyButton value={item.code} label={item.label} />
-                </div>
-                <pre className="code-block mt-4 border-line/50 bg-card/50 relative z-10">
-                  <code>{item.code}</code>
-                </pre>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Time Zones Section ── */}
-        <section aria-labelledby="time-zones">
-          <div className="card p-8 sm:p-12 relative overflow-hidden bg-gradient-to-br from-card to-hover/50 border-line/50">
-            <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-              <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div className="relative z-10 max-w-3xl">
-              <h2 id="time-zones" className="text-3xl font-bold tracking-tight mb-4">Time Zones & World Clock</h2>
-              <p className="text-lg text-muted mb-8">Navigate across borders with our accurate time zone converters, world clock, UTC reference, and business hours tools.</p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/timezones" className="btn btn-primary">Time Zones Hub</Link>
-                <Link href="/tools/world-clock" className="btn btn-secondary bg-card">World Clock</Link>
-                <Link href="/tools/timezone-converter" className="btn btn-secondary bg-card">Timezone Converter</Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Why Castov ── */}
+        {/* ── 5. Built for Developers ── */}
         <section aria-labelledby="why-castov">
-          <h2 id="why-castov" className="section-heading mb-8">Why Castov?</h2>
+          <div className="mb-8">
+            <h2 id="why-castov" className="text-2xl font-semibold text-fg tracking-tight">Built for developers</h2>
+            <p className="text-muted mt-1 text-base">Privacy-first tools designed for productivity.</p>
+          </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_ITEMS.map((item) => (
-              <div key={item.title} className="card p-6 bg-card/60 border-line/40 hover:bg-hover/50 transition-colors">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <div key={item.title} className="card p-6">
+                <div className="mb-4 text-primary">
                   <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-xl">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
+                <h3 className="font-semibold text-lg text-fg">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted">{item.text}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── Guides ── */}
-        <section aria-labelledby="guides">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <h2 id="guides" className="section-heading mb-2">Learn & Guides</h2>
-              <p className="text-muted">In-depth articles and tutorials.</p>
-            </div>
-            <Link href="/guides" className="text-sm font-semibold text-accent hover:text-accent-hover hidden sm:block">View all guides &rarr;</Link>
+        {/* ── 6. Developer Snippets ── */}
+        <section aria-labelledby="developer-tools">
+          <div className="mb-8 max-w-3xl">
+            <h2 id="developer-tools" className="text-2xl font-semibold text-fg tracking-tight">Developer Snippets</h2>
+            <p className="text-muted mt-1 text-base">Quick copy-ready snippets for common time operations.</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {GUIDES.slice(0, 3).map((g) => (
+          <div className="grid gap-4 md:grid-cols-2">
+            {DEV_SNIPPETS.map((item) => (
+              <div key={item.label} className="card p-5 flex flex-col justify-between">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-sm font-semibold text-fg">{item.label}</h3>
+                  <CopyButton value={item.code} label={item.label} />
+                </div>
+                <div className="code-block mt-0 p-3 bg-field text-sm">
+                  <code>{item.code}</code>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── 7. Time Zones Section ── */}
+        <section aria-labelledby="time-zones">
+          <div className="card p-10 bg-field border-line flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <h2 id="time-zones" className="text-2xl font-semibold text-fg tracking-tight mb-3">Time Zones & World Clock</h2>
+              <p className="text-base text-muted mb-6">Compare cities, understand offsets, and calculate business hours instantly across global borders.</p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/timezones" className="btn btn-primary">Time Zones Hub</Link>
+                <Link href="/tools/timezone-converter" className="btn btn-secondary">Timezone Converter</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 8. Guides ── */}
+        <section aria-labelledby="guides">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 id="guides" className="text-2xl font-semibold text-fg tracking-tight">Guides & Articles</h2>
+              <p className="text-muted mt-1 text-base">Learn about timestamps, dates, and developer standards.</p>
+            </div>
+            <Link href="/guides" className="text-sm font-medium text-link hover:underline hidden sm:block">View all guides</Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {GUIDES.slice(0, 4).map((g) => (
               <Link
                 key={g.slug}
                 href={`/guides/${g.slug}`}
-                className="guide-card card block h-full p-6 no-underline bg-card/60"
+                className="guide-card block flex-1"
               >
-                <span className="block text-lg font-bold text-fg group-hover:text-accent transition-colors">{g.name}</span>
-                <span className="mt-3 block text-sm leading-relaxed text-muted">{g.summary}</span>
-                <span className="mt-5 flex items-center text-xs font-semibold text-accent">
+                <span className="block text-base font-semibold text-fg mb-2">{g.name}</span>
+                <span className="block text-sm text-muted mb-4 line-clamp-2">{g.summary}</span>
+                <span className="flex items-center text-xs font-medium text-muted">
                   {g.readingMinutes} min read
-                  <svg className="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
                 </span>
               </Link>
             ))}
           </div>
         </section>
 
-        {/* ── FAQ ── */}
+        {/* ── 9. FAQ ── */}
         <FaqSection items={HOME_FAQ} headingId="faq" />
 
-        {/* ── Final CTA ── */}
-        <section className="cta-band p-12 text-center mt-32" aria-labelledby="cta-heading">
-          <h2 id="cta-heading" className="text-4xl font-extrabold tracking-tight mb-4">
-            Explore all Castov tools
+        {/* ── 10. Final CTA ── */}
+        <section className="py-16 text-center border-t border-line mt-16" aria-labelledby="cta-heading">
+          <h2 id="cta-heading" className="text-3xl font-bold tracking-tight text-fg mb-4">
+            Find the right tool for your workflow.
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-muted/90">
-            Join thousands of developers using Castov every day. Free, fast, and secure.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/tools" className="btn btn-primary btn-lg px-10 shadow-lg shadow-accent/20">
-              Get Started
+          <div className="mt-8 flex justify-center gap-4">
+            <Link href="/tools" className="btn btn-primary">
+              Explore all tools
             </Link>
           </div>
         </section>

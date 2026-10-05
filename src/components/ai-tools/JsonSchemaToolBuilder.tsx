@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -28,8 +29,8 @@ export function JsonSchemaToolBuilder() {
     setProperties([...properties, { id: Math.random().toString(), name: `prop_${properties.length + 1}`, type: "string", description: "", required: false }]);
   };
 
-  const updateProperty = (id: string, field: keyof SchemaProperty, value: any) => {
-    setProperties(properties.map(p => p.id === id ? { ...p, [field]: value } : p));
+  const updateProperty = (id: string, field: keyof SchemaProperty, value: unknown) => {
+    setProperties(properties.map(p => p.id === id ? { ...p, [field]: value as never } : p));
   };
 
   const removeProperty = (id: string) => {
@@ -42,7 +43,7 @@ export function JsonSchemaToolBuilder() {
       const parsed = JSON.parse(jsonString);
       if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return null;
       
-      const props: any = {};
+      const props: Record<string, unknown> = {};
       const req: string[] = [];
       
       for (const [key, value] of Object.entries(parsed)) {
@@ -60,7 +61,7 @@ export function JsonSchemaToolBuilder() {
   };
 
   const generateOutput = () => {
-    let schemaProps: any = {};
+    let schemaProps: Record<string, unknown> = {};
     let schemaRequired: string[] = [];
 
     if (rawMode) {

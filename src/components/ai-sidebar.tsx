@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 import { AI_CATEGORIES, AI_TOOLS } from "@/lib/ai-tools";
 import { LayoutDashboardIcon, FolderIcon, WrenchIcon, ArrowRightIcon, ChevronDownIcon, PlusIcon, ArchiveIcon, TrashIcon, KeyIcon, LogOutIcon } from "lucide-react";
 import { useWorkspace } from "@/context/WorkspaceContext";
@@ -108,7 +109,7 @@ export function AiSidebar() {
         {user ? (
           <div className="flex items-center justify-between px-3 py-2 bg-field border border-line rounded-lg text-sm">
             <div className="flex items-center gap-2 truncate">
-              <img src={user.user_metadata?.avatar_url || "https://github.com/ghost.png"} alt="Avatar" className="w-6 h-6 rounded-full bg-line" />
+              <Image src={user.user_metadata?.avatar_url || "https://github.com/ghost.png"} alt="Avatar" width={24} height={24} className="w-6 h-6 rounded-full bg-line" />
               <span className="text-fg text-xs font-semibold truncate">{user.user_metadata?.user_name || user.email}</span>
             </div>
             <button onClick={signOut} className="text-muted hover:text-danger" title="Sign Out">

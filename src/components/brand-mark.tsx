@@ -1,10 +1,9 @@
-/** The Castov mark: a clock face whose hand is cut by a forge-spark notch. */
-export function BrandMark({ size = 28 }: { size?: number }) {
+/** The Castov mark: a minimal modern icon related to time and developer tools. */
+export function BrandMark({ size = 22 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-      <rect width="32" height="32" rx="8" fill="#4f46e5" />
-      <circle cx="16" cy="16" r="8.5" fill="none" stroke="#ffffff" strokeWidth="2.2" />
-      <path d="M16 10.5V16l3.6 2.4" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" className="text-fg">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
     </svg>
   );
 }

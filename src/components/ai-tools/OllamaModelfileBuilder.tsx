@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DownloadIcon, CopyIcon, CheckIcon, PlusIcon, XIcon } from "lucide-react";
+import { PlusIcon, XIcon } from "lucide-react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
 
@@ -16,7 +16,6 @@ export function OllamaModelfileBuilder() {
   const [numCtx, setNumCtx] = useState<number>(4096);
   const [stopSequences, setStopSequences] = useState<string[]>([]);
   const [newStop, setNewStop] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const addStopSequence = () => {
     if (newStop.trim() && !stopSequences.includes(newStop.trim())) {
@@ -51,24 +50,6 @@ export function OllamaModelfileBuilder() {
   };
 
   const outputContent = generateModelfile();
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(outputContent);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    const blob = new Blob([outputContent], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Modelfile";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="grid lg:grid-cols-2 gap-8 items-start w-full">

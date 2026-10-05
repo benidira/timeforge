@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 interface ApiKeys {
   openai: string;
@@ -19,27 +19,26 @@ interface KeyManagerContextType {
 const KeyManagerContext = createContext<KeyManagerContextType | undefined>(undefined);
 
 export function KeyManagerProvider({ children }: { children: React.ReactNode }) {
-  const [keys, setKeys] = useState<ApiKeys>({ openai: "", anthropic: "", gemini: "" });
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isKeyModalOpen, setKeyModalOpen] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("castov_api_keys");
-    if (stored) {
-      try {
-        // Simple base64 decoding for basic obfuscation in local storage
-        const decoded = atob(stored);
-        setKeys(JSON.parse(decoded));
-      } catch (e) {
-        console.error("Failed to parse API keys");
-      }
+  const [keys, setKeys] = useState<ApiKeys>(() => {
+    if (typeof window === "undefined") {
+      return { openai: "", anthropic: "", gemini: "" };
     }
-    setIsLoaded(true);
-  }, []);
+    try {
+      const stored = localStorage.getItem("castov_api_keys");
+      if (stored) {
+        const decoded = atob(stored);
+        return JSON.parse(decoded) as ApiKeys;
+      }
+    } catch {
+      console.error("Failed to parse API keys");
+    }
+    return { openai: "", anthropic: "", gemini: "" };
+  });
+
+  const [isKeyModalOpen, setKeyModalOpen] = useState(false);
 
   const persistKeys = (newKeys: ApiKeys) => {
     setKeys(newKeys);
-    // Simple base64 encoding for basic obfuscation
     localStorage.setItem("castov_api_keys", btoa(JSON.stringify(newKeys)));
   };
 
@@ -50,8 +49,6 @@ export function KeyManagerProvider({ children }: { children: React.ReactNode }) 
   const removeKey = (provider: keyof ApiKeys) => {
     persistKeys({ ...keys, [provider]: "" });
   };
-
-  if (!isLoaded) return null;
 
   return (
     <KeyManagerContext.Provider value={{ keys, saveKey, removeKey, isKeyModalOpen, setKeyModalOpen }}>

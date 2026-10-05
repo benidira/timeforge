@@ -1,3 +1,5 @@
+// "use client"
+
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
@@ -38,57 +40,57 @@ interface WorkspaceContextType {
 const WorkspaceContext = createContext<WorkspaceContextType | undefined>(undefined);
 
 export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
+  // User auth state
   const [user, setUser] = useState<User | null>(null);
-  const [workspaces, setWorkspaces] = useState<Workspace[]>([]);
-  const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>("");
-  const [savedConfigs, setSavedConfigs] = useState<SavedConfig[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Initialize Auth & LocalStorage
+  // Lazy initialization from localStorage
+  const [workspaces, setWorkspaces] = useState<Workspace[]>(() => {
+    if (typeof window === "undefined") {
+      return [{ id: "ws_personal", name: "Personal Workspace", createdAt: Date.now() }];
+    }
+    const stored = localStorage.getItem("castov_workspaces");
+    const ws: Workspace[] = stored ? JSON.parse(stored) : [];
+    if (ws.length === 0) {
+      const defaultWs: Workspace = { id: "ws_personal", name: "Personal Workspace", createdAt: Date.now() };
+      localStorage.setItem("castov_workspaces", JSON.stringify([defaultWs]));
+      return [defaultWs];
+    }
+    return ws;
+  });
+
+  const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>(() => {
+    if (typeof window === "undefined") return "ws_personal";
+    const stored = localStorage.getItem("castov_active_workspace");
+    if (stored) return stored;
+    return workspaces[0]?.id || "";
+  });
+
+  const [savedConfigs, setSavedConfigs] = useState<SavedConfig[]>(() => {
+    if (typeof window === "undefined") return [];
+    const stored = localStorage.getItem("castov_saved_configs");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  // Auth listener effect (no localStorage writes here)
   useEffect(() => {
-    // Auth Listener
     supabase.auth.getSession().then(({ data: { session } }) => setUser(session?.user ?? null));
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => setUser(session?.user ?? null));
-
-    // Local Storage Init
-    const storedWorkspaces = localStorage.getItem("castov_workspaces");
-    const storedActive = localStorage.getItem("castov_active_workspace");
-    const storedConfigs = localStorage.getItem("castov_saved_configs");
-
-    let initialWorkspaces = storedWorkspaces ? JSON.parse(storedWorkspaces) : [];
-    let initialActive = storedActive || "";
-
-    if (initialWorkspaces.length === 0) {
-      const defaultWs: Workspace = { id: "ws_personal", name: "Personal Workspace", createdAt: Date.now() };
-      initialWorkspaces = [defaultWs];
-      initialActive = "ws_personal";
-    }
-
-    setWorkspaces(initialWorkspaces);
-    setActiveWorkspaceId(initialActive);
-    setSavedConfigs(storedConfigs ? JSON.parse(storedConfigs) : []);
-    setIsLoaded(true);
-
     return () => subscription.unsubscribe();
   }, []);
 
-  // Sync to LocalStorage on change
+  // Sync state to localStorage on changes
   useEffect(() => {
-    if (!isLoaded) return;
     localStorage.setItem("castov_workspaces", JSON.stringify(workspaces));
     localStorage.setItem("castov_active_workspace", activeWorkspaceId);
     localStorage.setItem("castov_saved_configs", JSON.stringify(savedConfigs));
-    
-    // Cloud Sync (Optimistic)
+    // Cloud sync placeholder – would sync to Supabase in production
     if (user) {
-      // In a full production app, we would sync these to the Supabase tables
-      // using upsert operations based on timestamps.
-      // e.g. supabase.from('workspaces').upsert(workspaces)
+      // e.g., supabase.from('workspaces').upsert(workspaces)
     }
-  }, [workspaces, activeWorkspaceId, savedConfigs, isLoaded, user]);
+  }, [workspaces, activeWorkspaceId, savedConfigs, user]);
 
   const signInWithGithub = async () => {
-    await supabase.auth.signInWithOAuth({ provider: 'github' });
+    await supabase.auth.signInWithOAuth({ provider: "github" });
   };
 
   const signOut = async () => {
@@ -133,12 +135,20 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
     return savedConfigs.filter(c => c.workspaceId === workspaceId).sort((a, b) => b.updatedAt - a.updatedAt);
   };
 
-  if (!isLoaded) return null; // Avoid hydration mismatch
-
+  // No loading state needed – hooks run after hydration
   return (
     <WorkspaceContext.Provider value={{
-      workspaces, activeWorkspaceId, savedConfigs, user,
-      signInWithGithub, signOut, createWorkspace, switchWorkspace, saveToolConfig, deleteSavedConfig, getWorkspaceConfigs
+      workspaces,
+      activeWorkspaceId,
+      savedConfigs,
+      user,
+      signInWithGithub,
+      signOut,
+      createWorkspace,
+      switchWorkspace,
+      saveToolConfig,
+      deleteSavedConfig,
+      getWorkspaceConfigs
     }}>
       {children}
     </WorkspaceContext.Provider>

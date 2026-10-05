@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DownloadIcon, CopyIcon, CheckIcon } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { EditorToolbar } from "@/components/ui/editor-toolbar";
 
@@ -26,7 +26,6 @@ export function CursorRulesGenerator() {
   });
   const [selectedStandards, setSelectedStandards] = useState<string[]>([]);
   const [customRules, setCustomRules] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const toggleStack = (category: string, item: string) => {
     setSelectedStack(prev => {
@@ -74,24 +73,6 @@ export function CursorRulesGenerator() {
 
   const outputContent = generateOutput();
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(outputContent);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    const blob = new Blob([outputContent], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = ".cursorrules";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-
   return (
     <div className="grid lg:grid-cols-2 gap-8 items-start w-full">
       {/* Controls */}
@@ -130,7 +111,7 @@ export function CursorRulesGenerator() {
             {STANDARDS.map(std => {
               const isSelected = selectedStandards.includes(std);
               return (
-                <label key={std} className="flex items-start gap-3 cursor-pointer group">
+                <label key={std} className="flex items-start gap-3 cursor-pointer group" onClick={() => toggleStandard(std)}>
                   <div className={`mt-0.5 flex w-4 h-4 shrink-0 items-center justify-center rounded border transition-colors ${
                     isSelected ? "bg-accent border-accent text-white" : "bg-field border-line group-hover:border-accent/50"
                   }`}>
