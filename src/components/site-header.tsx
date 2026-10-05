@@ -158,17 +158,16 @@ export function SiteHeader() {
               </div>
             </div>
           ) : (
-            <button 
-              onClick={() => setIsAuthOpen(true)}
+            <Link
+              href="/login"
               className="hidden sm:inline-flex items-center justify-center h-8 px-4 ml-2 rounded-lg bg-primary text-primary-fg font-semibold text-sm hover:bg-primary/90 transition-colors"
             >
               Sign In
-            </button>
+            </Link>
           )}
           <ThemeToggle />
         </div>
       </div>
-      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </header>
   );
 }
