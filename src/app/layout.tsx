@@ -23,17 +23,17 @@ export const viewport: Viewport = {
   themeColor: SITE.themeColor,
 };
 
-/** Runs before first paint: supports dark, light, and system preference without flicker. */
-const THEME_SCRIPT = `try{var t=localStorage.getItem("castov-theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.dataset.theme="light"}else{document.documentElement.dataset.theme="dark"}}catch(e){document.documentElement.dataset.theme="dark"}`;
+/** Runs before first paint: forces light theme default unless user explicitly chose dark. */
+const THEME_SCRIPT = `try{var t=localStorage.getItem("castov-theme");if(t==="dark"){document.documentElement.dataset.theme="dark"}else{document.documentElement.dataset.theme="light"}}catch(e){document.documentElement.dataset.theme="light"}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
-        <a href="#main" className="skip-link">
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-fg focus:px-4 focus:py-2 focus:rounded-md focus:font-bold">
           Skip to main content
         </a>
         <SiteHeader />

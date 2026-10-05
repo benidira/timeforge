@@ -52,7 +52,7 @@ export function SiteFooter() {
             <ul className="grid gap-3 text-sm">
               <li><Link href="/guides" className="text-muted transition-colors hover:text-fg">Guides</Link></li>
               <li><Link href="/developer" className="text-muted transition-colors hover:text-fg">Code Snippets</Link></li>
-              <li><Link href="/timezones/UTC" className="text-muted transition-colors hover:text-fg">UTC Time</Link></li>
+              <li><Link href="/utc-converter" className="text-muted transition-colors hover:text-fg">UTC Time</Link></li>
               <li><span className="text-muted cursor-default">Status</span></li>
             </ul>
           </nav>

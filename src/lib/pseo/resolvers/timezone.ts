@@ -215,8 +215,8 @@ function resolveZonePage(slug: string): PageModel | null {
       {
         heading: "Live tools",
         links: [
-          { href: `/tools/timezone-converter`, label: "Timezone Converter" },
-          { href: `/tools/world-clock`, label: "World Clock" },
+          { href: `/timezone-converter`, label: "Timezone Converter" },
+          { href: `/world-clock`, label: "World Clock" },
           { href: `/tools/utc-converter`, label: "UTC Converter" },
         ],
       },
@@ -353,8 +353,8 @@ function resolveConverterPage(slug: string): PageModel | null {
       {
         heading: "Live tools",
         links: [
-          { href: `/tools/timezone-converter`, label: "Timezone Converter" },
-          { href: `/tools/world-clock`, label: "World Clock" },
+          { href: `/timezone-converter`, label: "Timezone Converter" },
+          { href: `/world-clock`, label: "World Clock" },
           { href: `/tools/utc-converter`, label: "UTC Converter" },
         ],
       },

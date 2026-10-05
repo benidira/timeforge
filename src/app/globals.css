@@ -58,8 +58,10 @@
   --color-foreground: var(--tf-fg);
   --color-muted: var(--tf-muted);
   --color-primary: var(--tf-accent);
+  --color-primary-fg: var(--tf-accent-fg);
   --color-secondary: var(--tf-hover);
   --color-accent: var(--tf-accent);
+  --color-accent-fg: var(--tf-accent-fg);
   --color-link: var(--tf-link);
   --color-success: var(--tf-success);
   --color-warning: var(--tf-warning);

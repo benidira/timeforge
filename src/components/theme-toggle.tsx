@@ -13,9 +13,9 @@ function getNextTheme(current: Theme): Theme {
 
 export function ThemeToggle() {
   const [mode, setMode] = React.useState<Theme | 'system'>(() => {
-    if (typeof window === 'undefined') return 'system';
+    if (typeof window === 'undefined') return 'light';
     const stored = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
-    return stored ?? 'system';
+    return stored ?? 'light';
   });
 
   // Apply theme whenever mode changes

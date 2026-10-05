@@ -274,10 +274,10 @@ export default function TimezonesHubPage() {
           zones at once, including DST.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/tools/world-clock" className="btn btn-primary">
+          <Link href="/world-clock" className="btn btn-primary">
             Open World Clock
           </Link>
-          <Link href="/tools/timezone-converter" className="btn btn-secondary">
+          <Link href="/timezone-converter" className="btn btn-secondary">
             Time Zone Converter
           </Link>
         </div>
