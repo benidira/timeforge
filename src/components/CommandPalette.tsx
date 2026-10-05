@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { SearchIcon, BoxIcon, CodeIcon, SettingsIcon } from "lucide-react";
 import { AI_TOOLS, AI_CATEGORIES } from "@/lib/ai-tools";
+import { TOOLS } from "@/content/tools";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -77,6 +78,24 @@ export function CommandPalette() {
               <SettingsIcon className="w-4 h-4" /> Time & Date Tools
             </Command.Item>
           </Command.Group>
+
+          
+          <Command.Group heading="Developer Tools" className="text-xs font-medium text-muted/60 px-2 py-1 mt-2">
+            {TOOLS.map((tool) => (
+              <Command.Item
+                key={tool.slug}
+                value={tool.name + ' ' + tool.category}
+                onSelect={() => runCommand(() => router.push(`/${tool.slug}`))}
+                className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-fg cursor-pointer aria-selected:bg-hover aria-selected:text-accent transition-colors mt-1"
+              >
+                <div className="flex flex-col pointer-events-none">
+                  <span className="font-semibold">{tool.name}</span>
+                  <span className="text-xs text-muted font-normal capitalize">{tool.category.replace('-', ' ')}</span>
+                </div>
+              </Command.Item>
+            ))}
+          </Command.Group>
+
 
           <Command.Group heading="AI Tools" className="text-xs font-medium text-muted/60 px-2 py-1 mt-2">
             {AI_TOOLS.map((tool) => (
