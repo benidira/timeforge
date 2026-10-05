@@ -72,7 +72,7 @@ export function EnvVaultTool() {
     setDecryptError("");
     setDecryptedEnv("");
     try {
-      let payloadBase64 = vaultId; 
+      const payloadBase64 = vaultId; 
       
       const parts = payloadBase64.split(":");
       if (parts.length !== 3) throw new Error("Invalid payload format");
