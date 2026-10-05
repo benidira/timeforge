@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { WHY_ITEMS, HOME_FAQ, DEV_SNIPPETS } from "@/content/home";
-import { TOOLS } from "@/content/tools";
-import { GUIDES } from "@/content/guides";
+import { HOME_FAQ } from "@/content/home";
 import { buildMetadata, websiteJsonLd, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
-import { LiveEpoch } from "@/components/live-epoch";
 import { CategorySection } from "@/components/category-section";
 import { FaqSection } from "@/components/faq-section";
-import { ToolCard } from "@/components/tool-card";
 import { CopyButton } from "@/components/ui/copy-button";
+import { ArrowRightIcon, TerminalIcon, ShieldCheckIcon, WorkflowIcon, DatabaseIcon, ComponentIcon, PlayIcon, LockIcon } from "lucide-react";
 
 export const metadata: Metadata = buildMetadata({
   title: "Castov | Developer tools that just work",
@@ -18,161 +15,194 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function HomePage() {
-  const POPULAR_SLUGS = [
-    "unix-timestamp-converter",
-    "timestamp-to-date",
-    "date-to-timestamp",
-    "timezone-converter",
-    "world-clock",
-    "date-calculator"
-  ];
-  const popularTools = TOOLS.filter((t) => POPULAR_SLUGS.includes(t.slug));
-
   return (
-    <>
+    <div className="bg-white min-h-screen">
       <JsonLd data={[websiteJsonLd(), faqJsonLd(HOME_FAQ)]} />
 
-      {/* ── 1. High-Impact Hero ── */}
-      <section className="relative w-full overflow-hidden bg-[#050505] pt-32 pb-20 sm:pt-40 sm:pb-32 min-h-[90vh] flex flex-col justify-center">
-        {/* Ambient radial glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] ambient-glow-indigo pointer-events-none" />
+      {/* ── 1. Hero Section ── */}
+      <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden border-b border-gray-100">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNTQgMzBoLTh2LThoOHY4em0wIDMwaC04di04aDh2OHptLTMwIDBoLTh2LThoOHY4em0tMzAgMGgtdnYtOGg4djh6bTAtMzBoLTh2LThoOHY4em0wLTMwaC04di04aDh2OHptMzAgMGgtOHYtOGg4djh6bTMwIDBoLTh2LThoOHY4eiIgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjAyIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=')] [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         
-        <div className="layout-content relative z-10 flex flex-col items-center text-center">
-          <div className="mb-6 flex items-center justify-center gap-2">
-            <span className="glass-pill">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse" />
-              Castov v2.0 Engine is Live
-            </span>
+        <div className="container relative mx-auto px-4 text-center max-w-5xl z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-semibold mb-8 shadow-sm">
+            <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+            Castov Engine v2.0 is Live
           </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-fg max-w-5xl leading-[1.1]">
-            The Ultimate <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 via-zinc-500 to-zinc-700">Developer Sandbox</span>
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-8">
+            The Ultimate <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Developer Toolkit</span>
           </h1>
-          
-          <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted leading-relaxed font-medium">
-            Ultra-fast, fully local, zero-config tools. From mapping out Kubernetes clusters to scanning leaked secrets, do it all in your browser.
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+            Stop searching for scattered tools. Castov provides a unified, secure, and lightning-fast workspace for your daily engineering tasks—from secure environment vaults to Docker visualizers.
           </p>
-
-          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
-            <Link href="/tools" className="btn btn-primary h-12 px-8 text-base shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all bg-white text-black hover:bg-zinc-200 font-bold border-none">
-              Explore Tools
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Link href="/tools" className="flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 w-full sm:w-auto">
+              Explore Tools <ArrowRightIcon size={20} />
             </Link>
-            <button id="hero-search-trigger" className="btn bg-white/5 border border-white/10 hover:bg-white/10 text-fg h-12 px-8 text-base">
-              Press ⌘K to Search
-            </button>
+            <Link href="/env-vault" className="flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto">
+              <ShieldCheckIcon size={20} className="text-blue-600" /> Secure Vault
+            </Link>
           </div>
-          <script dangerouslySetInnerHTML={{__html: `
-            document.getElementById('hero-search-trigger')?.addEventListener('click', () => {
-              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
-            });
-          `}} />
+        </div>
+
+        {/* Hero Abstract Image / Graphic */}
+        <div className="relative max-w-5xl mx-auto mt-20 px-4">
+          <div className="bg-gray-50 rounded-2xl border border-gray-200 shadow-2xl overflow-hidden">
+            <div className="flex items-center px-4 py-3 border-b border-gray-200 bg-white">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+              </div>
+              <div className="mx-auto bg-gray-100 text-gray-500 text-xs px-3 py-1 rounded-md font-mono flex items-center gap-2">
+                <LockIcon size={12} /> castov.com/workspace
+              </div>
+            </div>
+            <div className="p-8 bg-gray-50 flex flex-col md:flex-row gap-8 items-center justify-center min-h-[300px]">
+               {/* Abstract Canvas Graphic */}
+               <div className="flex-1 flex flex-col gap-4 w-full">
+                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex items-center gap-3 w-3/4">
+                   <div className="p-2 bg-blue-100 text-blue-600 rounded-md"><DatabaseIcon size={16} /></div>
+                   <div className="h-2 bg-gray-100 rounded w-1/2"></div>
+                 </div>
+                 <div className="w-px h-8 bg-blue-200 ml-12"></div>
+                 <div className="bg-white p-4 rounded-lg shadow-sm border border-blue-200 border-l-4 border-l-blue-500 flex items-center gap-3 w-full ml-8">
+                   <div className="p-2 bg-indigo-100 text-indigo-600 rounded-md"><WorkflowIcon size={16} /></div>
+                   <div className="h-2 bg-gray-100 rounded w-3/4"></div>
+                   <span className="ml-auto text-[10px] font-bold text-emerald-500 bg-emerald-100 px-2 py-1 rounded">200 OK</span>
+                 </div>
+               </div>
+               <div className="flex-1 w-full bg-gray-900 rounded-xl p-6 shadow-inner text-green-400 font-mono text-sm leading-relaxed">
+                 <p className="text-gray-500 mb-2">// Castov Engine Output</p>
+                 <p>$ encrypt_payload --algo AES-GCM</p>
+                 <p className="text-gray-300">Generating secure salt...</p>
+                 <p className="text-gray-300">Deriving PBKDF2 keys...</p>
+                 <p className="text-white mt-2 font-bold">SUCCESS: Payload secured.</p>
+               </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── 2. Bento Grid Features ── */}
-      <section className="layout-content py-20 relative z-20 -mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
-          
-          {/* Card 1: Canvas (Spans 2 cols) */}
-          <div className="bento-card md:col-span-2 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent pointer-events-none" />
-            <div className="p-8 h-full flex flex-col relative z-10">
-              <div className="flex-1">
-                <span className="glass-pill mb-4 text-indigo-400 border-indigo-500/30">Workflows</span>
-                <h3 className="text-3xl font-bold text-fg mb-2 tracking-tight">Agentic Canvas</h3>
-                <p className="text-muted max-w-md">Chain together Developer Tools visually. Zapier for raw developer data with zero server processing.</p>
-              </div>
-              <div className="mt-auto">
-                <Link href="/canvas" className="text-fg font-medium flex items-center gap-2 group-hover:text-indigo-400 transition-colors">
-                  Open Canvas &rarr;
-                </Link>
-              </div>
-            </div>
+      {/* ── 2. Feature Showcase ── */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Everything You Need to Build Faster</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">Castov replaces dozens of separate utilities with one cohesive platform designed for modern engineering teams.</p>
           </div>
 
-          {/* Card 2: Env Vault */}
-          <div className="bento-card group">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent pointer-events-none" />
-            <div className="p-8 h-full flex flex-col relative z-10">
-              <div className="flex-1">
-                <span className="glass-pill mb-4 text-emerald-400 border-emerald-500/30">Security</span>
-                <h3 className="text-2xl font-bold text-fg mb-2 tracking-tight">Zero-Knowledge .env Vault</h3>
-                <p className="text-muted">Military-grade AES-GCM encryption in your browser. Share secrets safely.</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Link href="/canvas" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 bg-blue-50 group-hover:bg-blue-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
+                <WorkflowIcon className="text-blue-600 group-hover:text-white transition-colors" size={28} />
               </div>
-              <div className="mt-auto">
-                <Link href="/tools/env-vault" className="text-fg font-medium flex items-center gap-2 group-hover:text-emerald-400 transition-colors">
-                  Encrypt .env &rarr;
-                </Link>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Agentic Canvas</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Visually build and connect workflows using our interactive drag-and-drop canvas. Chain encodings, extractors, and logic nodes seamlessly.
+              </p>
+            </Link>
+
+            <Link href="/env-vault" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 bg-emerald-50 group-hover:bg-emerald-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
+                <ShieldCheckIcon className="text-emerald-600 group-hover:text-white transition-colors" size={28} />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">Zero-Knowledge Vaults</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Share `.env` files safely with your team. We use WebCrypto AES-GCM and RSA-OAEP to ensure secrets are never stored in plain-text.
+              </p>
+            </Link>
+
+            <Link href="/tools/sqlite-fiddle" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 bg-purple-50 group-hover:bg-purple-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
+                <DatabaseIcon className="text-purple-600 group-hover:text-white transition-colors" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">In-Browser SQLite</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Instantly spin up a WebAssembly-powered SQLite database right in your browser. Write queries, test schemas, and export data with zero backend.
+              </p>
+            </Link>
+
+            <Link href="/tools/docker-visualizer" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 bg-orange-50 group-hover:bg-orange-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
+                <ComponentIcon className="text-orange-600 group-hover:text-white transition-colors" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">Docker Visualizer</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Paste your `docker-compose.yml` and instantly generate a beautiful architectural diagram of your containers, networks, and volumes.
+              </p>
+            </Link>
+
+            <Link href="/tools/secret-scanner" className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 bg-pink-50 group-hover:bg-pink-600 rounded-xl flex items-center justify-center mb-6 transition-colors">
+                <TerminalIcon className="text-pink-600 group-hover:text-white transition-colors" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">Secret Scanner</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Scan your codebase client-side for exposed API keys (AWS, Stripe, GitHub). 100% offline regex matching keeps your code private.
+              </p>
+            </Link>
+
+            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 shadow-sm flex flex-col justify-center items-center text-center text-white">
+              <h3 className="text-2xl font-bold mb-3">And 40+ More Tools</h3>
+              <p className="text-blue-100 mb-6">Timestamps, Encoders, JSON Formatters, JWT Decoders, and more.</p>
+              <Link href="/tools" className="bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors flex items-center gap-2">
+                View All Tools <ArrowRightIcon size={18} />
+              </Link>
             </div>
           </div>
-
-          {/* Card 3: SQLite */}
-          <div className="bento-card group">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none" />
-            <div className="p-8 h-full flex flex-col relative z-10">
-              <div className="flex-1">
-                <span className="glass-pill mb-4 text-amber-400 border-amber-500/30">Database</span>
-                <h3 className="text-2xl font-bold text-fg mb-2 tracking-tight">In-Browser SQLite</h3>
-                <p className="text-muted">Run full SQL queries entirely offline using WebAssembly.</p>
-              </div>
-              <div className="mt-auto">
-                <Link href="/tools/sqlite-fiddle" className="text-fg font-medium flex items-center gap-2 group-hover:text-amber-400 transition-colors">
-                  Open Fiddle &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 4: Docker Visualizer (Spans 2 cols) */}
-          <div className="bento-card md:col-span-2 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-transparent pointer-events-none" />
-            <div className="p-8 h-full flex flex-col relative z-10">
-              <div className="flex-1">
-                <span className="glass-pill mb-4 text-violet-400 border-violet-500/30">Architecture</span>
-                <h3 className="text-3xl font-bold text-fg mb-2 tracking-tight">Docker Architecture Map</h3>
-                <p className="text-muted max-w-md">Paste docker-compose.yml, get an instant, interactive React Flow diagram of your containers and ports.</p>
-              </div>
-              <div className="mt-auto">
-                <Link href="/tools/docker-visualizer" className="text-fg font-medium flex items-center gap-2 group-hover:text-violet-400 transition-colors">
-                  Visualize Architecture &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
       
       {/* ── 3. CLI Banner ── */}
-      <section className="border-t border-line bg-[#0a0a0a] py-24 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] ambient-glow-emerald pointer-events-none" />
-        <div className="layout-content relative z-10 text-center flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-black text-fg tracking-tight mb-6">Also Available in your Terminal</h2>
-          <p className="text-muted mb-8 max-w-xl mx-auto">Access the core engine of Castov directly from your command line without ever opening a browser tab.</p>
-          <div className="inline-flex items-center gap-4 bg-[#050505] border border-white/10 px-6 py-4 rounded-2xl font-mono text-fg shadow-2xl">
-            <span className="text-emerald-500 font-bold">$</span> npx castov
-            <CopyButton value="npx castov" label="copy command" />
+      <section className="py-24 bg-gray-900 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3" />
+        <div className="container relative mx-auto px-4 max-w-4xl text-center flex flex-col items-center">
+          <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-md">
+            <TerminalIcon size={32} className="text-blue-400" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6">Also Available in your Terminal</h2>
+          <p className="text-gray-400 mb-10 max-w-xl mx-auto text-lg">Access the core engine of Castov directly from your command line without ever opening a browser tab.</p>
+          <div className="inline-flex items-center gap-4 bg-black/50 border border-white/20 px-8 py-5 rounded-2xl font-mono text-xl shadow-2xl backdrop-blur-md">
+            <span className="text-emerald-400 font-bold">$</span> 
+            <span className="text-gray-100">npx castov</span>
+            <div className="ml-4 pl-4 border-l border-white/20">
+              <CopyButton value="npx castov" label="copy command" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 4. Standard Tool Categories ── */}
-      <section className="layout-content py-20 border-t border-line">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Explore by Category</h2>
-          <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
-            Find exactly what you need to format, convert, or calculate.
-          </p>
-        </div>
-        <div className="mt-8">
+      <section className="py-24 bg-white border-t border-gray-200">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Explore by Category</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Find exactly what you need to format, convert, or calculate.
+            </p>
+          </div>
           <CategorySection headingLevel={3} />
         </div>
       </section>
 
       {/* ── 5. FAQ Section ── */}
-      <FaqSection items={HOME_FAQ} headingId="faq" />
-    </>
+      <section className="bg-gray-50 border-t border-gray-200">
+        <FaqSection items={HOME_FAQ} headingId="faq" />
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-blue-600 text-white">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Supercharge Your Workflow?</h2>
+          <p className="text-xl text-blue-100 mb-10">Join thousands of developers using Castov to build, debug, and collaborate efficiently.</p>
+          <div className="flex justify-center gap-4">
+            <Link href="/tools" className="bg-white text-blue-700 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-colors shadow-xl">
+              Start Using Tools
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
+

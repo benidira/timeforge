@@ -1,14 +1,36 @@
 @import "tailwindcss";
 
-/* Design tokens. Dark is the default theme; light is opt-in via the header toggle. */
+/* Design tokens. Light is the default theme; dark is opt-in via the header toggle. */
 :root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --tf-bg: #FFFFFF;
+  --tf-card: #F9FAFB;
+  --tf-field: #F3F4F6;
+  --tf-hover: #E5E7EB;
+  --tf-line: #E5E7EB;
+  --tf-fg: #111827;
+  --tf-muted: #6B7280;
+  --tf-accent: #2563EB;
+  --tf-accent-hover: #1D4ED8;
+  --tf-accent-fg: #FFFFFF;
+  --tf-link: #2563EB;
+  --tf-danger: #EF4444;
+  --tf-focus: rgba(37, 99, 235, 0.2);
+  --tf-border: #E5E7EB;
+  --tf-primary: #2563EB;
+  --tf-secondary: #F3F4F6;
+  --tf-success: #10B981;
+  --tf-warning: #F59E0B;
+}
+
 :root[data-theme="dark"] {
   color-scheme: dark;
   --tf-bg: #050505;
-  --tf-card: rgba(15, 15, 15, 0.4);
-  --tf-field: #0a0a0a;
+  --tf-card: #0a0a0a;
+  --tf-field: #111111;
   --tf-hover: #171717;
-  --tf-line: rgba(255, 255, 255, 0.06);
+  --tf-line: rgba(255, 255, 255, 0.1);
   --tf-fg: #f4f4f5;
   --tf-muted: #8b8b8d;
   --tf-accent: #f4f4f5;
@@ -17,33 +39,11 @@
   --tf-link: #ffffff;
   --tf-danger: #ef4444;
   --tf-focus: rgba(255, 255, 255, 0.15);
-  --tf-border: rgba(255, 255, 255, 0.06);
+  --tf-border: rgba(255, 255, 255, 0.1);
   --tf-primary: #f4f4f5;
   --tf-secondary: #171717;
   --tf-success: #10b981;
   --tf-warning: #f59e0b;
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
-  --tf-bg: #FAFAFA;
-  --tf-card: #FFFFFF;
-  --tf-field: #FAFAFA;
-  --tf-hover: #F3F4F6;
-  --tf-line: #E5E7EB;
-  --tf-fg: #111827;
-  --tf-muted: #6B7280;
-  --tf-accent: #635BFF;
-  --tf-accent-hover: #5148D9;
-  --tf-accent-fg: #FFFFFF;
-  --tf-link: #635BFF;
-  --tf-danger: #DC2626;
-  --tf-focus: #635BFF;
-  --tf-border: #E5E7EB;
-  --tf-primary: #635BFF;
-  --tf-secondary: #F3F4F6;
-  --tf-success: #16A34A;
-  --tf-warning: #D97706;
 }
 
 @theme inline {

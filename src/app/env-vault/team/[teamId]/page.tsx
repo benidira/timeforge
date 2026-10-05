@@ -147,7 +147,7 @@ export default function TeamWorkspaceDetail() {
     }
   };
 
-  if (loading) return <div className="text-white p-12 text-center font-mono">Loading Workspace...</div>;
+  if (loading) return <div className="text-fg p-12 text-center font-mono">Loading Workspace...</div>;
 
   return (
     <div className="w-full max-w-7xl mx-auto py-8 px-4 flex flex-col md:flex-row gap-8 min-h-screen">
@@ -155,53 +155,53 @@ export default function TeamWorkspaceDetail() {
       {/* Sidebar: Navigation & Members */}
       <div className="w-full md:w-80 flex flex-col gap-6 shrink-0">
         <div>
-          <Link href="/env-vault/team" className="text-xs font-semibold text-zinc-500 hover:text-white mb-4 inline-block">&larr; Back</Link>
+          <Link href="/env-vault/team" className="text-xs font-semibold text-muted hover:text-fg mb-4 inline-block">&larr; Back</Link>
           <h1 className="text-2xl font-bold text-fg tracking-tight">{team?.name}</h1>
-          <p className="text-xs text-zinc-500 mt-1 font-mono">{team?.id}</p>
+          <p className="text-xs text-muted mt-1 font-mono">{team?.id}</p>
         </div>
 
         {error && (
-          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex gap-3 text-red-400 text-sm">
+          <div className="bg-danger/10 border border-danger/20 rounded-xl p-4 flex gap-3 text-danger text-sm">
             <ShieldAlertIcon size={18} className="shrink-0" />
             <p>{error}</p>
           </div>
         )}
 
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-5 shadow-[0_0_20px_rgba(255,255,255,0.02)]">
+        <div className="bg-card border border-line rounded-2xl p-5 shadow-sm">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-sm font-bold text-fg">Vaults</h3>
-            <button onClick={handleCreateVault} className="text-xs bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-white font-semibold transition-colors">+ New</button>
+            <button onClick={handleCreateVault} className="text-xs bg-field border border-line hover:bg-hover px-2 py-1 rounded text-fg font-semibold transition-colors">+ New</button>
           </div>
           <div className="flex flex-col gap-2">
             {vaults.map(v => (
               <button 
                 key={v.id} 
                 onClick={() => handleOpenVault(v)}
-                className={`text-left px-3 py-2 rounded-lg text-sm font-mono transition-colors flex items-center justify-between group ${activeVault?.id === v.id ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'text-zinc-400 hover:bg-white/5 hover:text-white border border-transparent'}`}
+                className={`text-left px-3 py-2 rounded-lg text-sm font-mono transition-colors flex items-center justify-between group ${activeVault?.id === v.id ? 'bg-primary/10 text-primary border border-primary/20' : 'text-muted hover:bg-hover hover:text-fg border border-transparent'}`}
               >
                 <span>{v.name}</span>
-                <span className="text-[10px] bg-black/50 px-1.5 py-0.5 rounded text-zinc-500">v{v.version}</span>
+                <span className="text-[10px] bg-field px-1.5 py-0.5 rounded text-muted">v{v.version}</span>
               </button>
             ))}
-            {vaults.length === 0 && <p className="text-xs text-zinc-600 italic">No vaults created.</p>}
+            {vaults.length === 0 && <p className="text-xs text-muted italic">No vaults created.</p>}
           </div>
         </div>
 
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-5 shadow-[0_0_20px_rgba(255,255,255,0.02)]">
+        <div className="bg-card border border-line rounded-2xl p-5 shadow-sm">
            <div className="flex justify-between items-center mb-4">
             <h3 className="text-sm font-bold text-fg flex items-center gap-2"><UsersIcon size={16} /> Members</h3>
-            <button className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">Invite</button>
+            <button className="text-xs text-primary hover:text-primary/80 font-semibold transition-colors">Invite</button>
           </div>
           <div className="flex flex-col gap-3">
             {members.map(m => (
               <div key={m.id} className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center text-[10px] text-zinc-400 uppercase font-bold">
+                  <div className="w-6 h-6 rounded bg-field border border-line flex items-center justify-center text-[10px] text-muted uppercase font-bold">
                     {m.role[0]}
                   </div>
-                  <span className="text-xs font-mono text-zinc-300 truncate w-24" title={m.user_id}>{m.user_id.split('-')[0]}...</span>
+                  <span className="text-xs font-mono text-muted truncate w-24" title={m.user_id}>{m.user_id.split('-')[0]}...</span>
                 </div>
-                <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]" title="Key Active" />
+                <span className="flex h-2 w-2 rounded-full bg-success shadow-sm" title="Key Active" />
               </div>
             ))}
           </div>
@@ -209,28 +209,26 @@ export default function TeamWorkspaceDetail() {
       </div>
 
       {/* Main Editor Area */}
-      <div className="flex-1 bg-[#050505] border border-white/10 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.02)] flex flex-col overflow-hidden relative">
-        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
-        
+      <div className="flex-1 bg-card border border-line rounded-2xl shadow-sm flex flex-col overflow-hidden relative">
         {!activeVault ? (
-          <div className="flex-1 flex flex-col items-center justify-center text-zinc-500 p-8 text-center">
+          <div className="flex-1 flex flex-col items-center justify-center text-muted p-8 text-center">
             <LockIcon size={48} className="mb-4 opacity-20" />
-            <h2 className="text-xl font-bold text-zinc-300 mb-2">Zero-Knowledge Encrypted</h2>
+            <h2 className="text-xl font-bold text-fg mb-2">Zero-Knowledge Encrypted</h2>
             <p className="text-sm max-w-sm">Select a vault from the sidebar to decrypt its contents directly in your browser.</p>
           </div>
         ) : (
           <>
-            <div className="flex justify-between items-center p-4 border-b border-white/10 bg-[#0a0a0a]">
+            <div className="flex justify-between items-center p-4 border-b border-line bg-field">
               <div className="flex items-center gap-3">
-                <LockIcon size={16} className="text-emerald-400" />
+                <LockIcon size={16} className="text-success" />
                 <h2 className="font-mono text-sm font-bold text-fg">{activeVault.name}</h2>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">Decrypted Locally</span>
-                <button onClick={() => navigator.clipboard.writeText(decryptedEnv)} className="p-1.5 text-zinc-400 hover:text-white hover:bg-white/10 rounded transition-colors">
+                <span className="text-[10px] text-muted uppercase tracking-wider font-semibold">Decrypted Locally</span>
+                <button onClick={() => navigator.clipboard.writeText(decryptedEnv)} className="p-1.5 text-muted hover:text-fg hover:bg-hover rounded transition-colors">
                   <CopyIcon size={16} />
                 </button>
-                <button onClick={handleSaveVault} className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
+                <button onClick={handleSaveVault} className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-fg px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
                   <SaveIcon size={14} /> Save
                 </button>
               </div>
@@ -238,10 +236,10 @@ export default function TeamWorkspaceDetail() {
             <textarea 
               value={decryptedEnv}
               onChange={e => setDecryptedEnv(e.target.value)}
-              className="flex-1 w-full bg-transparent p-6 font-mono text-sm text-zinc-300 focus:outline-none resize-none leading-relaxed"
+              className="flex-1 w-full bg-transparent p-6 font-mono text-sm text-fg focus:outline-none resize-none leading-relaxed"
               spellCheck={false}
             />
-            <div className="px-4 py-2 bg-[#0a0a0a] border-t border-white/10 flex justify-between text-[10px] text-zinc-500 font-mono">
+            <div className="px-4 py-2 bg-field border-t border-line flex justify-between text-[10px] text-muted font-mono">
               <span>Last updated: {new Date(activeVault.updated_at).toLocaleString()}</span>
               <span>AES-GCM 256-bit</span>
             </div>

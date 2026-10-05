@@ -95,59 +95,58 @@ export function EnvVaultTool() {
   return (
     <div className="w-full max-w-5xl mx-auto flex flex-col gap-8">
       {/* High-End Tab Switcher */}
-      <div className="flex bg-[#050505] p-1.5 rounded-xl w-fit mx-auto border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.02)]">
+      <div className="flex bg-card p-1.5 rounded-xl w-fit mx-auto border border-line shadow-sm">
         <button 
-          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "personal" ? "bg-white text-black shadow-lg" : "text-zinc-500 hover:text-white"}`} 
+          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "personal" ? "bg-primary text-primary-fg shadow-md" : "text-muted hover:text-fg"}`} 
           onClick={() => setTab("personal")}
         >
           Personal Vault
         </button>
         <button 
-          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "team" ? "bg-white text-black shadow-lg" : "text-zinc-500 hover:text-white"}`} 
+          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "team" ? "bg-primary text-primary-fg shadow-md" : "text-muted hover:text-fg"}`} 
           onClick={() => setTab("team")}
         >
-          Team Vaults <span className="ml-2 bg-indigo-500/20 text-indigo-400 px-1.5 py-0.5 rounded text-[10px] uppercase">Beta</span>
+          Team Vaults <span className="ml-2 bg-indigo-500/10 text-indigo-500 px-1.5 py-0.5 rounded text-[10px] uppercase">Beta</span>
         </button>
       </div>
 
       {tab === "personal" && (
         <div className="flex flex-col gap-6">
-          <div className="flex bg-[#0a0a0a] p-1 rounded-lg w-fit border border-white/5 mx-auto">
-            <button className={`px-6 py-2 rounded-md text-xs font-semibold transition-colors uppercase tracking-wider ${mode === "encrypt" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-white"}`} onClick={() => setMode("encrypt")}>
+          <div className="flex bg-card p-1 rounded-lg w-fit border border-line mx-auto shadow-sm">
+            <button className={`px-6 py-2 rounded-md text-xs font-semibold transition-colors uppercase tracking-wider ${mode === "encrypt" ? "bg-field text-fg border border-line" : "text-muted hover:text-fg"}`} onClick={() => setMode("encrypt")}>
               <LockIcon size={14} className="inline mr-2" /> Encrypt
             </button>
-            <button className={`px-6 py-2 rounded-md text-xs font-semibold transition-colors uppercase tracking-wider ${mode === "decrypt" ? "bg-emerald-500/20 text-emerald-400" : "text-zinc-500 hover:text-white"}`} onClick={() => setMode("decrypt")}>
+            <button className={`px-6 py-2 rounded-md text-xs font-semibold transition-colors uppercase tracking-wider ${mode === "decrypt" ? "bg-success/10 text-success border border-success/20" : "text-muted hover:text-fg"}`} onClick={() => setMode("decrypt")}>
               <UnlockIcon size={14} className="inline mr-2" /> Decrypt
             </button>
           </div>
 
           {mode === "encrypt" && (
-            <div className="bg-[#050505] border border-white/10 rounded-2xl p-8 shadow-[0_0_30px_rgba(255,255,255,0.02)] relative overflow-hidden group">
-              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <div className="bg-card border border-line rounded-2xl p-8 shadow-sm relative overflow-hidden group">
               <h3 className="text-xl font-bold text-fg mb-2 tracking-tight">Zero-Knowledge .env Sharer</h3>
-              <p className="text-sm text-zinc-400 mb-6">Your .env file is encrypted entirely in the browser using AES-GCM. The server never sees your raw secrets.</p>
+              <p className="text-sm text-muted mb-6">Your .env file is encrypted entirely in the browser using AES-GCM. The server never sees your raw secrets.</p>
               
               <textarea 
                 value={rawEnv} onChange={e => setRawEnv(e.target.value)}
-                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl p-4 font-mono text-sm h-48 mb-6 focus:ring-1 focus:ring-indigo-500/50 focus:outline-none transition-all text-zinc-300 placeholder:text-zinc-700"
+                className="w-full bg-field border border-line rounded-xl p-4 font-mono text-sm h-48 mb-6 focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all text-fg placeholder:text-muted"
                 placeholder="PASTE .ENV CONTENTS HERE..."
               />
               
               <div className="flex gap-4">
                 <input 
                   type="password" placeholder="Encryption Password" value={encPassword} onChange={e => setEncPassword(e.target.value)}
-                  className="flex-1 bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 font-mono text-sm text-white focus:outline-none focus:border-indigo-500/50"
+                  className="flex-1 bg-field border border-line rounded-xl px-4 py-3 font-mono text-sm text-fg focus:outline-none focus:border-primary/50"
                 />
-                <button onClick={handleEncrypt} disabled={!encPassword || isEncrypting} className="bg-white text-black hover:bg-zinc-200 font-bold px-6 rounded-xl transition-colors disabled:opacity-50">
+                <button onClick={handleEncrypt} disabled={!encPassword || isEncrypting} className="bg-primary text-primary-fg hover:bg-primary/90 font-bold px-6 rounded-xl transition-colors disabled:opacity-50 shadow-sm">
                   {isEncrypting ? "Encrypting..." : "Encrypt & Share"}
                 </button>
               </div>
 
               {encryptedLink && (
-                <div className="mt-8 p-4 bg-indigo-500/10 border border-indigo-500/30 rounded-xl flex items-center gap-4">
-                  <LinkIcon className="text-indigo-400 shrink-0" />
-                  <input readOnly value={encryptedLink} className="w-full bg-transparent border-none text-xs font-mono text-indigo-200 focus:outline-none" />
-                  <button className="bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-2 rounded-lg text-xs transition-colors shrink-0 flex items-center gap-2" onClick={() => navigator.clipboard.writeText(encryptedLink)}>
+                <div className="mt-8 p-4 bg-primary/5 border border-primary/20 rounded-xl flex items-center gap-4">
+                  <LinkIcon className="text-primary shrink-0" />
+                  <input readOnly value={encryptedLink} className="w-full bg-transparent border-none text-xs font-mono text-primary focus:outline-none" />
+                  <button className="bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 font-semibold px-4 py-2 rounded-lg text-xs transition-colors shrink-0 flex items-center gap-2" onClick={() => navigator.clipboard.writeText(encryptedLink)}>
                     <CopyIcon size={14} /> Copy
                   </button>
                 </div>
@@ -156,41 +155,40 @@ export function EnvVaultTool() {
           )}
 
           {mode === "decrypt" && (
-            <div className="bg-[#050505] border border-emerald-500/20 rounded-2xl p-8 shadow-[0_0_30px_rgba(16,185,129,0.05)] relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+            <div className="bg-card border border-success/30 rounded-2xl p-8 shadow-sm relative overflow-hidden">
               <h3 className="text-xl font-bold text-fg mb-2 tracking-tight">Unlock .env Vault</h3>
-              <p className="text-sm text-zinc-400 mb-6">Enter the encrypted payload and the password to decrypt your secrets locally.</p>
+              <p className="text-sm text-muted mb-6">Enter the encrypted payload and the password to decrypt your secrets locally.</p>
               
               <input 
                 type="text" placeholder="Paste Encrypted Payload or Vault ID..." value={vaultId} onChange={e => setVaultId(e.target.value)}
-                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 mb-6 font-mono text-xs text-white focus:outline-none focus:border-emerald-500/50"
+                className="w-full bg-field border border-line rounded-xl px-4 py-3 mb-6 font-mono text-xs text-fg focus:outline-none focus:border-success/50"
               />
               
               <div className="flex gap-4">
                 <input 
                   type="password" placeholder="Decryption Password" value={decPassword} onChange={e => setDecPassword(e.target.value)}
-                  className="flex-1 bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 font-mono text-sm text-white focus:outline-none focus:border-emerald-500/50"
+                  className="flex-1 bg-field border border-line rounded-xl px-4 py-3 font-mono text-sm text-fg focus:outline-none focus:border-success/50"
                 />
-                <button onClick={handleDecrypt} disabled={!decPassword || !vaultId || isDecrypting} className="bg-emerald-500 text-black hover:bg-emerald-400 font-bold px-8 rounded-xl transition-colors disabled:opacity-50">
+                <button onClick={handleDecrypt} disabled={!decPassword || !vaultId || isDecrypting} className="bg-success text-white hover:bg-success/90 font-bold px-8 rounded-xl transition-colors disabled:opacity-50 shadow-sm">
                   {isDecrypting ? "Decrypting..." : "Decrypt"}
                 </button>
               </div>
 
-              {decryptError && <div className="mt-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm font-mono">{decryptError}</div>}
+              {decryptError && <div className="mt-6 p-4 bg-danger/10 border border-danger/20 rounded-xl text-danger text-sm font-mono">{decryptError}</div>}
               
               {decryptedEnv && (
                 <div className="mt-8">
                   <div className="flex justify-between items-center mb-3">
-                    <span className="text-sm font-bold text-emerald-400 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Decrypted Successfully
+                    <span className="text-sm font-bold text-success flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-success animate-pulse" /> Decrypted Successfully
                     </span>
-                    <button className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 transition-colors" onClick={() => navigator.clipboard.writeText(decryptedEnv)}>
+                    <button className="text-xs text-muted hover:text-fg flex items-center gap-1 transition-colors" onClick={() => navigator.clipboard.writeText(decryptedEnv)}>
                       <CopyIcon size={12} /> Copy
                     </button>
                   </div>
                   <textarea 
                     readOnly value={decryptedEnv}
-                    className="w-full bg-[#0a0a0a] border border-emerald-500/30 rounded-xl p-4 font-mono text-sm h-48 focus:outline-none text-emerald-50"
+                    className="w-full bg-field border border-success/30 rounded-xl p-4 font-mono text-sm h-48 focus:outline-none text-fg"
                   />
                 </div>
               )}
@@ -200,13 +198,13 @@ export function EnvVaultTool() {
       )}
 
       {tab === "team" && (
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-12 text-center shadow-[0_0_30px_rgba(255,255,255,0.02)]">
-          <div className="w-16 h-16 bg-indigo-500/10 border border-indigo-500/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <LockIcon className="text-indigo-400" size={32} />
+        <div className="bg-card border border-line rounded-2xl p-12 text-center shadow-sm">
+          <div className="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <LockIcon className="text-primary" size={32} />
           </div>
           <h3 className="text-2xl font-bold text-fg mb-3">Team Shared Vaults</h3>
-          <p className="text-zinc-400 max-w-md mx-auto mb-8">Share encrypted .env files securely with your team using zero-knowledge RSA-OAEP + AES-GCM cryptography.</p>
-          <a href="/env-vault/team" className="inline-flex bg-white text-black hover:bg-zinc-200 font-bold px-8 py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+          <p className="text-muted max-w-md mx-auto mb-8">Share encrypted .env files securely with your team using zero-knowledge RSA-OAEP + AES-GCM cryptography.</p>
+          <a href="/env-vault/team" className="inline-flex bg-primary text-primary-fg hover:bg-primary/90 font-bold px-8 py-3 rounded-xl transition-all shadow-sm">
             Open Workspace
           </a>
         </div>

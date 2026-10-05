@@ -1,0 +1,10 @@
+const fs = require('fs');
+const path = 'E:/time/src/components/canvas/nodes/CanvasNodes.tsx';
+let content = fs.readFileSync(path, 'utf8');
+content = content.replace(/bg-\\[#050505\\]/g, 'bg-card');
+content = content.replace(/bg-\\[#0a0a0a\\]/g, 'bg-field');
+content = content.replace(/border-white\/\d+/g, 'border-line');
+content = content.replace(/border-\\[#050505\\]/g, 'border-card');
+content = content.replace(/text-zinc-600/g, 'text-muted');
+content = content.replace(/text-zinc-400/g, 'text-muted');
+fs.writeFileSync(path, content);

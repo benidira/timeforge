@@ -102,10 +102,10 @@ export default function TeamWorkspacePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Create Team Card */}
-        <div className="bg-[#050505] border border-dashed border-white/20 hover:border-indigo-500/50 rounded-2xl p-6 transition-all group flex flex-col justify-center">
+        <div className="bg-card border border-dashed border-line hover:border-primary/50 rounded-2xl p-6 transition-all group flex flex-col justify-center shadow-sm">
           <form onSubmit={handleCreateTeam} className="flex flex-col gap-4">
-            <div className="w-12 h-12 bg-white/5 group-hover:bg-indigo-500/20 rounded-xl flex items-center justify-center transition-colors mb-2">
-              <PlusIcon className="text-zinc-400 group-hover:text-indigo-400" />
+            <div className="w-12 h-12 bg-field group-hover:bg-primary/10 rounded-xl flex items-center justify-center transition-colors mb-2">
+              <PlusIcon className="text-muted group-hover:text-primary" />
             </div>
             <h3 className="text-lg font-bold text-fg">New Team</h3>
             <input 
@@ -113,12 +113,12 @@ export default function TeamWorkspacePage() {
               placeholder="e.g. Acme Frontend" 
               value={newTeamName}
               onChange={e => setNewTeamName(e.target.value)}
-              className="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-indigo-500/50 transition-colors"
+              className="w-full bg-field border border-line rounded-lg px-4 py-2.5 text-sm font-medium text-fg focus:outline-none focus:border-primary/50 transition-colors"
             />
             <button 
               type="submit" 
               disabled={!newTeamName || isCreating}
-              className="w-full bg-white text-black font-bold py-2.5 rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 mt-2"
+              className="w-full bg-primary text-primary-fg font-bold py-2.5 rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 mt-2 shadow-sm"
             >
               {isCreating ? "Creating..." : "Create Team"}
             </button>
@@ -127,19 +127,19 @@ export default function TeamWorkspacePage() {
 
         {/* List Teams */}
         {loading ? (
-          <div className="text-zinc-500 text-sm py-8">Loading teams...</div>
+          <div className="text-muted text-sm py-8">Loading teams...</div>
         ) : (
           teams.map(team => (
-            <Link key={team.id} href={`/env-vault/team/${team.id}`} className="bg-[#0a0a0a] border border-white/10 hover:border-white/30 rounded-2xl p-6 transition-all group flex flex-col cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.01)] hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-              <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6">
-                <UsersIcon className="text-indigo-400" />
+            <Link key={team.id} href={`/env-vault/team/${team.id}`} className="bg-card border border-line hover:border-primary/30 rounded-2xl p-6 transition-all group flex flex-col cursor-pointer shadow-sm hover:shadow-md">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <UsersIcon className="text-primary" />
               </div>
               <h3 className="text-xl font-bold text-fg mb-1">{team.name}</h3>
-              <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-6">Role: {team.role}</p>
+              <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-6">Role: {team.role}</p>
               
-              <div className="mt-auto border-t border-white/5 pt-4 flex justify-between items-center text-sm">
-                <span className="text-indigo-400 font-medium group-hover:underline">Open Workspace</span>
-                <span className="text-zinc-600 font-mono text-[10px]">{new Date(team.created_at).toLocaleDateString()}</span>
+              <div className="mt-auto border-t border-line pt-4 flex justify-between items-center text-sm">
+                <span className="text-primary font-medium group-hover:underline">Open Workspace</span>
+                <span className="text-muted font-mono text-[10px]">{new Date(team.created_at).toLocaleDateString()}</span>
               </div>
             </Link>
           ))

@@ -47,7 +47,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="fixed top-4 inset-x-0 mx-auto max-w-6xl rounded-2xl border border-white/10 bg-black/50 backdrop-blur-xl z-50 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+    <header className="fixed top-4 inset-x-0 mx-auto max-w-6xl rounded-2xl border border-line bg-card/80 backdrop-blur-xl z-50 shadow-sm">
       <div className="relative mx-auto flex h-14 items-center justify-between gap-3 px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <MobileNav />
@@ -122,34 +122,34 @@ export function SiteHeader() {
             AI Tools
           </Link>
           {user ? (
-            <div className="hidden sm:flex items-center gap-3 ml-2 border-l border-white/10 pl-3">
+            <div className="hidden sm:flex items-center gap-3 ml-2 border-l border-line pl-3">
               <div className="flex items-center gap-2 group cursor-pointer relative">
-                <div className="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center overflow-hidden relative">
-                  <span className="text-xs font-bold text-indigo-400">
+                <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden relative">
+                  <span className="text-xs font-bold text-primary">
                     {user.email?.charAt(0).toUpperCase() || "U"}
                   </span>
-                  <div className="absolute inset-0 bg-indigo-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 {/* Minimal dropdown on hover */}
-                <div className="absolute top-10 right-0 w-48 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden z-50">
-                  <div className="px-4 py-3 border-b border-white/5">
+                <div className="absolute top-10 right-0 w-48 bg-card border border-line rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden z-50">
+                  <div className="px-4 py-3 border-b border-line">
                     <p className="text-xs text-muted font-medium truncate">{user.email}</p>
                   </div>
                   <div className="p-1">
-                    <Link href="/tools/env-vault" className="block px-3 py-2 text-sm text-fg hover:bg-white/5 rounded-lg transition-colors">
+                    <Link href="/tools/env-vault" className="block px-3 py-2 text-sm text-fg hover:bg-hover rounded-lg transition-colors">
                       My Vaults
                     </Link>
-                    <Link href="/canvas" className="block px-3 py-2 text-sm text-fg hover:bg-white/5 rounded-lg transition-colors">
+                    <Link href="/canvas" className="block px-3 py-2 text-sm text-fg hover:bg-hover rounded-lg transition-colors">
                       Workflows
                     </Link>
                   </div>
-                  <div className="p-1 border-t border-white/5">
+                  <div className="p-1 border-t border-line">
                     <button 
                       onClick={async () => {
                         const supabase = createClient();
                         await supabase.auth.signOut();
                       }}
-                      className="w-full text-left px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+                      className="w-full text-left px-3 py-2 text-sm text-danger hover:bg-danger/10 rounded-lg transition-colors"
                     >
                       Sign Out
                     </button>
@@ -160,7 +160,7 @@ export function SiteHeader() {
           ) : (
             <button 
               onClick={() => setIsAuthOpen(true)}
-              className="hidden sm:inline-flex items-center justify-center h-8 px-4 ml-2 rounded-lg bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-colors"
+              className="hidden sm:inline-flex items-center justify-center h-8 px-4 ml-2 rounded-lg bg-primary text-primary-fg font-semibold text-sm hover:bg-primary/90 transition-colors"
             >
               Sign In
             </button>
