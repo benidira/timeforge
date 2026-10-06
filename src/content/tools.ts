@@ -79,7 +79,17 @@ export const TOOLS: Tool[] = [
     metaDescription: "Share your localhost directly to another browser using Peer-to-Peer WebRTC. Zero servers, zero latency, impossible to intercept.",
     intro: "Bypass ngrok entirely. Generate a secure WebRTC tunnel to stream your localhost directly to a client's browser without any intermediary servers.",
     cardDescription: "Share localhost via direct P2P WebRTC connection.",
-    faq: [], related: [], sections: [], howTo: [],
+    faq: [
+      { q: "Is the data routed through Castov servers?", a: "No. All data flows directly between peers using WebRTC data channels. We do not use any TURN/STUN servers that intercept data." },
+      { q: "What happens if both devices are behind strict NATs?", a: "Direct connection might fail without a TURN server. Currently, this tool requires at least one peer to have permissive NAT traversal or use a local network." }
+    ], related: [], sections: [
+      { heading: "What is P2P Ghost Tunnel?", paragraphs: ["P2P Ghost Tunnel establishes a direct, encrypted WebRTC connection between your browser and another device, entirely bypassing centralized servers. It's designed for transferring logs, sensitive payloads, or securely chatting without leaving a trace.", "Because the signaling relies on a minimal exchange of ICE candidates (which can be done manually or via a temporary signaling channel), the resulting connection is strictly peer-to-peer."] }
+    ], howTo: [
+      "Generate an Offer from Device A and copy the SDP string.",
+      "Paste the Offer into Device B to generate an Answer.",
+      "Copy the Answer back to Device A to establish the connection.",
+      "Once connected, start sending encrypted data or files."
+    ],
   },
   {
     slug: "steganography-env-vault",
@@ -89,7 +99,18 @@ export const TOOLS: Tool[] = [
     metaDescription: "Encrypt and hide your production .env variables inside the pixels of a PNG logo. 100% local, impossible for hackers to detect.",
     intro: "Ditch text-based secret managers. Encrypt your keys and embed the ciphertext mathematically into your company's logo pixels.",
     cardDescription: "Hide encrypted .env files inside PNG image pixels.",
-    faq: [], related: [], sections: [], howTo: [],
+    faq: [
+      { q: "Does the image look different after hiding data?", a: "No. The changes are made to the least significant bits of the image's color channels, which is completely imperceptible to the human eye." },
+      { q: "Can I use JPEG images?", a: "No. JPEG uses lossy compression, which will destroy the hidden data. Always use lossless formats like PNG." }
+    ], related: [], sections: [
+      { heading: "Steganography in Environment Variables", paragraphs: ["Steganography Env Vault allows you to take sensitive .env variables (like database URIs, API keys, and secret tokens) and hide them inside the least significant bits of an ordinary PNG image.", "This technique provides 'plausible deniability' and extreme security. An attacker who breaches your repository or local drive will only see a standard image file, completely unaware that it contains encrypted configuration data."] }
+    ], howTo: [
+      "Select a carrier image (PNG format recommended) from your computer.",
+      "Paste your raw .env file contents into the input field.",
+      "Set a strong master password (this will be used to encrypt the data before hiding it).",
+      "Click 'Encode and Download' to get your new, secret-bearing image.",
+      "To decode, upload the modified image and provide the same password."
+    ],
   },
   {
     slug: "3d-json-galaxy",
@@ -99,7 +120,17 @@ export const TOOLS: Tool[] = [
     metaDescription: "Visualize massive 50MB+ JSON structures as an interactive 3D universe using WebGL.",
     intro: "Stop scrolling through thousands of lines of JSON. Fly through your data architecture in 3D to spot anomalies and schema structures visually.",
     cardDescription: "Explore massive JSON architectures in a 3D WebGL universe.",
-    faq: [], related: [], sections: [], howTo: [],
+    faq: [
+      { q: "Is my JSON uploaded to generate the 3D model?", a: "No. The parsing and 3D rendering are handled entirely by your GPU and browser using WebGL." },
+      { q: "What is the performance limit?", a: "It depends on your graphics card. Modern GPUs can handle tens of thousands of nodes smoothly." }
+    ], related: [], sections: [
+      { heading: "Navigating JSON in 3D", paragraphs: ["The Holographic JSON Explorer parses massive JSON datasets and visualizes them using Three.js and WebGL. Instead of endless scrolling, you can literally fly through your data.", "Objects are represented as planets or nodes, and arrays form orbital rings or constellations. This spatial representation helps engineers quickly identify deep nesting, circular references, and structural anomalies."] }
+    ], howTo: [
+      "Upload or paste a large JSON payload into the editor.",
+      "Click 'Launch Galaxy' to render the 3D visualization.",
+      "Use your mouse to rotate (click and drag) and zoom (scroll wheel).",
+      "Click on specific nodes to see their corresponding JSON keys and values in the side panel."
+    ],
   },
   {
     slug: "regex-genetic-evolution",
@@ -109,7 +140,16 @@ export const TOOLS: Tool[] = [
     metaDescription: "Don't write Regex. Provide passing and failing strings, and watch our local constraint-solver mutate expressions until they match perfectly.",
     intro: "Enter what you want to match, and what you want to reject. Our browser-based algorithm evolves the perfect Regular Expression in real-time.",
     cardDescription: "Evolve perfect Regex using local genetic algorithms.",
-    faq: [], related: [], sections: [], howTo: [],
+    faq: [
+      { q: "Is this guaranteed to find the best regex?", a: "Not necessarily the most human-readable one, but it will find a mathematically valid regex that satisfies your strict constraints." }
+    ], related: [], sections: [
+      { heading: "Genetic Algorithms for Regex", paragraphs: ["Writing the perfect Regular Expression often involves tedious trial and error. The Genetic Regex Auto-Healer automates this by applying evolutionary algorithms to 'breed' the perfect regex.", "You provide positive test cases (strings that must match) and negative test cases (strings that must not match). The engine randomly mutates an initial pattern, scores the offspring based on accuracy, and evolves them over generations until it finds a pattern that passes all tests."] }
+    ], howTo: [
+      "Enter a list of strings that the regex MUST match (Target Matches).",
+      "Enter a list of strings that the regex MUST NOT match (Anti-Matches).",
+      "Provide an optional starting regex (or let the engine start from scratch).",
+      "Click 'Evolve' and watch the engine iterate through generations to find the perfect pattern."
+    ],
   },
   {
     slug: "api-time-machine",
@@ -119,7 +159,16 @@ export const TOOLS: Tool[] = [
     metaDescription: "Upload a HAR file and use a timeline scrubber to locally replay past API requests directly to your frontend app without a database.",
     intro: "Recreate race conditions instantly. Scrub through a timeline to replay exact historical API responses and watch your UI react as if it's in the past.",
     cardDescription: "Replay past API states using a visual timeline scrubber.",
-    faq: [], related: [], sections: [], howTo: [],
+    faq: [
+      { q: "Do I need to install a desktop app for this?", a: "No, this uses Service Workers to intercept fetch requests directly within your browser session." }
+    ], related: [], sections: [
+      { heading: "Chrono-Debug API Replay", paragraphs: ["Testing API idempotency and timing issues is notoriously difficult. The Chrono-Debug API Replay acts as a local proxy that intercepts your HTTP requests and allows you to artificially alter their timing, latency, and order.", "By simulating network conditions from 'the past' or delaying requests into 'the future', you can uncover race conditions and state-mutation bugs in your frontend applications."] }
+    ], howTo: [
+      "Configure your frontend to route API calls through the local proxy endpoint provided.",
+      "Record a sequence of API calls.",
+      "Use the timeline interface to drag requests, altering their latency and arrival order.",
+      "Replay the sequence to observe how your application handles the mutated timing."
+    ],
   },
   {
     slug: "ast-conflict-telepathy",
@@ -129,7 +178,16 @@ export const TOOLS: Tool[] = [
     metaDescription: "Resolve Git conflicts by parsing Abstract Syntax Trees instead of text diffs to understand developer intent automatically.",
     intro: "Stop staring at text diffs. Our tool parses the AST of both branches to semantically merge logic, preventing broken syntax automatically.",
     cardDescription: "Semantically merge Git conflicts using AST logic parsing.",
-    faq: [], related: [], sections: [], howTo: [],
+    faq: [
+      { q: "What languages are supported?", a: "Currently, AST parsing is supported for JavaScript, TypeScript, and JSON." }
+    ], related: [], sections: [
+      { heading: "AST Conflict Telepathy", paragraphs: ["Git merge conflicts in complex JavaScript/TypeScript files are a nightmare. Standard text-based merging doesn't understand code syntax.", "AST Conflict Telepathy parses the conflicting files into Abstract Syntax Trees (AST). It then compares the actual logical intent of the code (e.g., variable renames, moved functions) and resolves conflicts syntactically rather than line-by-line."] }
+    ], howTo: [
+      "Paste 'Branch A' code into the left editor.",
+      "Paste 'Branch B' code into the right editor.",
+      "The tool generates a visual AST diff.",
+      "Select logical nodes to keep or discard, and export the perfectly merged file."
+    ],
   },
   {
     slug: "json-viewer",
@@ -1467,7 +1525,9 @@ export const TOOLS: Tool[] = [
       "Drag the slider along the 24-hour axis.",
       "Watch the local times update synchronously to verify overlap hours."
     ],
-    faq: [],
+    faq: [
+      { q: "Does this affect other browser tabs?", a: "No, the override is isolated to the current Service Worker scope or injected script execution context." }
+    ],
     related: ["timezone-converter", "world-clock", "cron-generator"],
   },
   {
@@ -1489,7 +1549,9 @@ export const TOOLS: Tool[] = [
       "Edit the file.",
       "Copy the converted configuration from the other panels."
     ],
-    faq: [],
+    faq: [
+      { q: "Does it support custom ESLint plugins?", a: "Yes, it cross-references standard plugin rulesets to prevent collisions." }
+    ],
     related: ["timezone-simulator", "env-vault"],
   },
   {
@@ -1512,7 +1574,9 @@ export const TOOLS: Tool[] = [
       "Send the generated payload or link to your teammate.",
       "They use the Decrypt tab and the password to read the secrets."
     ],
-    faq: [],
+    faq: [
+      { q: "What happens if I lose the URL?", a: "The data is unrecoverable. Because the encryption key is never sent to the server, we cannot restore your access." }
+    ],
     related: ["universal-config-sync"],
   },
   {
@@ -1534,7 +1598,9 @@ export const TOOLS: Tool[] = [
       "The tool immediately highlights any detected secrets.",
       "Remove or rotate the compromised secrets before pushing your code."
     ],
-    faq: [],
+    faq: [
+      { q: "Can I configure custom regex patterns?", a: "Yes, you can add custom patterns in the settings panel to detect internal company tokens." }
+    ],
     related: ["env-vault"],
   },
   {
@@ -1557,7 +1623,9 @@ export const TOOLS: Tool[] = [
       "Configure the Requests per Second (RPS) and test duration.",
       "Click Start and monitor the real-time latency charts."
     ],
-    faq: [],
+    faq: [
+      { q: "Is it safe to run against production?", a: "WARNING: This tool can generate significant traffic. Only run tests against endpoints you own and have permission to stress test." }
+    ],
     related: ["universal-config-sync"],
   },
   {
@@ -1579,7 +1647,9 @@ export const TOOLS: Tool[] = [
       "The canvas automatically renders nodes for each service.",
       "Arrows represent \"depends_on\" or \"links\" relationships between containers."
     ],
-    faq: [],
+    faq: [
+      { q: "Does it support Docker Compose v3 syntax?", a: "Yes, it fully supports version 2, 3, and the latest Compose Specification." }
+    ],
     related: ["universal-config-sync"],
   },
   {
@@ -1601,7 +1671,10 @@ export const TOOLS: Tool[] = [
       "Write standard SQLite queries in the editor.",
       "Click 'Run Query' to view the results in the table below."
     ],
-    faq: [],
+    faq: [
+      { q: "Is the data saved when I refresh the page?", a: "No, the database runs in memory. If you refresh, all data is lost. Make sure to export your DB if you want to keep it." },
+      { q: "Can I load an existing database?", a: "Yes, use the Import DB feature to load an existing .sqlite file into the WASM engine." }
+    ],
     related: ["universal-config-sync"],
   }
 ];
