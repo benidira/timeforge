@@ -141,16 +141,16 @@ export const TOOLS: Tool[] = [
     cardDescription: "Parse and view gigantic JSON files locally.",
     faq: [
       {
-        question: "Is my JSON data uploaded anywhere?",
-        answer: "No. Castov's JSON Viewer operates 100% locally in your browser. Files are processed entirely client-side without ever leaving your device, making it safe for production configurations, secrets, and sensitive customer payloads."
+        q: "Is my JSON data uploaded anywhere?",
+        a: "No. Castov's JSON Viewer operates 100% locally in your browser. Files are processed entirely client-side without ever leaving your device, making it safe for production configurations, secrets, and sensitive customer payloads."
       },
       {
-        question: "What is the maximum file size supported?",
-        answer: "Because we process everything locally and use efficient DOM rendering techniques, you can safely load JSON files up to 50MB. However, very deeply nested massive files may briefly pause your browser while parsing."
+        q: "What is the maximum file size supported?",
+        a: "Because we process everything locally and use efficient DOM rendering techniques, you can safely load JSON files up to 50MB. However, very deeply nested massive files may briefly pause your browser while parsing."
       },
       {
-        question: "What is the 3D Galaxy Mode?",
-        answer: "The 3D Galaxy Mode is an experimental WebGPU/WebGL feature that maps your nested JSON structure into an interactive 3D universe. It helps visualize deep hierarchies where objects act as planets and arrays act as orbital systems."
+        q: "What is the 3D Galaxy Mode?",
+        a: "The 3D Galaxy Mode is an experimental WebGPU/WebGL feature that maps your nested JSON structure into an interactive 3D universe. It helps visualize deep hierarchies where objects act as planets and arrays act as orbital systems."
       }
     ],
     related: ["ast-conflict-telepathy", "env-vault"],
