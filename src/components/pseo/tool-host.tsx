@@ -11,6 +11,10 @@ const TimestampTool = dynamic<{ variant?: string; initial?: Record<string, unkno
     ),
   { ssr: false, loading: () => null },
 );
+const JsonViewerTool = dynamic<{ initial?: Record<string, unknown> }>(
+  () => import("@/components/tools/json-viewer-tool").then((m) => m.JsonViewerTool as any),
+  { ssr: false, loading: () => null }
+);
 const IsoTool = dynamic<{ initial?: Record<string, unknown> }>(
   () =>
     import("@/components/tools/iso8601-converter-tool").then(
@@ -82,6 +86,8 @@ function resolve(
       return <DurationTool initial={initial} />;
     case "shift":
       return <ShiftTool initial={initial} />;
+    case "json-viewer":
+      return <JsonViewerTool initial={initial} />;
     default:
       return null;
   }

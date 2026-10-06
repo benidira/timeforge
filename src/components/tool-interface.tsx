@@ -1,4 +1,5 @@
 import type { ToolSlug } from "@/content/tools";
+import { JsonViewerTool } from "./tools/json-viewer-tool";
 import { BatchConverterTool } from "./tools/batch-converter-tool";
 import { BusinessHoursTool } from "./tools/business-hours-tool";
 import { CronGeneratorTool } from "./tools/cron-generator-tool";
@@ -99,5 +100,7 @@ export function ToolInterface({ slug }: { slug: ToolSlug }) {
       return <SqliteFiddleTool />;
     case "regex-explainer":
       return <RegexExplainerTool />;
+    case "json-viewer":
+      return <JsonViewerTool />;
   }
 }

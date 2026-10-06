@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   applicationName: SITE.name,
   authors: [{ name: SITE.name }],
   formatDetection: { telephone: false, email: false, address: false },
+  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {

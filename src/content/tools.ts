@@ -34,7 +34,8 @@ export type ToolSlug =
   | "api-load-tester"
   | "docker-visualizer"
   | "sqlite-fiddle"
-  | "regex-explainer";
+  | "regex-explainer"
+  | "json-viewer";
 
 export interface ContentSection {
   heading: string;
@@ -63,6 +64,19 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
+  {
+    slug: "json-viewer",
+    category: "Developer",
+    name: "Gigantic JSON Viewer",
+    seoTitle: "JSON Viewer & Formatter | Castov",
+    metaDescription: "Parse, view, and format gigantic JSON files safely and instantly in your browser without uploading data.",
+    intro: "Open huge JSON files locally in your browser. Handles massive payloads using local-first rendering.",
+    cardDescription: "Parse and view gigantic JSON files locally.",
+    faq: [],
+    related: [],
+    sections: [],
+    howTo: [],
+  },
   {
     slug: "unix-timestamp-converter",
     category: "Timestamp",

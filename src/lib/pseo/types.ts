@@ -35,7 +35,8 @@ export type ToolComponent =
   | "world-clock"
   | "date-diff"
   | "duration"
-  | "shift";
+  | "shift"
+  | "json-viewer";
 
 export interface ToolConfig {
   component: ToolComponent;
