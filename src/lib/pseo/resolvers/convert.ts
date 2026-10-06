@@ -148,9 +148,9 @@ export const convertResolver: Resolver = {
         {
           heading: "Try the live tools",
           links: [
-            { href: `/tools/unix-timestamp-converter`, label: "Unix Timestamp Converter" },
-            { href: `/tools/iso-8601-to-unix`, label: "ISO 8601 to Unix" },
-            { href: `/tools/unix-to-iso-8601`, label: "Unix to ISO 8601" },
+            { href: `/unix-timestamp-converter`, label: "Unix Timestamp Converter" },
+            { href: `/iso-8601-to-unix`, label: "ISO 8601 to Unix" },
+            { href: `/unix-to-iso-8601`, label: "Unix to ISO 8601" },
           ],
         },
       ],

@@ -217,7 +217,7 @@ function resolveZonePage(slug: string): PageModel | null {
         links: [
           { href: `/timezone-converter`, label: "Timezone Converter" },
           { href: `/world-clock`, label: "World Clock" },
-          { href: `/tools/utc-converter`, label: "UTC Converter" },
+          { href: `/utc-converter`, label: "UTC Converter" },
         ],
       },
     ],
@@ -355,7 +355,7 @@ function resolveConverterPage(slug: string): PageModel | null {
         links: [
           { href: `/timezone-converter`, label: "Timezone Converter" },
           { href: `/world-clock`, label: "World Clock" },
-          { href: `/tools/utc-converter`, label: "UTC Converter" },
+          { href: `/utc-converter`, label: "UTC Converter" },
         ],
       },
     ],

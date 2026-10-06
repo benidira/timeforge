@@ -281,7 +281,7 @@ export default function CronHubPage() {
           {cronTools.map((t) => (
             <li key={t.slug}>
               <Link
-                href={`/tools/${t.slug}`}
+                href={`/${t.slug}`}
                 className="card block h-full p-4 no-underline hover:border-accent transition-colors"
               >
                 <span className="block font-semibold text-fg">{t.name}</span>
@@ -349,7 +349,7 @@ export default function CronHubPage() {
           the next five run times instantly.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/tools/cron-generator" className="btn btn-primary">
+          <Link href="/cron-generator" className="btn btn-primary">
             Cron Generator Tool
           </Link>
           <Link href="/guides/cron-expressions-explained" className="btn btn-secondary">

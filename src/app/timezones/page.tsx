@@ -206,7 +206,7 @@ export default function TimezonesHubPage() {
           {timezoneTools.map((t) => (
             <li key={t.slug}>
               <Link
-                href={`/tools/${t.slug}`}
+                href={`/${t.slug}`}
                 className="card block h-full p-4 no-underline hover:border-accent transition-colors"
               >
                 <span className="block font-semibold text-fg">{t.name}</span>

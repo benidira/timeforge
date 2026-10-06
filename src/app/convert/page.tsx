@@ -172,7 +172,7 @@ export default function ConvertHubPage() {
           {timestampTools.map((t) => (
             <li key={t.slug}>
               <Link
-                href={`/tools/${t.slug}`}
+                href={`/${t.slug}`}
                 className="card block h-full p-4 no-underline hover:border-accent transition-colors"
               >
                 <span className="block font-semibold text-fg">{t.name}</span>
@@ -240,10 +240,10 @@ export default function ConvertHubPage() {
           most common case.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/tools/unix-timestamp-converter" className="btn btn-primary">
+          <Link href="/unix-timestamp-converter" className="btn btn-primary">
             Unix Timestamp Converter
           </Link>
-          <Link href="/tools/iso-8601-converter" className="btn btn-secondary">
+          <Link href="/iso-8601-converter" className="btn btn-secondary">
             ISO 8601 Converter
           </Link>
         </div>

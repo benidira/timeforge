@@ -172,10 +172,10 @@ export function buildCodeRelated(
   groups.push({
     heading: "Try the live tools",
     links: [
-      { href: `/tools/current-unix-timestamp`, label: "Current Unix Timestamp" },
-      { href: `/tools/timestamp-to-date`, label: "Timestamp to Date" },
-      { href: `/tools/date-to-timestamp`, label: "Date to Timestamp" },
-      { href: `/tools/unix-to-iso-8601`, label: "Unix to ISO 8601" },
+      { href: `/current-unix-timestamp`, label: "Current Unix Timestamp" },
+      { href: `/timestamp-to-date`, label: "Timestamp to Date" },
+      { href: `/date-to-timestamp`, label: "Date to Timestamp" },
+      { href: `/unix-to-iso-8601`, label: "Unix to ISO 8601" },
     ],
   });
 
