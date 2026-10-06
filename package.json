@@ -46,7 +46,10 @@
     "regexpp": "^3.2.0",
     "shiki": "^4.5.0",
     "sql.js": "^1.14.2",
-    "three": "^0.186.1"
+    "three": "^0.186.1",
+    "y-protocols": "^1.0.7",
+    "y-webrtc": "^10.3.0",
+    "yjs": "^13.6.33"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
