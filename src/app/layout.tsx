@@ -5,6 +5,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CommandPalette } from "@/components/command-palette";
+import { PwaRegister } from "@/components/pwa-register";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteFooter />
         <CommandPalette />
         <AdSenseScript />
+        <PwaRegister />
       </body>
     </html>
   );
