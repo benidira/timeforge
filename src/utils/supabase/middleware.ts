@@ -27,8 +27,41 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  // refreshing the auth token
-  await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // 1. Private Routes Protection
+  const protectedRoutes = ['/env-vault/team', '/canvas', '/api/playground'];
+  const isProtectedRoute = protectedRoutes.some(route => request.nextUrl.pathname.startsWith(route));
+
+  if (isProtectedRoute && !user) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = '/login';
+    redirectUrl.searchParams.set('redirectedFrom', request.nextUrl.pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // 2. Auth Routes Protection (prevent logged-in users from seeing login/signup)
+  const authRoutes = ['/login', '/signup'];
+  const isAuthRoute = authRoutes.some(route => request.nextUrl.pathname.startsWith(route));
+
+  if (isAuthRoute && user) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = '/tools';
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // 3. Dynamic Security Headers (Anti-Clickjacking, MIME Sniffing, XSS Protection)
+  supabaseResponse.headers.set('X-Frame-Options', 'DENY');
+  supabaseResponse.headers.set('X-Content-Type-Options', 'nosniff');
+  supabaseResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  supabaseResponse.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  supabaseResponse.headers.set('X-XSS-Protection', '1; mode=block');
+  
+  // Basic CSP to prevent malicious script injection
+  supabaseResponse.headers.set(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' wss: https:; frame-src 'self' https://googleads.g.doubleclick.net https://www.youtube.com; worker-src 'self' blob:;"
+  );
 
   return supabaseResponse;
 }
