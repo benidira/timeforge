@@ -15,8 +15,13 @@ type Prompt = {
 };
 
 const ALL_PROMPTS = promptsData as Prompt[];
-const AIs = ["All", "ChatGPT", "Claude", "Gemini", "Midjourney", "Cursor"];
-const ROLES = ["All", "Developer", "Marketer", "Designer", "Writer", "Student"];
+const AIs = [
+  "All", "ChatGPT", "Claude AI", "Google Gemini", "Midjourney", "Leonardo AI",
+  "ElevenLabs", "Perplexity AI", "Runway", "Kling AI", "Hailuo AI (MiniMax)",
+  "Luma Dream Machine", "Suno AI", "Udio", "Cursor", "GitHub Copilot",
+  "HeyGen", "CapCut AI", "Flux AI", "Ideogram", "Poe"
+];
+const ROLES = ["All", "Developer", "Creator", "Marketer", "Designer", "Writer", "Student"];
 
 export default function PromptsLibraryPage() {
   const [search, setSearch] = useState("");
@@ -53,7 +58,7 @@ export default function PromptsLibraryPage() {
           </h1>
           
           <p className="text-lg md:text-xl text-muted mb-10 leading-relaxed max-w-2xl">
-            A massive, curated collection of professional prompts for ChatGPT, Claude, Gemini, Midjourney, and Cursor. Designed to instantly 10x your productivity.
+            A massive, curated collection of professional prompts for 20+ top AI engines including ChatGPT, Claude, Midjourney, and Luma. Designed to instantly 10x your productivity.
           </p>
 
           <div className="w-full relative max-w-2xl mb-8">
@@ -67,27 +72,27 @@ export default function PromptsLibraryPage() {
             />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-2 bg-field border border-line rounded-lg p-1 shadow-sm">
+          <div className="w-full max-w-4xl space-y-4">
+            <div className="flex items-center gap-2 bg-field border border-line rounded-lg p-2 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
               <Bot className="w-4 h-4 text-muted ml-2 shrink-0" />
               {AIs.map(ai => (
                 <button
                   key={ai}
                   onClick={() => setSelectedAI(ai)}
-                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${selectedAI === ai ? "bg-accent text-white" : "text-muted hover:text-fg hover:bg-hover"}`}
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors shrink-0 ${selectedAI === ai ? "bg-accent text-white" : "text-muted hover:text-fg hover:bg-hover"}`}
                 >
                   {ai}
                 </button>
               ))}
             </div>
             
-            <div className="flex items-center gap-2 bg-field border border-line rounded-lg p-1 shadow-sm">
+            <div className="flex items-center justify-center gap-2 bg-field border border-line rounded-lg p-2 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
               <Briefcase className="w-4 h-4 text-muted ml-2 shrink-0" />
               {ROLES.map(role => (
                 <button
                   key={role}
                   onClick={() => setSelectedRole(role)}
-                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${selectedRole === role ? "bg-primary text-white" : "text-muted hover:text-fg hover:bg-hover"}`}
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors shrink-0 ${selectedRole === role ? "bg-primary text-white" : "text-muted hover:text-fg hover:bg-hover"}`}
                 >
                   {role}
                 </button>

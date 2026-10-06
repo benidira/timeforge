@@ -1,98 +1,722 @@
 [
   {
-    "id": "dev-1",
-    "ai": "Claude",
-    "role": "Developer",
-    "title": "Next.js App Router Expert",
-    "prompt": "Act as an expert Next.js 14 developer. I want to build [PROJECT]. Give me the optimal folder structure using App Router, and write the initial layout.tsx with proper metadata and Tailwind setup.",
+    "id": "seed-1",
+    "ai": "ChatGPT",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for ChatGPT",
+    "prompt": "Act as an expert in ChatGPT. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
     "tags": [
-      "React",
-      "Next.js",
-      "Architecture"
+      "Master",
+      "Optimization",
+      "ChatGPT"
     ]
   },
   {
-    "id": "dev-2",
+    "id": "seed-2",
     "ai": "ChatGPT",
     "role": "Developer",
-    "title": "Python Regex Generator",
-    "prompt": "Write a Python script that parses [INPUT_FORMAT] and extracts [DATA]. Give me the exact regex and explain step-by-step how the regex engine evaluates it.",
+    "title": "ChatGPT API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the ChatGPT API. Include error handling, retry logic, and rate limit management.",
     "tags": [
-      "Python",
-      "Regex",
-      "Data Parsing"
+      "API",
+      "Coding",
+      "Integration"
     ]
   },
   {
-    "id": "dev-3",
+    "id": "seed-3",
+    "ai": "ChatGPT",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using ChatGPT",
+    "prompt": "Using ChatGPT, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-4",
+    "ai": "Claude AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Claude AI",
+    "prompt": "Act as an expert in Claude AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Claude AI"
+    ]
+  },
+  {
+    "id": "seed-5",
+    "ai": "Claude AI",
+    "role": "Developer",
+    "title": "Claude AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Claude AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-6",
+    "ai": "Claude AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Claude AI",
+    "prompt": "Using Claude AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-7",
+    "ai": "Google Gemini",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Google Gemini",
+    "prompt": "Act as an expert in Google Gemini. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Google Gemini"
+    ]
+  },
+  {
+    "id": "seed-8",
+    "ai": "Google Gemini",
+    "role": "Developer",
+    "title": "Google Gemini API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Google Gemini API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-9",
+    "ai": "Google Gemini",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Google Gemini",
+    "prompt": "Using Google Gemini, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-10",
+    "ai": "Midjourney",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Midjourney",
+    "prompt": "Act as an expert in Midjourney. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Midjourney"
+    ]
+  },
+  {
+    "id": "seed-11",
+    "ai": "Midjourney",
+    "role": "Developer",
+    "title": "Midjourney API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Midjourney API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-12",
+    "ai": "Midjourney",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Midjourney",
+    "prompt": "Using Midjourney, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-13",
+    "ai": "Leonardo AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Leonardo AI",
+    "prompt": "Act as an expert in Leonardo AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Leonardo AI"
+    ]
+  },
+  {
+    "id": "seed-14",
+    "ai": "Leonardo AI",
+    "role": "Developer",
+    "title": "Leonardo AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Leonardo AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-15",
+    "ai": "Leonardo AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Leonardo AI",
+    "prompt": "Using Leonardo AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-16",
+    "ai": "ElevenLabs",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for ElevenLabs",
+    "prompt": "Act as an expert in ElevenLabs. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "ElevenLabs"
+    ]
+  },
+  {
+    "id": "seed-17",
+    "ai": "ElevenLabs",
+    "role": "Developer",
+    "title": "ElevenLabs API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the ElevenLabs API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-18",
+    "ai": "ElevenLabs",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using ElevenLabs",
+    "prompt": "Using ElevenLabs, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-19",
+    "ai": "Perplexity AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Perplexity AI",
+    "prompt": "Act as an expert in Perplexity AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Perplexity AI"
+    ]
+  },
+  {
+    "id": "seed-20",
+    "ai": "Perplexity AI",
+    "role": "Developer",
+    "title": "Perplexity AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Perplexity AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-21",
+    "ai": "Perplexity AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Perplexity AI",
+    "prompt": "Using Perplexity AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-22",
+    "ai": "Runway",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Runway",
+    "prompt": "Act as an expert in Runway. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Runway"
+    ]
+  },
+  {
+    "id": "seed-23",
+    "ai": "Runway",
+    "role": "Developer",
+    "title": "Runway API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Runway API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-24",
+    "ai": "Runway",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Runway",
+    "prompt": "Using Runway, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-25",
+    "ai": "Kling AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Kling AI",
+    "prompt": "Act as an expert in Kling AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Kling AI"
+    ]
+  },
+  {
+    "id": "seed-26",
+    "ai": "Kling AI",
+    "role": "Developer",
+    "title": "Kling AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Kling AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-27",
+    "ai": "Kling AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Kling AI",
+    "prompt": "Using Kling AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-28",
+    "ai": "Hailuo AI (MiniMax)",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Hailuo AI (MiniMax)",
+    "prompt": "Act as an expert in Hailuo AI (MiniMax). Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Hailuo AI (MiniMax)"
+    ]
+  },
+  {
+    "id": "seed-29",
+    "ai": "Hailuo AI (MiniMax)",
+    "role": "Developer",
+    "title": "Hailuo AI (MiniMax) API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Hailuo AI (MiniMax) API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-30",
+    "ai": "Hailuo AI (MiniMax)",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Hailuo AI (MiniMax)",
+    "prompt": "Using Hailuo AI (MiniMax), generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-31",
+    "ai": "Luma Dream Machine",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Luma Dream Machine",
+    "prompt": "Act as an expert in Luma Dream Machine. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Luma Dream Machine"
+    ]
+  },
+  {
+    "id": "seed-32",
+    "ai": "Luma Dream Machine",
+    "role": "Developer",
+    "title": "Luma Dream Machine API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Luma Dream Machine API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-33",
+    "ai": "Luma Dream Machine",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Luma Dream Machine",
+    "prompt": "Using Luma Dream Machine, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-34",
+    "ai": "Suno AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Suno AI",
+    "prompt": "Act as an expert in Suno AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Suno AI"
+    ]
+  },
+  {
+    "id": "seed-35",
+    "ai": "Suno AI",
+    "role": "Developer",
+    "title": "Suno AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Suno AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-36",
+    "ai": "Suno AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Suno AI",
+    "prompt": "Using Suno AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-37",
+    "ai": "Udio",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Udio",
+    "prompt": "Act as an expert in Udio. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Udio"
+    ]
+  },
+  {
+    "id": "seed-38",
+    "ai": "Udio",
+    "role": "Developer",
+    "title": "Udio API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Udio API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-39",
+    "ai": "Udio",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Udio",
+    "prompt": "Using Udio, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-40",
+    "ai": "Cursor",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Cursor",
+    "prompt": "Act as an expert in Cursor. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Cursor"
+    ]
+  },
+  {
+    "id": "seed-41",
     "ai": "Cursor",
     "role": "Developer",
-    "title": "Refactor for Performance",
-    "prompt": "Analyze the highlighted React component. Refactor it to minimize unnecessary re-renders. Use useMemo and useCallback where appropriate, and explain the performance gain.",
+    "title": "Cursor API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Cursor API. Include error handling, retry logic, and rate limit management.",
     "tags": [
-      "Refactoring",
-      "React",
-      "Performance"
+      "API",
+      "Coding",
+      "Integration"
     ]
   },
   {
-    "id": "mj-1",
-    "ai": "Midjourney",
-    "role": "Designer",
-    "title": "Cyberpunk UI Elements",
-    "prompt": "UI/UX design of a cyberpunk hacker dashboard, neon green and dark grey, glowing elements, highly detailed, futuristic, vector graphics style --v 6.0",
-    "tags": [
-      "UI/UX",
-      "Cyberpunk",
-      "Dashboard"
-    ]
-  },
-  {
-    "id": "mj-2",
-    "ai": "Midjourney",
-    "role": "Designer",
-    "title": "Minimalist Logo",
-    "prompt": "Minimalist flat vector logo for a tech startup named [NAME], incorporating a [SHAPE], clean background, modern, Dribbble style --no shadows --v 6.0",
-    "tags": [
-      "Logo",
-      "Minimalism",
-      "Vector"
-    ]
-  },
-  {
-    "id": "mark-1",
-    "ai": "ChatGPT",
+    "id": "seed-42",
+    "ai": "Cursor",
     "role": "Marketer",
-    "title": "Viral Twitter Thread",
-    "prompt": "Write a highly engaging, 8-tweet thread about [TOPIC]. Use the PAS (Problem-Agitate-Solution) framework. Include a hook in the first tweet and a CTA in the last one.",
+    "title": "Viral Content Strategy using Cursor",
+    "prompt": "Using Cursor, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
     "tags": [
-      "Twitter",
-      "Social Media",
-      "Copywriting"
+      "Marketing",
+      "Strategy",
+      "Viral"
     ]
   },
   {
-    "id": "mark-2",
-    "ai": "Claude",
+    "id": "seed-43",
+    "ai": "GitHub Copilot",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for GitHub Copilot",
+    "prompt": "Act as an expert in GitHub Copilot. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "GitHub Copilot"
+    ]
+  },
+  {
+    "id": "seed-44",
+    "ai": "GitHub Copilot",
+    "role": "Developer",
+    "title": "GitHub Copilot API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the GitHub Copilot API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-45",
+    "ai": "GitHub Copilot",
     "role": "Marketer",
-    "title": "SEO Blog Post Outline",
-    "prompt": "Create a comprehensive SEO-optimized blog outline targeting the keyword [KEYWORD]. Include H2 and H3 headings, LSI keywords to include, and search intent analysis.",
+    "title": "Viral Content Strategy using GitHub Copilot",
+    "prompt": "Using GitHub Copilot, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
     "tags": [
-      "SEO",
-      "Content",
-      "Blogging"
+      "Marketing",
+      "Strategy",
+      "Viral"
     ]
   },
   {
-    "id": "gem-1",
-    "ai": "Gemini",
-    "role": "Writer",
-    "title": "Creative Story Generator",
-    "prompt": "Write a short sci-fi story about a world where [CONCEPT]. Make the tone suspenseful and focus on the psychological impact on the main character.",
+    "id": "seed-46",
+    "ai": "HeyGen",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for HeyGen",
+    "prompt": "Act as an expert in HeyGen. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
     "tags": [
-      "Storytelling",
-      "Sci-Fi",
-      "Creative"
+      "Master",
+      "Optimization",
+      "HeyGen"
+    ]
+  },
+  {
+    "id": "seed-47",
+    "ai": "HeyGen",
+    "role": "Developer",
+    "title": "HeyGen API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the HeyGen API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-48",
+    "ai": "HeyGen",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using HeyGen",
+    "prompt": "Using HeyGen, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-49",
+    "ai": "CapCut AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for CapCut AI",
+    "prompt": "Act as an expert in CapCut AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "CapCut AI"
+    ]
+  },
+  {
+    "id": "seed-50",
+    "ai": "CapCut AI",
+    "role": "Developer",
+    "title": "CapCut AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the CapCut AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-51",
+    "ai": "CapCut AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using CapCut AI",
+    "prompt": "Using CapCut AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-52",
+    "ai": "Flux AI",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Flux AI",
+    "prompt": "Act as an expert in Flux AI. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Flux AI"
+    ]
+  },
+  {
+    "id": "seed-53",
+    "ai": "Flux AI",
+    "role": "Developer",
+    "title": "Flux AI API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Flux AI API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-54",
+    "ai": "Flux AI",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Flux AI",
+    "prompt": "Using Flux AI, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-55",
+    "ai": "Ideogram",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Ideogram",
+    "prompt": "Act as an expert in Ideogram. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Ideogram"
+    ]
+  },
+  {
+    "id": "seed-56",
+    "ai": "Ideogram",
+    "role": "Developer",
+    "title": "Ideogram API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Ideogram API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-57",
+    "ai": "Ideogram",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Ideogram",
+    "prompt": "Using Ideogram, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
+    ]
+  },
+  {
+    "id": "seed-58",
+    "ai": "Poe",
+    "role": "Creator",
+    "title": "Optimal Master Prompt for Poe",
+    "prompt": "Act as an expert in Poe. Generate a highly detailed, optimal prompt that utilizes all advanced parameters and formatting tricks specific to your engine to produce the highest quality output for [INSERT TOPIC].",
+    "tags": [
+      "Master",
+      "Optimization",
+      "Poe"
+    ]
+  },
+  {
+    "id": "seed-59",
+    "ai": "Poe",
+    "role": "Developer",
+    "title": "Poe API Integration Guide",
+    "prompt": "Provide a complete, production-ready code snippet in TypeScript demonstrating how to integrate the Poe API. Include error handling, retry logic, and rate limit management.",
+    "tags": [
+      "API",
+      "Coding",
+      "Integration"
+    ]
+  },
+  {
+    "id": "seed-60",
+    "ai": "Poe",
+    "role": "Marketer",
+    "title": "Viral Content Strategy using Poe",
+    "prompt": "Using Poe, generate a 30-day viral content strategy for a new SaaS product. Detail how to use this specific AI tool at each step of the content creation funnel.",
+    "tags": [
+      "Marketing",
+      "Strategy",
+      "Viral"
     ]
   }
 ]
