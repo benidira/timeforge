@@ -118,7 +118,7 @@ export function JsonlDatasetFormatter() {
             <button
               onClick={() => setFormatMode("chat")}
               className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
-                formatMode === "chat" ? "bg-accent text-white" : "text-muted hover:text-fg"
+                formatMode === "chat" ? "bg-accent text-accent-fg" : "text-muted hover:text-fg"
               }`}
             >
               Chat Format
@@ -126,7 +126,7 @@ export function JsonlDatasetFormatter() {
             <button
               onClick={() => setFormatMode("completion")}
               className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
-                formatMode === "completion" ? "bg-accent text-white" : "text-muted hover:text-fg"
+                formatMode === "completion" ? "bg-accent text-accent-fg" : "text-muted hover:text-fg"
               }`}
             >
               Prompt / Completion

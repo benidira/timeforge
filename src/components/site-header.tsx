@@ -55,9 +55,6 @@ export function SiteHeader() {
             aria-label={`${SITE.name} home`}
           >
             <BrandMark size={28} />
-            <span className="text-xl font-bold tracking-tight text-fg hidden sm:block">
-              {SITE.name}
-            </span>
           </Link>
 
           <nav aria-label="Main" className="hidden lg:block ml-4">
@@ -118,17 +115,20 @@ export function SiteHeader() {
           {user ? (
             <div className="hidden sm:flex items-center">
               <div className="flex items-center gap-2 group cursor-pointer relative">
-                <div className="w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center overflow-hidden transition-colors group-hover:bg-accent/20">
+                <Link href="/profile" className="w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center overflow-hidden transition-colors group-hover:bg-accent/20">
                   <span className="text-xs font-bold text-accent">
                     {user.email?.charAt(0).toUpperCase() || "U"}
                   </span>
-                </div>
+                </Link>
                 {/* Minimal dropdown on hover */}
                 <div className="absolute top-10 right-0 w-48 bg-card border border-line rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden z-50">
                   <div className="px-4 py-3 border-b border-line">
                     <p className="text-xs text-muted font-medium truncate">{user.email}</p>
                   </div>
                   <div className="p-1">
+                    <Link href="/profile" className="block px-3 py-2 text-sm text-fg hover:bg-field rounded-lg transition-colors">
+                      Profile
+                    </Link>
                     <Link href="/env-vault/team" className="block px-3 py-2 text-sm text-fg hover:bg-field rounded-lg transition-colors">
                       Team Vaults
                     </Link>
@@ -153,7 +153,7 @@ export function SiteHeader() {
           ) : (
             <Link
               href="/login"
-              className="hidden sm:inline-flex items-center justify-center h-8 px-4 rounded-lg bg-accent text-bg font-semibold text-sm hover:bg-accent-hover transition-colors shadow-sm"
+              className="hidden sm:inline-flex items-center justify-center h-8 px-4 rounded-lg bg-accent text-accent-fg font-semibold text-sm hover:bg-accent-hover transition-colors shadow-sm"
             >
               Sign In
             </Link>
