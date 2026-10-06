@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { FileJsonIcon, UploadCloudIcon, ChevronRightIcon, ChevronDownIcon } from "lucide-react";
-
+import { FileJsonIcon, UploadCloudIcon, ChevronRightIcon, ChevronDownIcon, BoxIcon } from "lucide-react";
+import { ThreeJsonGalaxyTool } from "./3d-json-galaxy-tool";
 // Simple recursive JSON Node viewer
 const JsonNode = ({ data, name }: { data: any, name?: string }) => {
   const [expanded, setExpanded] = useState(true);
@@ -55,6 +55,7 @@ export function JsonViewerTool() {
   const [error, setError] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [is3DMode, setIs3DMode] = useState(false);
 
   const handlePaste = async () => {
     try {
@@ -137,33 +138,47 @@ export function JsonViewerTool() {
         
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-semibold text-fg">Interactive Viewer</label>
-            {parsed && (
+            <div className="flex items-center gap-3">
+              <label className="text-sm font-semibold text-fg">Interactive Viewer</label>
+              {parsed && (
+                <button onClick={() => setIs3DMode(!is3DMode)} className={`text-xs px-3 py-1 rounded-full font-medium transition-colors flex items-center gap-1 ${is3DMode ? "bg-accent text-accent-fg" : "bg-bg border border-line text-muted hover:text-fg"}`}>
+                  <BoxIcon className="w-3 h-3" />
+                  {is3DMode ? "Exit 3D Galaxy" : "تفعيل وضع مجرة 3D 🌌"}
+                </button>
+              )}
+            </div>
+            {parsed && !is3DMode && (
               <span className="text-xs bg-success/10 text-success px-2 py-1 rounded-full font-medium">Valid JSON</span>
             )}
           </div>
-          <div className="h-[600px] overflow-auto border border-line rounded-xl bg-bg p-4 shadow-inner">
-            {loading ? (
-              <div className="h-full flex items-center justify-center text-muted">
-                <div className="animate-pulse flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-accent border-t-transparent rounded-full animate-spin" />
-                  Parsing file...
+          {is3DMode && parsed !== null ? (
+            <div className="border border-line rounded-xl overflow-hidden shadow-2xl">
+              <ThreeJsonGalaxyTool providedJson={parsed} />
+            </div>
+          ) : (
+            <div className="h-[600px] overflow-auto border border-line rounded-xl bg-bg p-4 shadow-inner">
+              {loading ? (
+                <div className="h-full flex items-center justify-center text-muted">
+                  <div className="animate-pulse flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+                    Parsing file...
+                  </div>
                 </div>
-              </div>
-            ) : error ? (
-              <div className="text-danger text-sm font-mono p-4 bg-danger/10 rounded-lg border border-danger/20">
-                <p className="font-bold mb-2">Syntax Error</p>
-                {error}
-              </div>
-            ) : parsed !== null ? (
-              <JsonNode data={parsed} />
-            ) : (
+              ) : error ? (
+                <div className="text-danger text-sm font-mono p-4 bg-danger/10 rounded-lg border border-danger/20">
+                  <p className="font-bold mb-2">Syntax Error</p>
+                  {error}
+                </div>
+              ) : parsed !== null ? (
+                <JsonNode data={parsed} />
+              ) : (
               <div className="h-full flex items-center justify-center text-muted flex-col gap-3">
                 <FileJsonIcon className="w-8 h-8 opacity-20" />
                 <p className="text-sm opacity-50">Output will appear here</p>
               </div>
             )}
           </div>
+          )}
         </div>
       </div>
     </div>
