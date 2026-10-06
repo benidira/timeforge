@@ -1,0 +1,98 @@
+[
+  {
+    "id": "dev-1",
+    "ai": "Claude",
+    "role": "Developer",
+    "title": "Next.js App Router Expert",
+    "prompt": "Act as an expert Next.js 14 developer. I want to build [PROJECT]. Give me the optimal folder structure using App Router, and write the initial layout.tsx with proper metadata and Tailwind setup.",
+    "tags": [
+      "React",
+      "Next.js",
+      "Architecture"
+    ]
+  },
+  {
+    "id": "dev-2",
+    "ai": "ChatGPT",
+    "role": "Developer",
+    "title": "Python Regex Generator",
+    "prompt": "Write a Python script that parses [INPUT_FORMAT] and extracts [DATA]. Give me the exact regex and explain step-by-step how the regex engine evaluates it.",
+    "tags": [
+      "Python",
+      "Regex",
+      "Data Parsing"
+    ]
+  },
+  {
+    "id": "dev-3",
+    "ai": "Cursor",
+    "role": "Developer",
+    "title": "Refactor for Performance",
+    "prompt": "Analyze the highlighted React component. Refactor it to minimize unnecessary re-renders. Use useMemo and useCallback where appropriate, and explain the performance gain.",
+    "tags": [
+      "Refactoring",
+      "React",
+      "Performance"
+    ]
+  },
+  {
+    "id": "mj-1",
+    "ai": "Midjourney",
+    "role": "Designer",
+    "title": "Cyberpunk UI Elements",
+    "prompt": "UI/UX design of a cyberpunk hacker dashboard, neon green and dark grey, glowing elements, highly detailed, futuristic, vector graphics style --v 6.0",
+    "tags": [
+      "UI/UX",
+      "Cyberpunk",
+      "Dashboard"
+    ]
+  },
+  {
+    "id": "mj-2",
+    "ai": "Midjourney",
+    "role": "Designer",
+    "title": "Minimalist Logo",
+    "prompt": "Minimalist flat vector logo for a tech startup named [NAME], incorporating a [SHAPE], clean background, modern, Dribbble style --no shadows --v 6.0",
+    "tags": [
+      "Logo",
+      "Minimalism",
+      "Vector"
+    ]
+  },
+  {
+    "id": "mark-1",
+    "ai": "ChatGPT",
+    "role": "Marketer",
+    "title": "Viral Twitter Thread",
+    "prompt": "Write a highly engaging, 8-tweet thread about [TOPIC]. Use the PAS (Problem-Agitate-Solution) framework. Include a hook in the first tweet and a CTA in the last one.",
+    "tags": [
+      "Twitter",
+      "Social Media",
+      "Copywriting"
+    ]
+  },
+  {
+    "id": "mark-2",
+    "ai": "Claude",
+    "role": "Marketer",
+    "title": "SEO Blog Post Outline",
+    "prompt": "Create a comprehensive SEO-optimized blog outline targeting the keyword [KEYWORD]. Include H2 and H3 headings, LSI keywords to include, and search intent analysis.",
+    "tags": [
+      "SEO",
+      "Content",
+      "Blogging"
+    ]
+  },
+  {
+    "id": "gem-1",
+    "ai": "Gemini",
+    "role": "Writer",
+    "title": "Creative Story Generator",
+    "prompt": "Write a short sci-fi story about a world where [CONCEPT]. Make the tone suspenseful and focus on the psychological impact on the main character.",
+    "tags": [
+      "Storytelling",
+      "Sci-Fi",
+      "Creative"
+    ]
+  }
+]
