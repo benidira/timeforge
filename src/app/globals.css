@@ -70,6 +70,7 @@
   --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
+@layer base {
 html {
   scroll-padding-top: 5rem;
   -webkit-text-size-adjust: 100%;
@@ -98,6 +99,9 @@ a:hover {
   border-radius: 6px;
 }
 
+}
+
+@layer components {
 /* ---------- Components ---------- */
 
 .card {
@@ -469,4 +473,6 @@ select.input {
 
 .glass-pill {
   @apply inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs font-semibold text-fg;
+}
+
 }
