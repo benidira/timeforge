@@ -48,7 +48,7 @@ export function SiteHeader() {
     <header className="sticky top-0 inset-x-0 w-full border-b border-line bg-bg/90 backdrop-blur-md z-50">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
-          <MobileNav />
+          <MobileNav user={user} />
           <Link
             href="/"
             className="flex items-center gap-2.5 text-fg no-underline group focus-visible:outline-accent"
