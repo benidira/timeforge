@@ -118,7 +118,7 @@ export default function TeamWorkspacePage() {
             <button 
               type="submit" 
               disabled={!newTeamName || isCreating}
-              className="w-full bg-primary text-primary-fg font-bold py-2.5 rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 mt-2 shadow-sm"
+              className="w-full bg-primary text-white dark:text-[#050505] font-bold py-2.5 rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 mt-2 shadow-sm"
             >
               {isCreating ? "Creating..." : "Create Team"}
             </button>

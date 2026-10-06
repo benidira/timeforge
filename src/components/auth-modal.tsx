@@ -118,7 +118,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-primary text-primary-fg hover:bg-primary/90 font-bold py-3 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] disabled:opacity-50"
+              className="w-full bg-primary text-white dark:text-[#050505] hover:bg-primary/90 font-bold py-3 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] disabled:opacity-50"
             >
               {loading ? "Authenticating..." : isLogin ? "Sign In" : "Sign Up"}
             </button>

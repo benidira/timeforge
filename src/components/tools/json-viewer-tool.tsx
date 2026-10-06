@@ -159,7 +159,7 @@ export function JsonViewerTool() {
             <div className="flex items-center gap-3">
               <label className="text-sm font-semibold text-fg">Interactive Viewer</label>
               {parsed && (
-                <button onClick={() => setIs3DMode(!is3DMode)} className={`text-xs px-3 py-1 rounded-full font-medium transition-colors flex items-center gap-1 ${is3DMode ? "bg-accent text-accent-fg" : "bg-bg border border-line text-muted hover:text-fg"}`}>
+                <button onClick={() => setIs3DMode(!is3DMode)} className={`text-xs px-3 py-1 rounded-full font-medium transition-colors flex items-center gap-1 ${is3DMode ? "bg-accent text-white dark:text-[#050505]" : "bg-bg border border-line text-muted hover:text-fg"}`}>
                   <BoxIcon className="w-3 h-3" />
                   {is3DMode ? "Exit 3D Galaxy" : "تفعيل وضع مجرة 3D 🌌"}
                 </button>

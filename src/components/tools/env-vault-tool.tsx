@@ -97,13 +97,13 @@ export function EnvVaultTool() {
       {/* High-End Tab Switcher */}
       <div className="flex bg-card p-1.5 rounded-xl w-fit mx-auto border border-line shadow-sm">
         <button 
-          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "personal" ? "bg-primary text-primary-fg shadow-md" : "text-muted hover:text-fg"}`} 
+          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "personal" ? "bg-primary text-white dark:text-[#050505] shadow-md" : "text-muted hover:text-fg"}`} 
           onClick={() => setTab("personal")}
         >
           Personal Vault
         </button>
         <button 
-          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "team" ? "bg-primary text-primary-fg shadow-md" : "text-muted hover:text-fg"}`} 
+          className={`px-8 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${tab === "team" ? "bg-primary text-white dark:text-[#050505] shadow-md" : "text-muted hover:text-fg"}`} 
           onClick={() => setTab("team")}
         >
           Team Vaults <span className="ml-2 bg-indigo-500/10 text-indigo-500 px-1.5 py-0.5 rounded text-[10px] uppercase">Beta</span>
@@ -137,7 +137,7 @@ export function EnvVaultTool() {
                   type="password" placeholder="Encryption Password" value={encPassword} onChange={e => setEncPassword(e.target.value)}
                   className="flex-1 bg-field border border-line rounded-xl px-4 py-3 font-mono text-sm text-fg focus:outline-none focus:border-primary/50"
                 />
-                <button onClick={handleEncrypt} disabled={!encPassword || isEncrypting} className="bg-primary text-primary-fg hover:bg-primary/90 font-bold px-6 rounded-xl transition-colors disabled:opacity-50 shadow-sm">
+                <button onClick={handleEncrypt} disabled={!encPassword || isEncrypting} className="bg-primary text-white dark:text-[#050505] hover:bg-primary/90 font-bold px-6 rounded-xl transition-colors disabled:opacity-50 shadow-sm">
                   {isEncrypting ? "Encrypting..." : "Encrypt & Share"}
                 </button>
               </div>
@@ -204,7 +204,7 @@ export function EnvVaultTool() {
           </div>
           <h3 className="text-2xl font-bold text-fg mb-3">Team Shared Vaults</h3>
           <p className="text-muted max-w-md mx-auto mb-8">Share encrypted .env files securely with your team using zero-knowledge RSA-OAEP + AES-GCM cryptography.</p>
-          <a href="/env-vault/team" className="inline-flex bg-primary text-primary-fg hover:bg-primary/90 font-bold px-8 py-3 rounded-xl transition-all shadow-sm">
+          <a href="/env-vault/team" className="inline-flex bg-primary text-white dark:text-[#050505] hover:bg-primary/90 font-bold px-8 py-3 rounded-xl transition-all shadow-sm">
             Open Workspace
           </a>
         </div>

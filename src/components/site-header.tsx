@@ -153,7 +153,7 @@ export function SiteHeader() {
           ) : (
             <Link
               href="/login"
-              className="hidden sm:inline-flex items-center justify-center h-8 px-4 rounded-lg bg-accent text-accent-fg font-semibold text-sm hover:bg-accent-hover transition-colors shadow-sm"
+              className="hidden sm:inline-flex items-center justify-center h-8 px-4 rounded-lg bg-accent text-white dark:text-[#050505] font-semibold text-sm hover:bg-accent-hover transition-colors shadow-sm"
             >
               Sign In
             </Link>

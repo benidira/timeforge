@@ -113,7 +113,7 @@ export function CursorRulesGenerator() {
               return (
                 <label key={std} className="flex items-start gap-3 cursor-pointer group" onClick={() => toggleStandard(std)}>
                   <div className={`mt-0.5 flex w-4 h-4 shrink-0 items-center justify-center rounded border transition-colors ${
-                    isSelected ? "bg-accent border-accent text-accent-fg" : "bg-field border-line group-hover:border-accent/50"
+                    isSelected ? "bg-accent border-accent text-white dark:text-[#050505]" : "bg-field border-line group-hover:border-accent/50"
                   }`}>
                     {isSelected && <CheckIcon strokeWidth={3} className="w-3 h-3" />}
                   </div>

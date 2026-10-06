@@ -228,7 +228,7 @@ export default function TeamWorkspaceDetail() {
                 <button onClick={() => navigator.clipboard.writeText(decryptedEnv)} className="p-1.5 text-muted hover:text-fg hover:bg-hover rounded transition-colors">
                   <CopyIcon size={16} />
                 </button>
-                <button onClick={handleSaveVault} className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-fg px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
+                <button onClick={handleSaveVault} className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white dark:text-[#050505] px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
                   <SaveIcon size={14} /> Save
                 </button>
               </div>
