@@ -127,7 +127,25 @@ export function JsonViewerTool() {
               <div className="absolute inset-0 flex flex-col items-center justify-center text-muted pointer-events-none">
                 <UploadCloudIcon className="w-12 h-12 mb-4 opacity-50" />
                 <p className="font-semibold text-fg mb-1">Drag & Drop a JSON file here</p>
-                <p className="text-sm">or click Paste from Clipboard</p>
+                <div className="pointer-events-auto mt-2">
+                  <label className="cursor-pointer btn btn-primary btn-sm rounded-full px-6 shadow-md hover:scale-105 transition-transform">
+                    Select JSON File
+                    <input type="file" accept=".json,application/json" className="hidden" onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      setLoading(true);
+                      const reader = new FileReader();
+                      reader.onload = (ev) => {
+                        const text = ev.target?.result as string;
+                        setJsonText(text);
+                        tryParse(text);
+                        setLoading(false);
+                      };
+                      reader.readAsText(file);
+                    }} />
+                  </label>
+                </div>
+                <p className="text-sm mt-4">or click Paste from Clipboard</p>
                 <p className="text-xs mt-4 opacity-50 max-w-xs text-center">
                   Parsing happens entirely locally. Massive files up to 50MB are supported without crashing your browser.
                 </p>

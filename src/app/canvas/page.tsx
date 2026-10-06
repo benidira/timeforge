@@ -3,11 +3,17 @@ import DevCanvas from "@/components/canvas/DevCanvas";
 
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Visual Developer Workflows Canvas",
-  description: "Chain together developer tools visually to create automated data pipelines and workflows with zero server-side processing.",
-  path: "/canvas"
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: "Visual Developer Workflows Canvas",
+    description: "Chain together developer tools visually to create automated data pipelines and workflows with zero server-side processing.",
+    path: "/canvas"
+  }),
+  robots: {
+    index: false,
+    follow: false
+  }
+};
 
 export default function CanvasPage() {
   return (

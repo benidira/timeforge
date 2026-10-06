@@ -139,10 +139,45 @@ export const TOOLS: Tool[] = [
     metaDescription: "Parse, view, and format gigantic JSON files safely and instantly in your browser without uploading data.",
     intro: "Open huge JSON files locally in your browser. Handles massive payloads using local-first rendering.",
     cardDescription: "Parse and view gigantic JSON files locally.",
-    faq: [],
-    related: [],
-    sections: [],
-    howTo: [],
+    faq: [
+      {
+        question: "Is my JSON data uploaded anywhere?",
+        answer: "No. Castov's JSON Viewer operates 100% locally in your browser. Files are processed entirely client-side without ever leaving your device, making it safe for production configurations, secrets, and sensitive customer payloads."
+      },
+      {
+        question: "What is the maximum file size supported?",
+        answer: "Because we process everything locally and use efficient DOM rendering techniques, you can safely load JSON files up to 50MB. However, very deeply nested massive files may briefly pause your browser while parsing."
+      },
+      {
+        question: "What is the 3D Galaxy Mode?",
+        answer: "The 3D Galaxy Mode is an experimental WebGPU/WebGL feature that maps your nested JSON structure into an interactive 3D universe. It helps visualize deep hierarchies where objects act as planets and arrays act as orbital systems."
+      }
+    ],
+    related: ["ast-conflict-telepathy", "env-vault"],
+    sections: [
+      {
+        heading: "What is a JSON file?",
+        paragraphs: [
+          "JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write and easy for machines to parse and generate. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages.",
+          "JSON is built on two structures: A collection of name/value pairs (realized as an object, record, struct, dictionary, hash table, keyed list, or associative array) and an ordered list of values (realized as an array, vector, list, or sequence)."
+        ]
+      },
+      {
+        heading: "How is Castov's JSON Viewer different?",
+        paragraphs: [
+          "Most online JSON formatters send your data to a backend server to process it. This is a massive security risk if you are dealing with API responses, database dumps, or environment variables.",
+          "Our viewer is a strictly Zero-Server application. Whether you paste text or drop a massive 50MB file, the parsing and rendering happen entirely in your CPU and GPU using modern web APIs."
+        ]
+      }
+    ],
+    howTo: [
+      "Select a JSON file from your computer using the file input.",
+      "Alternatively, Drag & Drop a .json file directly into the designated area.",
+      "You can also click 'Paste from Clipboard' if you have raw JSON text copied.",
+      "The viewer will instantly parse and colorize your data.",
+      "Click on nested objects or arrays to expand and collapse them.",
+      "Toggle the '3D Galaxy Mode' to visualize complex JSON trees as a WebGL interactive universe."
+    ],
   },
   {
     slug: "unix-timestamp-converter",

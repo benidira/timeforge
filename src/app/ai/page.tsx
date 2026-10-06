@@ -65,7 +65,7 @@ export default function AiDirectoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[220px]">
             
             {/* Main Large Card */}
-            <Link href="/ai/vercel-ai-sdk-generator" className="md:col-span-2 md:row-span-2 card p-8 flex flex-col justify-between hover:border-muted transition-colors group">
+            <Link href="/ai/vercel-ai-sdk-code-generator" className="md:col-span-2 md:row-span-2 card p-8 flex flex-col justify-between hover:border-muted transition-colors group">
               <div>
                 <div className="w-12 h-12 rounded-lg bg-field border border-line flex items-center justify-center mb-6">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-fg"><polygon points="12 2 2 22 22 22"></polygon></svg>

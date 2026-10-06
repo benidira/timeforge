@@ -16,46 +16,57 @@ export default function PrivacyPage() {
       crumbs={[{ name: "Home", href: "/" }, { name: "Privacy Policy" }]}
       path="/privacy"
     >
-      <h2>The Short Version</h2>
+      <h2>Transparency First</h2>
       <p>
-        The vast majority of Castov’s tools run <strong>entirely in your browser</strong>. Your dates, timestamps, regex patterns, and AI configuration inputs are never sent to our servers unless explicitly stated for specific premium or sync features.
+        At Castov, we believe developers should have absolute clarity on where their data goes. This document explicitly categorizes our features into Local, Cloud, and External API processing.
       </p>
 
-      <h2>Core Tools (Time, Date, Regex, Utilities)</h2>
-      <ul>
-        <li><strong>Processing:</strong> 100% Local. The timestamps, dates, and patterns you enter are processed on your device.</li>
-        <li><strong>Data Uploaded:</strong> None. We do not upload your inputs to any server.</li>
-      </ul>
-
-      <h2>AI Developer Tools & BYOK (Bring Your Own Key)</h2>
+      <h2>1. Features That Run Entirely in the Browser (100% Local)</h2>
       <p>
-        Some of our AI generation tools connect to external LLM providers (e.g., OpenAI, Anthropic) if you provide an API key.
+        The following tools use <strong>Zero-Server Architecture</strong>. Your data is processed entirely by your device's CPU and GPU. Data never leaves your browser:
       </p>
       <ul>
-        <li><strong>External APIs:</strong> If a tool explicitly requires an API key, the request is made directly from your browser to the external provider's API.</li>
-        <li><strong>API Key Storage:</strong> API keys are stored locally in your browser's <code>localStorage</code> or session storage. They are <strong>never sent to Castov's backend</strong>.</li>
-        <li><strong>Data Uploaded:</strong> Your prompts and generated code are only shared with the external API provider you configure. Castov does not intercept or store this traffic.</li>
+        <li><strong>Data Visualization:</strong> JSON Viewer (3D Galaxy) and AST Conflict Telepathy.</li>
+        <li><strong>Time & Utility:</strong> All Timestamp Converters, World Clocks, and Date tools.</li>
+        <li><strong>Steganography & Crypto:</strong> Env Vault processing (AES-GCM encryption and image encoding).</li>
+        <li><strong>Compute & Web APIs:</strong> NexusGrid WebGPU Engine, Sonic-Gap Audio Bridge, and Quantum Simulator.</li>
+        <li><strong>P2P Tools:</strong> P2P Ghost Tunnel establishes direct WebRTC connections between peers. Castov only facilitates the initial STUN/TURN handshake; the payload is completely end-to-end encrypted and bypasses our servers.</li>
       </ul>
 
-      <h2>Personal Workspace, Cloud Sync, and Team Vaults</h2>
+      <h2>2. Features That Store Data Locally</h2>
       <p>
-        If you choose to create an account and sign in, you gain access to Cloud Sync and Team Vaults.
+        Some tools remember your preferences without uploading them.
       </p>
       <ul>
-        <li><strong>Cloud Sync & Storage:</strong> Account data and synced environments are stored in our secure Supabase backend.</li>
-        <li><strong>Encryption:</strong> Team Vault secrets are encrypted on your device (client-side) using industry-standard AES-GCM and RSA-OAEP before they are uploaded. Your data is encrypted in transit and at rest.</li>
-        <li><strong>Server Visibility:</strong> Castov cannot read the plaintext contents of your synced `.env` files. We only store the encrypted ciphertext. We do not have access to your encryption keys.</li>
+        <li><strong>What is stored:</strong> Custom Timezones, selected AI models, UI theme preferences, and your Master Password for local vaults.</li>
+        <li><strong>Where it is stored:</strong> `localStorage` or `IndexedDB` on your specific device.</li>
+        <li><strong>Protection:</strong> Local secrets are encrypted using the WebCrypto API (AES-GCM).</li>
       </ul>
 
-      <h2>Data Retention and Deletion</h2>
+      <h2>3. Features That Use External APIs (BYOK)</h2>
       <p>
-        You can delete your account and all associated cloud-synced data at any time from your Workspace settings. Once deleted, the data is permanently removed from our active databases and will age out of automated rolling backups within 30 days. Local storage items can be cleared at any time via your browser settings.
+        Our AI Hub (System Prompt Builders, Agent Designers) utilizes a "Bring Your Own Key" (BYOK) model.
       </p>
+      <ul>
+        <li><strong>API Key Storage:</strong> API keys you provide are stored strictly in your browser's local storage. They are never sent to Castov servers.</li>
+        <li><strong>Data Transmission:</strong> Prompts, Context, and Keys are transmitted directly from your browser to the respective external provider (e.g., OpenAI, Anthropic, Vercel) over HTTPS.</li>
+      </ul>
 
-      <h2>Server Logs and Analytics</h2>
+      <h2>4. Features That Send Data to Castov Servers (Account Required)</h2>
       <p>
-        Our hosting infrastructure (Vercel/Supabase) maintains standard technical logs (e.g., IP address, browser type, timestamp of access) for operational security and rate limiting. These logs are not used to identify you personally and do not contain any data from the tools you use.
+        Features like <strong>Cloud Sync, Personal Workspace, Canvas, and Team Vaults</strong> require creating a Castov Account.
       </p>
+      <ul>
+        <li><strong>What is uploaded:</strong> Authentication details (email, provider ID) and cloud-synced workflows (Canvas graphs).</li>
+        <li><strong>How synced data is protected:</strong> For Team Vaults, your `.env` variables are encrypted <strong>client-side</strong> before transmission. Castov servers store only the ciphertext. We cannot read your secrets.</li>
+      </ul>
+
+      <h2>5. Server Logs, Analytics, and Backups</h2>
+      <ul>
+        <li><strong>Server Logs:</strong> Our infrastructure providers (Vercel, Supabase) log standard request metadata (IP address, user-agent, timestamp, URL path) for DDoS protection and debugging. These logs <strong>do not</strong> contain the payload data of your tools (e.g., the JSON you parse or the Regex you test).</li>
+        <li><strong>Analytics & Error Tracking:</strong> We use privacy-friendly analytics for page views. We do not use session-recording tools (like Hotjar or LogRocket) to capture your screen, ensuring your proprietary code and JSON payloads remain private.</li>
+        <li><strong>Backups:</strong> Cloud-synced user data is backed up automatically. If you delete your account, backups are purged within 30 days.</li>
+      </ul>
 
       <h2>Contact Us</h2>
       <p>If you have any questions about your privacy or data, please contact us at <a href="mailto:support@castov.com">support@castov.com</a>.</p>
