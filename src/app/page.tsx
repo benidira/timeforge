@@ -20,19 +20,23 @@ export default function HomePage() {
       <JsonLd data={[websiteJsonLd(), faqJsonLd(HOME_FAQ)]} />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden border-b border-line">
-        {/* Subtle grid background for professional look */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <section className="relative pt-28 pb-24 lg:pt-36 lg:pb-32 overflow-hidden border-b border-line">
+        {/* Subtle grid and ambient glow background for professional look */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-accent/20 blur-[100px] rounded-full opacity-50 pointer-events-none" />
 
         <div className="container relative mx-auto px-4 text-center max-w-5xl z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-field border border-line text-sm font-medium mb-8 text-muted">
-            <span className="flex h-2 w-2 rounded-full bg-success animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-field/80 backdrop-blur-sm border border-line text-sm font-semibold mb-8 text-fg shadow-sm cursor-default hover:bg-hover transition-colors">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+            </span>
             Castov Engine v2.0 is Live
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-fg mb-8 leading-[1.1]">
+          <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-fg mb-8 leading-[1.15]">
             The Ultimate Workspace for <br />
-            <span className="text-accent">Software Engineers</span>
+            <span className="bg-gradient-to-r from-accent via-accent to-success bg-clip-text text-transparent">Software Engineers</span>
           </h1>
           
           <p className="text-lg lg:text-xl text-muted max-w-3xl mx-auto mb-10 leading-relaxed">
@@ -40,10 +44,10 @@ export default function HomePage() {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Link href="/tools" className="flex items-center justify-center gap-2 bg-accent text-white dark:text-[#050505] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-hover transition-colors w-full sm:w-auto shadow-sm">
-              Explore Tools <ArrowRight size={20} />
+            <Link href="/tools" className="group flex items-center justify-center gap-2 bg-accent text-white dark:text-[#050505] px-8 py-4 rounded-xl font-bold text-lg hover:bg-accent-hover transition-all w-full sm:w-auto shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)]">
+              Explore Tools <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/developer" className="flex items-center justify-center gap-2 bg-card border border-line text-fg px-8 py-4 rounded-xl font-semibold text-lg hover:bg-hover transition-colors w-full sm:w-auto shadow-sm">
+            <Link href="/developer" className="flex items-center justify-center gap-2 bg-card border border-line text-fg px-8 py-4 rounded-xl font-bold text-lg hover:bg-field transition-colors w-full sm:w-auto shadow-sm">
               Read Documentation
             </Link>
           </div>
@@ -51,29 +55,31 @@ export default function HomePage() {
       </section>
 
       {/* --- PRODUCT SHOWCASE / IMAGES --- */}
-      <section className="py-24 border-b border-line bg-card">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="py-24 border-b border-line bg-card relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">Everything you need in one place</h2>
+            <h2 className="text-3xl lg:text-5xl font-bold tracking-tight mb-4">Everything you need in one place</h2>
             <p className="text-muted text-lg max-w-2xl mx-auto">
               A comprehensive toolkit designed specifically for modern web development, DevOps, and AI engineering.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="bg-bg rounded-2xl border border-line p-2 shadow-sm overflow-hidden">
-              <Image 
-                src="/hero-dashboard.jpg" 
-                alt="Castov Developer Dashboard" 
-                width={800} 
-                height={500}
-                className="rounded-xl border border-line w-full h-auto"
-                priority
-              />
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="bg-bg rounded-2xl border border-line p-2 shadow-xl overflow-hidden group">
+              <div className="overflow-hidden rounded-xl">
+                <Image 
+                  src="/hero-dashboard.jpg" 
+                  alt="Castov Developer Dashboard" 
+                  width={800} 
+                  height={500}
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+              </div>
             </div>
-            <div className="space-y-6 lg:pl-8">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-accent/10 text-accent shrink-0">
+            <div className="space-y-8 lg:pl-8">
+              <div className="flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-field transition-colors border border-transparent hover:border-line">
+                <div className="p-3 rounded-xl bg-accent/10 text-accent shrink-0 shadow-inner">
                   <Terminal size={24} />
                 </div>
                 <div>
@@ -84,8 +90,8 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-success/10 text-success shrink-0">
+              <div className="flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-field transition-colors border border-transparent hover:border-line">
+                <div className="p-3 rounded-xl bg-success/10 text-success shrink-0 shadow-inner">
                   <ShieldCheck size={24} />
                 </div>
                 <div>
@@ -96,8 +102,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-warning/10 text-warning shrink-0">
+              <div className="flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-field transition-colors border border-transparent hover:border-line">
+                <div className="p-3 rounded-xl bg-warning/10 text-warning shrink-0 shadow-inner">
                   <Workflow size={24} />
                 </div>
                 <div>
@@ -113,12 +119,13 @@ export default function HomePage() {
       </section>
 
       {/* --- SECOND FEATURE SHOWCASE --- */}
-      <section className="py-24 border-b border-line bg-bg">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-8 items-center flex-col-reverse md:flex-row">
-            <div className="space-y-6 lg:pr-8 order-2 md:order-1">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-accent/10 text-accent shrink-0">
+      <section className="py-24 border-b border-line bg-bg relative">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center flex-col-reverse md:flex-row">
+            <div className="space-y-8 lg:pr-8 order-2 md:order-1">
+              <div className="flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-field transition-colors border border-transparent hover:border-line">
+                <div className="p-3 rounded-xl bg-accent/10 text-accent shrink-0 shadow-inner">
                   <Database size={24} />
                 </div>
                 <div>
@@ -129,8 +136,8 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-danger/10 text-danger shrink-0">
+              <div className="flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-field transition-colors border border-transparent hover:border-line">
+                <div className="p-3 rounded-xl bg-danger/10 text-danger shrink-0 shadow-inner">
                   <Component size={24} />
                 </div>
                 <div>
