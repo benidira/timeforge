@@ -208,7 +208,7 @@ export function VercelAiSdkGenerator() {
             <EditorToolbar 
               title="Vercel AI SDK Code"
               content={outputCode}
-              toolSlug="vercel-ai-sdk-generator"
+              toolSlug="vercel-ai-sdk-code-generator"
               language="typescript"
               filename={activeTab === "api" ? "route.ts" : "page.tsx"}
             />

@@ -19,7 +19,7 @@ export function SqliteFiddleTool() {
     const initDB = async () => {
       try {
         const SQL = await initSqlJs({
-          locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+          locateFile: () => `/sql-wasm.wasm`
         });
         if (active) {
           const newDb = new SQL.Database();
