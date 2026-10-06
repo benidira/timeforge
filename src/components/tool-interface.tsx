@@ -33,6 +33,7 @@ import { ApiLoadTesterTool } from "./tools/api-load-tester-tool";
 import { DockerVisualizerTool } from "./tools/docker-visualizer-tool";
 import { SqliteFiddleTool } from "./tools/sqlite-fiddle-tool";
 import { RegexExplainerTool } from "./tools/regex-explainer-dynamic";
+import { FetchMockGeneratorTool } from "./tools/fetch-mock-generator-tool";
 
 /**
  * Maps a tool slug to its interactive interface. To add a tool: add its content to
@@ -120,5 +121,7 @@ export function ToolInterface({ slug }: { slug: ToolSlug }) {
       return <ApiTimeMachineTool />;
     case "ast-conflict-telepathy":
       return <AstConflictTelepathyTool />;
+    case "fetch-mock-generator":
+      return <FetchMockGeneratorTool />;
   }
 }

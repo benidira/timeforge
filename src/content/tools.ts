@@ -40,6 +40,7 @@ export type ToolSlug =
   | "api-load-tester"
   | "docker-visualizer"
   | "sqlite-fiddle"
+  | "fetch-mock-generator"
   | "regex-explainer"
   | "json-viewer";
 
@@ -70,6 +71,20 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
+
+  {
+    slug: "fetch-mock-generator",
+    category: "Developer",
+    name: "Service Worker API Mocker",
+    seoTitle: "Local API Mock Server Generator | Castov",
+    metaDescription: "Generate a zero-server fetch interceptor script to mock API endpoints directly in your browser.",
+    intro: "Stop writing custom mock backends. Define your API JSON responses here and generate a secure injection script that mocks fetch calls instantly in your browser.",
+    cardDescription: "Generate local fetch interceptor scripts to mock API endpoints.",
+    faq: [{q:"Do I need a Node.js server?", a:"No, this runs a monkey-patch on window.fetch directly in your browser."}],
+    related: [],
+    sections: [{heading: "Local API Mocking", paragraphs: ["Intercept fetch calls without a backend."]}],
+    howTo: ["Define your routes", "Copy the script", "Paste into your browser console or layout file."]
+  },
   // REVOLUTIONARY SCI-FI TOOLS
   {
     slug: "p2p-ghost-tunnel",
