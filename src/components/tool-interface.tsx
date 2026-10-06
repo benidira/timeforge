@@ -1,5 +1,11 @@
 import type { ToolSlug } from "@/content/tools";
 import { JsonViewerTool } from "./tools/json-viewer-tool";
+import { P2pGhostTunnelTool } from "./tools/p2p-ghost-tunnel-tool";
+import { SteganographyEnvVaultTool } from "./tools/steganography-env-vault-tool";
+import { ThreeJsonGalaxyTool } from "./tools/3d-json-galaxy-tool";
+import { RegexGeneticEvolutionTool } from "./tools/regex-genetic-evolution-tool";
+import { ApiTimeMachineTool } from "./tools/api-time-machine-tool";
+import { AstConflictTelepathyTool } from "./tools/ast-conflict-telepathy-tool";
 import { BatchConverterTool } from "./tools/batch-converter-tool";
 import { BusinessHoursTool } from "./tools/business-hours-tool";
 import { CronGeneratorTool } from "./tools/cron-generator-tool";
@@ -102,5 +108,17 @@ export function ToolInterface({ slug }: { slug: ToolSlug }) {
       return <RegexExplainerTool />;
     case "json-viewer":
       return <JsonViewerTool />;
+    case "p2p-ghost-tunnel":
+      return <P2pGhostTunnelTool />;
+    case "steganography-env-vault":
+      return <SteganographyEnvVaultTool />;
+    case "3d-json-galaxy":
+      return <ThreeJsonGalaxyTool />;
+    case "regex-genetic-evolution":
+      return <RegexGeneticEvolutionTool />;
+    case "api-time-machine":
+      return <ApiTimeMachineTool />;
+    case "ast-conflict-telepathy":
+      return <AstConflictTelepathyTool />;
   }
 }

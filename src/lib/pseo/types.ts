@@ -36,7 +36,13 @@ export type ToolComponent =
   | "date-diff"
   | "duration"
   | "shift"
-  | "json-viewer";
+  | "json-viewer"
+  | "p2p-ghost-tunnel"
+  | "steganography-env-vault"
+  | "3d-json-galaxy"
+  | "regex-genetic-evolution"
+  | "api-time-machine"
+  | "ast-conflict-telepathy";
 
 export interface ToolConfig {
   component: ToolComponent;

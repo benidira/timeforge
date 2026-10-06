@@ -27,6 +27,8 @@
     "@ai-sdk/react": "^4.0.130",
     "@iarna/toml": "^2.2.5",
     "@monaco-editor/react": "^4.7.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.2",
     "@xyflow/react": "^12.12.0",
@@ -42,7 +44,8 @@
     "recharts": "^3.10.1",
     "regexpp": "^3.2.0",
     "shiki": "^4.5.0",
-    "sql.js": "^1.14.2"
+    "sql.js": "^1.14.2",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
@@ -55,6 +58,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/sql.js": "^1.4.11",
+    "@types/three": "^0.186.0",
     "axe-core": "^4.13.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.5",

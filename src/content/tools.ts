@@ -2,6 +2,12 @@ import type { FaqItem } from "@/lib/seo";
 import type { GuideSlug } from "./guides";
 
 export type ToolSlug =
+  | "p2p-ghost-tunnel"
+  | "steganography-env-vault"
+  | "3d-json-galaxy"
+  | "regex-genetic-evolution"
+  | "api-time-machine"
+  | "ast-conflict-telepathy"
   | "unix-timestamp-converter"
   | "epoch-converter"
   | "timestamp-to-date"
@@ -64,6 +70,67 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
+  // REVOLUTIONARY SCI-FI TOOLS
+  {
+    slug: "p2p-ghost-tunnel",
+    category: "Developer",
+    name: "P2P Ghost Tunnel",
+    seoTitle: "WebRTC P2P Ghost Tunnel | Serverless Localhost Sharing",
+    metaDescription: "Share your localhost directly to another browser using Peer-to-Peer WebRTC. Zero servers, zero latency, impossible to intercept.",
+    intro: "Bypass ngrok entirely. Generate a secure WebRTC tunnel to stream your localhost directly to a client's browser without any intermediary servers.",
+    cardDescription: "Share localhost via direct P2P WebRTC connection.",
+    faq: [], related: [], sections: [], howTo: [],
+  },
+  {
+    slug: "steganography-env-vault",
+    category: "Developer",
+    name: "Steganography Env Vault",
+    seoTitle: "Steganographic Env Vault | Hide Secrets in Images",
+    metaDescription: "Encrypt and hide your production .env variables inside the pixels of a PNG logo. 100% local, impossible for hackers to detect.",
+    intro: "Ditch text-based secret managers. Encrypt your keys and embed the ciphertext mathematically into your company's logo pixels.",
+    cardDescription: "Hide encrypted .env files inside PNG image pixels.",
+    faq: [], related: [], sections: [], howTo: [],
+  },
+  {
+    slug: "3d-json-galaxy",
+    category: "Developer",
+    name: "Holographic JSON Explorer",
+    seoTitle: "3D JSON Galaxy | Holographic Architecture Explorer",
+    metaDescription: "Visualize massive 50MB+ JSON structures as an interactive 3D universe using WebGL.",
+    intro: "Stop scrolling through thousands of lines of JSON. Fly through your data architecture in 3D to spot anomalies and schema structures visually.",
+    cardDescription: "Explore massive JSON architectures in a 3D WebGL universe.",
+    faq: [], related: [], sections: [], howTo: [],
+  },
+  {
+    slug: "regex-genetic-evolution",
+    category: "Developer",
+    name: "Genetic Regex Auto-Healer",
+    seoTitle: "Genetic Regex Auto-Healer | AI Mutating Regex Solver",
+    metaDescription: "Don't write Regex. Provide passing and failing strings, and watch our local constraint-solver mutate expressions until they match perfectly.",
+    intro: "Enter what you want to match, and what you want to reject. Our browser-based algorithm evolves the perfect Regular Expression in real-time.",
+    cardDescription: "Evolve perfect Regex using local genetic algorithms.",
+    faq: [], related: [], sections: [], howTo: [],
+  },
+  {
+    slug: "api-time-machine",
+    category: "Developer",
+    name: "Chrono-Debug API Replay",
+    seoTitle: "Chrono-Debug API Replay | Localhost Time Machine",
+    metaDescription: "Upload a HAR file and use a timeline scrubber to locally replay past API requests directly to your frontend app without a database.",
+    intro: "Recreate race conditions instantly. Scrub through a timeline to replay exact historical API responses and watch your UI react as if it's in the past.",
+    cardDescription: "Replay past API states using a visual timeline scrubber.",
+    faq: [], related: [], sections: [], howTo: [],
+  },
+  {
+    slug: "ast-conflict-telepathy",
+    category: "Developer",
+    name: "AST Conflict Telepathy",
+    seoTitle: "AST Git Conflict Telepathy | Logic-Based Merger",
+    metaDescription: "Resolve Git conflicts by parsing Abstract Syntax Trees instead of text diffs to understand developer intent automatically.",
+    intro: "Stop staring at text diffs. Our tool parses the AST of both branches to semantically merge logic, preventing broken syntax automatically.",
+    cardDescription: "Semantically merge Git conflicts using AST logic parsing.",
+    faq: [], related: [], sections: [], howTo: [],
+  },
   {
     slug: "json-viewer",
     category: "Developer",
