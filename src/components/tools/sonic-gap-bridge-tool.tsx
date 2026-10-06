@@ -20,6 +20,18 @@ export function SonicGapBridgeTool() {
   const analyser = useRef<AnalyserNode | null>(null);
   const dataArray = useRef<Uint8Array | null>(null);
   const rafId = useRef<number>(0);
+  const streamRef = useRef<MediaStream | null>(null);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+      if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
+      if (audioCtx.current && audioCtx.current.state !== 'closed') {
+        audioCtx.current.close().catch(() => {});
+      }
+    };
+  }, []);
 
   // --- TRANSMITTER (Tx) ---
   const transmit = async () => {
@@ -61,6 +73,7 @@ export function SonicGapBridgeTool() {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      streamRef.current = stream;
       const source = audioCtx.current.createMediaStreamSource(stream);
       analyser.current = audioCtx.current.createAnalyser();
       analyser.current.fftSize = 2048;
@@ -131,6 +144,7 @@ export function SonicGapBridgeTool() {
   const stopReceive = () => {
     setMode("idle");
     if (rafId.current) cancelAnimationFrame(rafId.current);
+    if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
   };
 
   // --- CANVAS VISUALIZER ---
