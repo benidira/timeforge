@@ -56,36 +56,87 @@ const DEV_GUIDE_SLUGS = [
 
 export default function DeveloperPage() {
   const devTools = TOOLS.filter((t) => DEV_TOOL_SLUGS.includes(t.slug));
-  const devGuides = GUIDES.filter((g) => DEV_GUIDE_SLUGS.includes(g.slug));
 
   return (
     <StaticPage
-      title="Developer Hub"
-      intro="Code patterns, format references, and interactive tools for developers working with time, timestamps, and scheduling."
+      title="Developer Hub & Ecosystem"
+      intro="Discover Castov's enterprise-grade integrations: SDK, Command Line Interface, VS Code Extension, and more."
       crumbs={[{ name: "Home", href: "/" }, { name: "Developer" }]}
       path="/developer"
     >
-      {/* Quick Reference */}
-      <h2>Quick Code Reference</h2>
-      <p>
-        Common operations across popular languages. Use the interactive tools below to convert and validate values instantly.
-      </p>
-      <div className="not-prose grid gap-4 mt-4 mb-8 sm:grid-cols-2">
-        {CODE_SNIPPETS.map((s) => (
-          <div key={s.lang} className="card p-4 border border-line">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted">{s.lang}</span>
-              <span className="text-xs text-muted">{s.label}</span>
+      {/* Ecosystem Showcase */}
+      <div className="not-prose grid gap-6 mt-8 mb-16 lg:grid-cols-2">
+        {/* SDK */}
+        <div className="bg-card border-2 border-primary/20 hover:border-primary/50 transition-colors p-6 rounded-2xl shadow-lg shadow-primary/5">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-primary/10 text-primary rounded-lg">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
-            <pre className="code-block mt-0 text-xs sm:text-sm overflow-x-auto">
-              <code>{s.code}</code>
-            </pre>
+            <h3 className="text-xl font-bold text-fg">@castov/sdk</h3>
           </div>
-        ))}
+          <p className="text-muted text-sm mb-4">
+            Bring the power of Castov's zero-server, blazing-fast utilities directly into your own Node.js or browser applications.
+          </p>
+          <pre className="code-block mt-0 text-xs overflow-x-auto border border-line">
+            <code>npm install @castov/sdk</code>
+          </pre>
+          <pre className="code-block mt-2 text-xs overflow-x-auto border border-line">
+            <code>{"import { castov } from '@castov/sdk';\n\nconst id = castov.uuid();"}</code>
+          </pre>
+        </div>
+
+        {/* CLI */}
+        <div className="bg-card border border-line hover:border-accent/50 transition-colors p-6 rounded-2xl shadow-md">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-accent/10 text-accent rounded-lg">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 17l6-6-6-6m12 14h-6" /></svg>
+            </div>
+            <h3 className="text-xl font-bold text-fg">Castov CLI</h3>
+          </div>
+          <p className="text-muted text-sm mb-4">
+            Execute tools directly from your terminal. Generate UUIDs, encode Base64, and calculate hashes instantly in your shell.
+          </p>
+          <pre className="code-block mt-0 text-xs overflow-x-auto border border-line bg-background">
+            <code>npm install -g castov-cli</code>
+          </pre>
+          <pre className="code-block mt-2 text-xs overflow-x-auto border border-line bg-background">
+            <code>{"> castov uuid\n✔ Generated UUID:\n9139702a-4ecc-4655-96a7-e9184f045c62"}</code>
+          </pre>
+        </div>
+
+        {/* VS Code */}
+        <div className="bg-card border border-line hover:border-[#007ACC]/50 transition-colors p-6 rounded-2xl shadow-md">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-[#007ACC]/10 text-[#007ACC] rounded-lg">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"/></svg>
+            </div>
+            <h3 className="text-xl font-bold text-fg">VS Code Extension</h3>
+          </div>
+          <p className="text-muted text-sm mb-4">
+            The official zero-server developer toolkit directly in your editor. Select text to encode/decode, or insert UUIDs without switching windows.
+          </p>
+          <div className="mt-4 p-3 bg-field border border-line rounded-lg text-sm text-fg flex items-center gap-2">
+            <kbd className="bg-card px-2 py-1 rounded border border-line text-xs font-mono">Right Click</kbd>
+            <span>&rarr; Castov: Encode to Base64</span>
+          </div>
+        </div>
+
+        {/* Cmd+K */}
+        <div className="bg-card border border-line hover:border-fg/30 transition-colors p-6 rounded-2xl shadow-md flex flex-col justify-center items-center text-center">
+          <div className="flex items-center gap-2 mb-4">
+            <kbd className="bg-field px-3 py-1.5 rounded-lg border border-line text-lg font-mono text-fg shadow-sm">Ctrl</kbd>
+            <span className="text-muted font-bold">+</span>
+            <kbd className="bg-field px-3 py-1.5 rounded-lg border border-line text-lg font-mono text-fg shadow-sm">K</kbd>
+          </div>
+          <h3 className="text-xl font-bold text-fg mb-2">Global Command Center</h3>
+          <p className="text-muted text-sm">
+            Press the shortcut anywhere on Castov to open the Command Palette. Inline compute UUIDs, search tools, and navigate blazing fast.
+          </p>
+        </div>
       </div>
 
       {/* Developer Tools */}
-      <h2>Developer Tools</h2>
+      <h2>Developer Utilities</h2>
       <p>
         Interactive tools for ISO 8601, RFC 3339, cron expressions, batch conversion, and validation — all run in your browser.
       </p>
@@ -94,54 +145,6 @@ export default function DeveloperPage() {
           <ToolCard key={t.slug} tool={t} headingLevel={3} />
         ))}
       </div>
-
-      {/* Format Reference */}
-      <h2>Format Reference</h2>
-
-      <h3>ISO 8601</h3>
-      <p>
-        The international standard for date and time strings. A full datetime looks like{" "}
-        <code>2026-09-20T14:30:00Z</code> (UTC) or <code>2026-09-20T16:30:00+02:00</code> (with offset).
-        The <code>T</code> separates date from time; <code>Z</code> means UTC.
-      </p>
-
-      <h3>RFC 3339</h3>
-      <p>
-        A strict profile of ISO 8601 used by most internet protocols. It requires a full timestamp with offset or Z.
-        JSON APIs, JWT tokens, and HTTP headers typically use RFC 3339. Example: <code>2026-09-20T14:30:00.000Z</code>.
-      </p>
-
-      <h3>Unix Timestamp</h3>
-      <p>
-        Seconds (or milliseconds) elapsed since <strong>1970-01-01T00:00:00Z</strong>. Today&apos;s 10-digit value
-        is seconds; 13 digits is milliseconds. Use the Auto mode in our converters to detect the unit automatically.
-      </p>
-
-      <h3>Cron Expressions</h3>
-      <p>
-        Five-field scheduler syntax: <code>minute hour day month weekday</code>. Example: <code>0 9 * * 1-5</code>{" "}
-        runs every weekday at 09:00. Use <Link href="/cron-generator">Cron Generator</Link> to build and validate expressions interactively.
-      </p>
-
-      {/* Developer Guides */}
-      <h2>Developer Guides</h2>
-      <p>In-depth explanations of time-related concepts every developer should know.</p>
-      <ul className="not-prose list-none p-0 grid gap-3 mt-4 mb-8 sm:grid-cols-2">
-        {devGuides.map((g) => (
-          <li key={g.slug} className="!mt-0">
-            <Link href={`/guides/${g.slug}`} className="card block p-4 no-underline hover:border-accent transition-colors">
-              <span className="block font-semibold text-fg">{g.name}</span>
-              <span className="block text-sm text-muted mt-1">{g.summary}</span>
-              <span className="block text-xs text-muted mt-2">{g.readingMinutes} min read →</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <p>
-        Browse all <Link href="/guides">guides</Link> or explore the full{" "}
-        <Link href="/tools">tool catalogue</Link>.
-      </p>
     </StaticPage>
   );
 }
