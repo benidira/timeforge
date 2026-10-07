@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/env-vault`, lastModified: getLastMod('src/app/env-vault/page.tsx'), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/sonic-gap`, lastModified: getLastMod('src/app/sonic-gap/page.tsx'), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/extension`, lastModified: getLastMod('src/app/extension/page.tsx'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/pricing`, lastModified: getLastMod('src/app/pricing/page.tsx'), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/about`, lastModified: getLastMod('src/app/about/page.tsx'), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/contact`, lastModified: getLastMod('src/app/contact/page.tsx'), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/privacy`, lastModified: getLastMod('src/app/privacy/page.tsx'), changeFrequency: 'monthly', priority: 0.3 },

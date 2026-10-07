@@ -9,7 +9,6 @@ import { FaqSection } from "./faq-section";
 import { JsonLd } from "./json-ld";
 import { RelatedTools } from "./related-tools";
 import { ToolInterface } from "./tool-interface";
-import { ProLock } from "./pro-lock";
 
 /** Shared layout for every tool page: breadcrumb, H1, tool, then explanation, examples, FAQ, links. */
 export function ToolPage({ tool }: { tool: Tool }) {

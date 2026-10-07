@@ -205,11 +205,8 @@ export default function HomePage() {
             Join thousands of developers who save hours every week using Castov.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Link href="/signup" className="flex items-center justify-center gap-2 bg-accent text-white dark:text-[#050505] px-8 py-4 rounded-xl font-bold text-lg hover:bg-accent-hover transition-colors shadow-sm w-full sm:w-auto">
-              Create Free Account
-            </Link>
-            <Link href="/tools" className="flex items-center justify-center gap-2 bg-bg border border-line text-fg px-8 py-4 rounded-xl font-bold text-lg hover:bg-hover transition-colors shadow-sm w-full sm:w-auto">
-              Browse Tools
+            <Link href="/tools" className="flex items-center justify-center gap-2 bg-accent text-white dark:text-[#050505] px-8 py-4 rounded-xl font-bold text-lg hover:bg-accent-hover transition-colors shadow-sm w-full sm:w-auto">
+              Browse All Tools
             </Link>
           </div>
         </div>

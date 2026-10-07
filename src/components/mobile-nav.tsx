@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { NAV_LINKS } from "./nav-links";
-import { createClient } from "@/utils/supabase/client";
 
-export function MobileNav({ user }: { user?: any }) {
+export function MobileNav() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -17,12 +16,6 @@ export function MobileNav({ user }: { user?: any }) {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
-
-  const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    setOpen(false);
-  };
 
   return (
     <div className="lg:hidden">
@@ -84,30 +77,6 @@ export function MobileNav({ user }: { user?: any }) {
               </li>
             ))}
           </ul>
-          
-          <div className="border-t border-line/60 pt-4 px-1">
-            {user ? (
-              <div className="space-y-2">
-                <div className="px-2 pb-2 text-xs text-muted truncate">{user.email}</div>
-                <div className="grid grid-cols-2 gap-2">
-                  <Link href="/profile" onClick={() => setOpen(false)} className="btn btn-secondary justify-center w-full">Profile</Link>
-                  <Link href="/env-vault/team" onClick={() => setOpen(false)} className="btn btn-secondary justify-center w-full">Vaults</Link>
-                </div>
-                <button onClick={handleSignOut} className="btn w-full mt-2 justify-center bg-danger/10 text-danger hover:bg-danger/20 border border-transparent">
-                  Sign Out
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 gap-3">
-                <Link href="/login" onClick={() => setOpen(false)} className="btn btn-secondary justify-center w-full">
-                  Log In
-                </Link>
-                <Link href="/signup" onClick={() => setOpen(false)} className="btn bg-accent text-white dark:text-[#050505] hover:bg-accent-hover justify-center w-full border border-transparent">
-                  Sign Up
-                </Link>
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </div>
