@@ -68,6 +68,8 @@ export interface Tool {
   faq: FaqItem[];
   related: ToolSlug[];
   guide?: GuideSlug;
+  /** Marks the tool as a paid/Pro feature */
+  isPro?: boolean;
 }
 
 export const TOOLS: Tool[] = [
@@ -87,7 +89,7 @@ export const TOOLS: Tool[] = [
   },
   // REVOLUTIONARY SCI-FI TOOLS
   {
-    slug: "p2p-ghost-tunnel",
+    slug: "p2p-ghost-tunnel", isPro: true,
     category: "Developer",
     name: "P2P Ghost Tunnel",
     seoTitle: "WebRTC P2P Ghost Tunnel | Serverless Localhost Sharing",
@@ -107,7 +109,7 @@ export const TOOLS: Tool[] = [
     ],
   },
   {
-    slug: "steganography-env-vault",
+    slug: "steganography-env-vault", isPro: true,
     category: "Developer",
     name: "Steganography Env Vault",
     seoTitle: "Steganographic Env Vault | Hide Secrets in Images",
@@ -1570,7 +1572,7 @@ export const TOOLS: Tool[] = [
     related: ["timezone-simulator", "env-vault"],
   },
   {
-    slug: "env-vault",
+    slug: "env-vault", isPro: true,
     category: "Developer",
     name: "Zero-Knowledge .env Vault",
     seoTitle: "Secure .env Vault: Share Environment Variables Safely",

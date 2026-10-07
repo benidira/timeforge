@@ -9,6 +9,7 @@ import { FaqSection } from "./faq-section";
 import { JsonLd } from "./json-ld";
 import { RelatedTools } from "./related-tools";
 import { ToolInterface } from "./tool-interface";
+import { ProLock } from "./pro-lock";
 
 /** Shared layout for every tool page: breadcrumb, H1, tool, then explanation, examples, FAQ, links. */
 export function ToolPage({ tool }: { tool: Tool }) {
@@ -36,7 +37,9 @@ export function ToolPage({ tool }: { tool: Tool }) {
       </div>
 
       <section aria-label={`${tool.name} tool`} className="card p-5 sm:p-8 mb-12 border-line/60 shadow-sm">
-        <ToolInterface slug={tool.slug} />
+        <ProLock isPro={tool.isPro}>
+          <ToolInterface slug={tool.slug} />
+        </ProLock>
       </section>
 
       <div className="grid gap-12 lg:grid-cols-[1fr_300px] items-start">

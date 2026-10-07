@@ -1,0 +1,58 @@
+{
+  "name": "castov-vscode",
+  "displayName": "Castov",
+  "description": "Zero-Server developer tools directly in your VS Code editor.",
+  "version": "1.0.0",
+  "publisher": "castov",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "castov.encodeBase64",
+        "title": "Castov: Encode to Base64"
+      },
+      {
+        "command": "castov.decodeBase64",
+        "title": "Castov: Decode Base64"
+      },
+      {
+        "command": "castov.generateUUID",
+        "title": "Castov: Insert UUID v4"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "castov.encodeBase64",
+          "group": "castov@1"
+        },
+        {
+          "command": "castov.decodeBase64",
+          "group": "castov@2"
+        },
+        {
+          "command": "castov.generateUUID",
+          "group": "castov@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.24.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benidira/timeforge"
+  }
+}
