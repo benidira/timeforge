@@ -131,3 +131,13 @@ export function howToJsonLd(input: { name: string; description: string; steps: {
     })),
   };
 }
+
+export function webPageJsonLd({ name, description, path }: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url: absoluteUrl(path),
+  };
+}

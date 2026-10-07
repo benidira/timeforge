@@ -1,43 +1,50 @@
 const fs = require('fs');
-let content = fs.readFileSync('src/components/pseo/tool-host.tsx', 'utf8');
 
-const dynamicImports = `
-const P2pGhostTunnelTool = dynamic(
-  () => import("@/components/tools/p2p-ghost-tunnel-tool").then((m) => m.P2pGhostTunnelTool as any),
-  { ssr: false }
+let c1 = fs.readFileSync('src/components/tool-interface.tsx', 'utf8');
+c1 = c1.replace(
+  'import { FetchMockGeneratorTool } from "./tools/fetch-mock-generator-tool";',
+  'import { FetchMockGeneratorTool } from "./tools/fetch-mock-generator-tool";\nimport { JsonToTsTool } from "./tools/json-to-ts-tool";\nimport { DiffCheckerTool } from "./tools/diff-checker-tool";'
 );
-const SteganographyEnvVaultTool = dynamic(
-  () => import("@/components/tools/steganography-env-vault-tool").then((m) => m.SteganographyEnvVaultTool as any),
-  { ssr: false }
+c1 = c1.replace(
+  'case "json-viewer":\n      return <JsonViewerTool />;',
+  'case "json-viewer":\n      return <JsonViewerTool />;\n    case "json-to-ts":\n      return <JsonToTsTool />;\n    case "diff-checker":\n      return <DiffCheckerTool />;'
 );
-const ThreeJsonGalaxyTool = dynamic(
-  () => import("@/components/tools/3d-json-galaxy-tool").then((m) => m.ThreeJsonGalaxyTool as any),
-  { ssr: false }
-);
-const RegexGeneticEvolutionTool = dynamic(
-  () => import("@/components/tools/regex-genetic-evolution-tool").then((m) => m.RegexGeneticEvolutionTool as any),
-  { ssr: false }
-);
-const ApiTimeMachineTool = dynamic(
-  () => import("@/components/tools/api-time-machine-tool").then((m) => m.ApiTimeMachineTool as any),
-  { ssr: false }
-);
-const AstConflictTelepathyTool = dynamic(
-  () => import("@/components/tools/ast-conflict-telepathy-tool").then((m) => m.AstConflictTelepathyTool as any),
-  { ssr: false }
-);
-`;
+fs.writeFileSync('src/components/tool-interface.tsx', c1);
 
-const switchCases = `
-    case "p2p-ghost-tunnel": return <P2pGhostTunnelTool />;
-    case "steganography-env-vault": return <SteganographyEnvVaultTool />;
-    case "3d-json-galaxy": return <ThreeJsonGalaxyTool />;
-    case "regex-genetic-evolution": return <RegexGeneticEvolutionTool />;
-    case "api-time-machine": return <ApiTimeMachineTool />;
-    case "ast-conflict-telepathy": return <AstConflictTelepathyTool />;
-`;
+let c2 = fs.readFileSync('src/content/tools.ts', 'utf8');
+c2 = c2.replace(
+  '  | "json-viewer";',
+  '  | "json-viewer"\n  | "json-to-ts"\n  | "diff-checker";'
+);
 
-content = content.replace('const JsonViewerTool = dynamic(', dynamicImports + 'const JsonViewerTool = dynamic(');
-content = content.replace('case "json-viewer":\n      return <JsonViewerTool />;', 'case "json-viewer":\n      return <JsonViewerTool />;\n' + switchCases);
+const nt = 
+  {
+    slug: "json-to-ts",
+    category: "Developer",
+    name: "JSON to TypeScript",
+    seoTitle: "JSON to TypeScript Interfaces Converter",
+    metaDescription: "Instantly convert JSON objects into TypeScript interfaces.",
+    intro: "Paste your JSON and get strictly typed TypeScript interfaces.",
+    cardDescription: "Convert JSON strings to TypeScript interfaces.",
+    faq: [],
+    related: [],
+    sections: [],
+    howTo: []
+  },
+  {
+    slug: "diff-checker",
+    category: "Developer",
+    name: "Diff Checker",
+    seoTitle: "Online Text Diff Checker",
+    metaDescription: "Compare two pieces of text or code and see the differences.",
+    intro: "Check differences line by line between original and modified text.",
+    cardDescription: "Compare text or code line by line.",
+    faq: [],
+    related: [],
+    sections: [],
+    howTo: []
+  },
+;
 
-fs.writeFileSync('src/components/pseo/tool-host.tsx', content);
+c2 = c2.replace('export const TOOLS: Tool[] = [', 'export const TOOLS: Tool[] = [' + nt);
+fs.writeFileSync('src/content/tools.ts', c2);

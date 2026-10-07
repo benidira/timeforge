@@ -42,7 +42,9 @@ export type ToolSlug =
   | "sqlite-fiddle"
   | "fetch-mock-generator"
   | "regex-explainer"
-  | "json-viewer";
+  | "json-viewer"
+  | "json-to-ts"
+  | "diff-checker";
 
 export interface ContentSection {
   heading: string;
@@ -73,6 +75,33 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
+  {
+    slug: 'json-to-ts',
+    category: 'Developer',
+    name: 'JSON to TypeScript',
+    seoTitle: 'JSON to TypeScript Interfaces Converter',
+    metaDescription: 'Instantly convert JSON objects into TypeScript interfaces.',
+    intro: 'Paste your JSON and get strictly typed TypeScript interfaces.',
+    cardDescription: 'Convert JSON strings to TypeScript interfaces.',
+    faq: [],
+    related: [],
+    sections: [],
+    howTo: []
+  },
+  {
+    slug: 'diff-checker',
+    category: 'Developer',
+    name: 'Diff Checker',
+    seoTitle: 'Online Text Diff Checker',
+    metaDescription: 'Compare two pieces of text or code and see the differences.',
+    intro: 'Check differences line by line between original and modified text.',
+    cardDescription: 'Compare text or code line by line.',
+    faq: [],
+    related: [],
+    sections: [],
+    howTo: []
+  },
+
 
   {
     slug: "fetch-mock-generator",

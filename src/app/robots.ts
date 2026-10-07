@@ -14,7 +14,9 @@ export default function robots(): MetadataRoute.Robots {
     ],
     sitemap: [
       'https://castov.com/sitemap.xml',
-      'https://castov.com/sitemap-unix.xml'
+      'https://castov.com/sitemap-unix.xml',
+      'https://castov.com/sitemap-cron.xml',
+      'https://castov.com/sitemap-chmod.xml'
     ],
     host: 'https://castov.com',
   };
