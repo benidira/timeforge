@@ -37,9 +37,7 @@ export function ToolPage({ tool }: { tool: Tool }) {
       </div>
 
       <section aria-label={`${tool.name} tool`} className="card p-5 sm:p-8 mb-12 border-line/60 shadow-sm">
-        <ProLock isPro={tool.isPro}>
-          <ToolInterface slug={tool.slug} />
-        </ProLock>
+        <ToolInterface slug={tool.slug} />
       </section>
 
       <div className="grid gap-12 lg:grid-cols-[1fr_300px] items-start">

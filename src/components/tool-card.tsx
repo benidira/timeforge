@@ -11,16 +11,9 @@ export function ToolCard({ tool, headingLevel = 3 }: { tool: Tool; headingLevel?
         <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-field border border-line text-primary transition-transform duration-300 group-hover:scale-105 group-hover:bg-primary/10">
           <CategoryIcon category={tool.category} />
         </span>
-        <div className="flex gap-2">
-          {tool.isPro && (
-            <span className="rounded-full bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-yellow-500 flex items-center gap-1">
-              PRO
-            </span>
-          )}
-          <span className="rounded-full bg-field border border-line px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted group-hover:border-primary/20">
-            {tool.category}
-          </span>
-        </div>
+        <span className="rounded-full bg-field border border-line px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted group-hover:border-primary/20">
+          {tool.category}
+        </span>
       </div>
       <Heading className="text-lg font-bold tracking-tight text-fg group-hover:text-primary transition-colors relative z-10">
         {tool.name}
