@@ -1,17 +1,25 @@
 "use client";
 
-import { useId, useRef, useState, type FormEvent } from "react";
+import { useId, useRef, useState, useEffect, type FormEvent } from "react";
 import { validateTimestamp, type TimestampValidation, type UnitChoice } from "@/lib/time";
 import { UnitSelect } from "../ui/unit-select";
+import { Share2 } from "lucide-react";
+import { useUrlState } from "@/hooks/use-url-state";
 
 const UNITS: UnitChoice[] = ["auto", "seconds", "milliseconds"];
 
 export function UnixValidatorTool() {
   const uid = useId();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState("");
+  const [value, setValue, shareState] = useUrlState("ts", "");
   const [unit, setUnit] = useState<UnitChoice>("auto");
   const [result, setResult] = useState<TimestampValidation | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  // Auto-run if loaded from URL
+  useEffect(() => {
+    if (value) run(value, unit);
+  }, []);
 
   function run(raw: string, choice: UnitChoice) {
     setResult(validateTimestamp(raw, choice));
@@ -58,6 +66,19 @@ export function UnixValidatorTool() {
         </button>
         <button type="button" className="btn btn-secondary" onClick={handleClear}>
           Clear
+        </button>
+        <button 
+          type="button" 
+          className="btn btn-secondary sm:ml-auto flex items-center gap-2" 
+          onClick={() => {
+            shareState();
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          }}
+          disabled={!value}
+        >
+          <Share2 size={16} />
+          {copied ? "Link Copied!" : "Share State"}
         </button>
       </div>
 
