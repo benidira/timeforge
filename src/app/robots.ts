@@ -12,7 +12,10 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/', '/search'],
       }
     ],
-    sitemap: 'https://castov.com/sitemap.xml',
+    sitemap: [
+      'https://castov.com/sitemap.xml',
+      'https://castov.com/sitemap-unix.xml'
+    ],
     host: 'https://castov.com',
   };
 }
