@@ -81,7 +81,7 @@ export default function UnixTimestampPseoPage({ params }: Props) {
           Detailed conversion and analysis for the Unix epoch timestamp <code className="bg-field px-2 py-1 rounded text-fg">{tsString}</code>.
         </p>
 
-        <AdSlot format="horizontal" />
+        <AdSlot placement="content-middle" />
 
         {/* Data Cards */}
         <div className="grid md:grid-cols-2 gap-6 mt-10">
