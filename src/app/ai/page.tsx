@@ -55,28 +55,6 @@ export default function AiDirectoryPage() {
       </section>
 
       <div className="layout-content py-12">
-        {/* --- NEW: Prompts Library Banner --- */}
-        <Link href="/ai/prompts" className="mb-16 block rounded-2xl overflow-hidden relative group border border-line hover:border-primary/50 transition-colors shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-primary/10 to-transparent z-0 group-hover:opacity-75 transition-opacity" />
-          <div className="relative z-10 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 bg-card/80 backdrop-blur-sm">
-            <div className="max-w-2xl text-left">
-              <span className="inline-block px-3 py-1 bg-primary/20 text-primary font-bold text-xs uppercase tracking-widest rounded-full mb-4">
-                New & Massive
-              </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-fg mb-4 tracking-tight">
-                Global AI Prompts <span className="bg-gradient-to-r from-accent to-success bg-clip-text text-transparent">Vault</span>
-              </h2>
-              <p className="text-lg text-muted leading-relaxed">
-                Stop struggling with prompt engineering. Access our massive library of expertly crafted prompts for ChatGPT, Claude 3, Gemini, Midjourney, and Cursor. Filter by AI or profession.
-              </p>
-            </div>
-            <div className="shrink-0 flex items-center justify-center">
-              <div className="px-8 py-4 bg-fg text-bg font-bold rounded-xl shadow-lg group-hover:scale-105 transition-transform flex items-center gap-2">
-                Browse 1,000+ Prompts &rarr;
-              </div>
-            </div>
-          </div>
-        </Link>
 
         {/* --- Flagship Bento Grid --- */}
         <div className="mb-16">

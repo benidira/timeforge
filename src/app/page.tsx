@@ -128,18 +128,6 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-5 group">
-                <div className="p-4 rounded-2xl bg-accent/10 text-accent shrink-0">
-                  <Database size={28} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors text-fg">Global AI Prompts Vault</h3>
-                  <p className="text-muted leading-relaxed">
-                    An infinitely scrolling, indexed database of professional AI prompts for Cursor, Claude, and Gemini. Powered by Postgres Trigram search.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 group">
                 <div className="p-4 rounded-2xl bg-warning/10 text-warning shrink-0">
                   <ShieldCheck size={28} />
                 </div>
