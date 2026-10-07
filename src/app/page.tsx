@@ -132,9 +132,9 @@ export default function HomePage() {
                   <ShieldCheck size={28} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-warning transition-colors text-fg">Team Steganography Vaults</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-warning transition-colors text-fg">Steganography Environment Vaults</h3>
                   <p className="text-muted leading-relaxed">
-                    End-to-end encrypted environment variables. We hide your secure AES keys inside standard image pixels (Steganography) for invisible sharing.
+                    End-to-end encrypted environment variables. We hide your secure AES keys inside standard image pixels (Steganography) for invisible sharing, entirely in your browser.
                   </p>
                 </div>
               </div>

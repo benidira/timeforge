@@ -28,6 +28,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/timezones/UTC', destination: '/utc-converter', permanent: true },
       { source: '/timezones/:tz', destination: '/timezones', permanent: true },
+      { source: '/ai/vercel-ai-sdk-generator', destination: '/ai/vercel-ai-sdk-code-generator', permanent: true },
       {
         source: '/tools/:tool',
         destination: '/:tool',

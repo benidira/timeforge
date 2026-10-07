@@ -18,17 +18,31 @@ export function SqliteFiddleTool() {
     let active = true;
     const initDB = async () => {
       try {
-        const SQL = await initSqlJs({
-          locateFile: () => `/sql-wasm.wasm`
+        // Fallback timeout to prevent infinite hang
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error("WASM initialization timed out after 10 seconds. Check if /sql-wasm.wasm is serving the correct binary.")), 10000)
+        );
+
+        // A common issue in Next.js is the bundler packing the Node version of sql.js.
+        // We ensure we give it the exact absolute URL to the WASM file.
+        const wasmUrl = typeof window !== 'undefined' ? window.location.origin + '/sql-wasm.wasm' : '/sql-wasm.wasm';
+
+        const sqlPromise = initSqlJs({
+          locateFile: (file) => wasmUrl
         });
+
+        const SQL: any = await Promise.race([sqlPromise, timeoutPromise]);
+        
         if (active) {
           const newDb = new SQL.Database();
           setDb(newDb);
           setIsInitializing(false);
+          setError(null);
         }
       } catch (err: any) {
         if (active) {
-          setError("Failed to load SQLite WASM: " + err.message);
+          console.error("SQLite WASM Error:", err);
+          setError("Failed to load SQLite engine: " + (err.message || String(err)));
           setIsInitializing(false);
         }
       }
@@ -103,6 +117,10 @@ INSERT INTO employees (name, department, salary) VALUES
             </h3>
             {isInitializing ? (
               <div className="text-sm text-muted animate-pulse">Loading WASM engine...</div>
+            ) : error && !db ? (
+              <div className="text-xs text-danger p-2 bg-danger/10 rounded border border-danger/20 mb-2">
+                <strong>WASM Error:</strong> {error}
+              </div>
             ) : (
               <div>
                 <div className="flex items-center justify-between mb-2">

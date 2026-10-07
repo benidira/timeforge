@@ -6,9 +6,9 @@ import { StaticPage } from "@/components/static-page";
 import { ToolCard } from "@/components/tool-card";
 import { buildMetadata } from "@/lib/seo";
 
-const TITLE = "All Time & Timestamp Tools | Castov";
+const TITLE = "All Developer Tools | Castov";
 const DESCRIPTION =
-  "Browse all 25 free Castov tools: timestamp converters, date calculators, time zone tools, and developer utilities like cron and RFC 3339.";
+  "Browse all free Castov tools: timestamp converters, date calculators, time zone tools, and developer utilities like cron and RFC 3339.";
 
 export const metadata: Metadata = buildMetadata({ title: TITLE, description: DESCRIPTION, path: "/tools" });
 
@@ -16,7 +16,7 @@ export default function ToolsPage() {
   return (
     <StaticPage
       title="Tools"
-      intro="25 free tools for working with Unix time, dates, durations and time zones. Every tool runs in your browser."
+      intro={`${TOOLS.length} free tools for working with Unix time, dates, configurations, and developer workflows. Every tool runs instantly in your browser.`}
       crumbs={[{ name: "Home", href: "/" }, { name: "Tools" }]}
       path="/tools"
     >
