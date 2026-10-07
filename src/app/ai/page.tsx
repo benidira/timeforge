@@ -13,7 +13,7 @@ export default function AiDirectoryPage() {
   return (
     <div className="w-full pb-20">
       
-      {/* ── Minimal Search Hero ── */}
+      {/* --- Minimal Search Hero --- */}
       <section className="w-full border-b border-line bg-card pt-16 pb-16">
         <div className="layout-content flex flex-col items-center text-center max-w-3xl mx-auto">
           <div className="mb-6">
@@ -48,14 +48,14 @@ export default function AiDirectoryPage() {
           
           <script dangerouslySetInnerHTML={{__html: `
             document.getElementById('hero-search-trigger')?.addEventListener('click', () => {
-              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
+              window.dispatchEvent(new CustomEvent('open-command-palette'));
             });
           `}} />
         </div>
       </section>
 
       <div className="layout-content py-12">
-        {/* 🔥 NEW: Prompts Library Banner 🔥 */}
+        {/* --- NEW: Prompts Library Banner --- */}
         <Link href="/ai/prompts" className="mb-16 block rounded-2xl overflow-hidden relative group border border-line hover:border-primary/50 transition-colors shadow-2xl">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-primary/10 to-transparent z-0 group-hover:opacity-75 transition-opacity" />
           <div className="relative z-10 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 bg-card/80 backdrop-blur-sm">
@@ -78,7 +78,7 @@ export default function AiDirectoryPage() {
           </div>
         </Link>
 
-        {/* ── Flagship Bento Grid ── */}
+        {/* --- Flagship Bento Grid --- */}
         <div className="mb-16">
           <div className="mb-6">
             <h2 className="text-2xl font-semibold tracking-tight text-fg">Flagship Tools</h2>
@@ -129,7 +129,7 @@ export default function AiDirectoryPage() {
           </div>
         </div>
 
-        {/* ── Category Grids ── */}
+        {/* --- Category Grids --- */}
         <div className="space-y-16">
           {AI_CATEGORIES.map((category) => {
             const tools = getAiToolsByCategory(category);

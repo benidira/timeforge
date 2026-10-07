@@ -84,7 +84,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           {/* Global Search Trigger - Condensed on Desktop */}
           <button
-            onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
             className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-field hover:bg-hover border border-line rounded-lg text-sm text-muted transition-colors w-48 lg:w-64"
             aria-label="Open command palette"
           >
@@ -100,7 +100,7 @@ export function SiteHeader() {
 
           {/* Mobile Search Icon */}
           <button
-            onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
             className="btn btn-secondary btn-sm md:hidden inline-flex p-2 rounded-lg"
             aria-label="Search tools"
           >

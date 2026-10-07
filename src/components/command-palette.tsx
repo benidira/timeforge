@@ -21,8 +21,16 @@ export function CommandPalette() {
         setOpen((open) => !open);
       }
     };
+    
+    const openPalette = () => setOpen(true);
+    
     document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    window.addEventListener("open-command-palette", openPalette);
+    
+    return () => {
+      document.removeEventListener("keydown", down);
+      window.removeEventListener("open-command-palette", openPalette);
+    };
   }, []);
 
   const runCommand = (command: () => void) => {
